@@ -32,8 +32,9 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/open-sse ./open-sse
 # Next file tracing can omit sibling files; MITM runs server.js as a separate process.
 COPY --from=builder /app/src/mitm ./src/mitm
-# Standalone node_modules may omit deps only required by the MITM child process.
+# Standalone tracing can omit deps only required by child processes/runtime-only paths.
 COPY --from=builder /app/node_modules/node-forge ./node_modules/node-forge
+COPY --from=builder /app/node_modules/node-machine-id ./node_modules/node-machine-id
 
 RUN mkdir -p /app/data && chown -R node:node /app && \
   mkdir -p /app/data-home && chown node:node /app/data-home && \

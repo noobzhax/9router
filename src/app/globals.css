@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../..");
+@source not "../gitbook";
+@source not "../../gitbook";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
