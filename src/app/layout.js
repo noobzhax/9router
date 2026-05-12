@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import "material-symbols/outlined.css";
+
 import "./globals.css";
 import { ThemeProvider } from "@/shared/components/ThemeProvider";
 import "@/lib/initCloudSync"; // Auto-initialize cloud sync
