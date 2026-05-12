@@ -1,0 +1,31 @@
+services:
+  9router:
+    build:
+      context: .
+      dockerfile: Dockerfile.bun
+    image: 9router:bun
+    container_name: 9router-bun
+    restart: unless-stopped
+    ports:
+      - "20128:20128"
+    environment:
+      NODE_ENV: production
+      PORT: 20128
+      HOSTNAME: 0.0.0.0
+      DATA_DIR: /app/data
+      NEXT_TELEMETRY_DISABLED: "1"
+    volumes:
+      - 9router_data:/app/data
+      - 9router_home:/app/data-home
+    mem_limit: 512m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:20128/api/health | grep -q '\"ok\":true'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  9router_data:
+  9router_home:
