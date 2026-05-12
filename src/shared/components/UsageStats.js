@@ -14,8 +14,17 @@ import Badge from "./Badge";
 import Card from "./Card";
 import OverviewCards from "@/app/(dashboard)/dashboard/usage/components/OverviewCards";
 import UsageTable, { fmt, fmtTime } from "@/app/(dashboard)/dashboard/usage/components/UsageTable";
-import ProviderTopology from "@/app/(dashboard)/dashboard/usage/components/ProviderTopology";
-import UsageChart from "@/app/(dashboard)/dashboard/usage/components/UsageChart";
+import dynamic from "next/dynamic";
+import { CardSkeleton } from "./Loading";
+
+const UsageChart = dynamic(
+  () => import("@/app/(dashboard)/dashboard/usage/components/UsageChart"),
+  { ssr: false, loading: () => <CardSkeleton /> }
+);
+const ProviderTopology = dynamic(
+  () => import("@/app/(dashboard)/dashboard/usage/components/ProviderTopology"),
+  { ssr: false, loading: () => <CardSkeleton /> }
+);
 
 function timeAgo(timestamp) {
   const diff = Math.floor((Date.now() - new Date(timestamp)) / 1000);
