@@ -3,7 +3,12 @@
 import { useParams, notFound, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Card, Badge, Button, AddCustomEmbeddingModal, NoAuthProxyCard, ProviderInfoCard } from "@/shared/components";
+import Card from "@/shared/components/Card";
+import Badge from "@/shared/components/Badge";
+import Button from "@/shared/components/Button";
+import AddCustomEmbeddingModal from "@/shared/components/AddCustomEmbeddingModal";
+import NoAuthProxyCard from "@/shared/components/NoAuthProxyCard";
+import ProviderInfoCard from "@/shared/components/ProviderInfoCard";
 import ProviderIcon from "@/shared/components/ProviderIcon";
 import { MEDIA_PROVIDER_KINDS, AI_PROVIDERS, getProviderAlias, isCustomEmbeddingProvider } from "@/shared/constants/providers";
 import { getModelsByProviderId } from "@/shared/constants/models";
