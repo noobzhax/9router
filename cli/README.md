@@ -1,16 +1,5 @@
 # 9Router - FREE AI Router & Token Saver
 
-## Table of Contents
-
-- [🤔 Why 9Router?](#-why-9router)
-- [⚡ Quick Start](#-quick-start)
-- [🚀 CLI Options](#-cli-options)
-- [🛠️ Supported CLI Tools](#-supported-cli-tools)
-- [💾 Data Location](#-data-location)
-- [📚 Documentation](#-documentation)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [📄 License](#-license)
-
 **Never stop coding. Save 20-40% tokens with RTK + auto-fallback to FREE & cheap AI models.**
 
 **Connect All AI Code Tools (Claude Code, Cursor, Antigravity, Copilot, Codex, Gemini, OpenCode, Cline, OpenClaw...) to 40+ AI Providers & 100+ Models.**
