@@ -55,9 +55,8 @@ jobs:
         run: bun run build:bun
 
   tests:
-    name: Unit tests (advisory)
+    name: Unit tests
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -76,7 +75,6 @@ jobs:
 
       - name: Run tests
         working-directory: tests
-        continue-on-error: true
         run: npm test
 
   docker-smoke:
