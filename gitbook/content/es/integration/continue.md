@@ -1,38 +1,5 @@
 # Integración con la extensión Continue de VSCode
 
-## Table of Contents
-
-- [Requisitos previos](#requisitos-previos)
-- [Pasos de configuración](#pasos-de-configuración)
-  - [1. Abrir la configuración de Continue](#1-abrir-la-configuración-de-continue)
-  - [2. Agregar configuración de modelo de 9Router](#2-agregar-configuración-de-modelo-de-9router)
-  - [3. Guardar y recargar](#3-guardar-y-recargar)
-  - [4. Seleccionar modelo](#4-seleccionar-modelo)
-- [Modelos disponibles](#modelos-disponibles)
-  - [Modelos Claude (Anthropic)](#modelos-claude-anthropic)
-  - [Modelos DeepSeek](#modelos-deepseek)
-  - [Modelos GLM (Zhipu AI)](#modelos-glm-zhipu-ai)
-- [Ejemplos de uso](#ejemplos-de-uso)
-  - [Explicación de código](#explicación-de-código)
-  - [Generación de código](#generación-de-código)
-  - [Refactorización](#refactorización)
-  - [Corrección de bugs](#corrección-de-bugs)
-- [Configuración avanzada](#configuración-avanzada)
-  - [Prompts de sistema personalizados](#prompts-de-sistema-personalizados)
-  - [Temperatura y parámetros](#temperatura-y-parámetros)
-  - [Proveedores de contexto](#proveedores-de-contexto)
-- [Atajos de teclado](#atajos-de-teclado)
-- [Solución de problemas](#solución-de-problemas)
-  - [El modelo no responde](#el-modelo-no-responde)
-  - [Modelo incorrecto seleccionado](#modelo-incorrecto-seleccionado)
-  - [La configuración no se carga](#la-configuración-no-se-carga)
-  - [Rendimiento lento](#rendimiento-lento)
-- [Mejores prácticas](#mejores-prácticas)
-  - [Estrategia de selección de modelo](#estrategia-de-selección-de-modelo)
-  - [Gestión de contexto](#gestión-de-contexto)
-  - [Optimización de costos](#optimización-de-costos)
-- [Próximos pasos](#próximos-pasos)
-
 Integra 9Router con la extensión Continue para llevar la asistencia de IA directamente a Visual Studio Code.
 
 ## Requisitos previos

@@ -1,43 +1,5 @@
 # Quota Tracking & Giám sát Usage
 
-## Table of Contents
-
-- [Tổng quan](#tổng-quan)
-- [Tổng quan Dashboard](#tổng-quan-dashboard)
-  - [Tóm tắt Quota](#tóm-tắt-quota)
-- [Tiêu thụ Token Thời gian thực](#tiêu-thụ-token-thời-gian-thực)
-  - [Theo dõi từng Request](#theo-dõi-từng-request)
-  - [Live Usage Monitor](#live-usage-monitor)
-  - [Phân tích Token theo Model](#phân-tích-token-theo-model)
-- [Giới hạn Quota & Thời gian Reset](#giới-hạn-quota-thời-gian-reset)
-  - [Subscription Providers](#subscription-providers)
-  - [Cheap Providers](#cheap-providers)
-  - [Free Providers](#free-providers)
-- [Ước tính Chi phí](#ước-tính-chi-phí)
-  - [Theo dõi Chi phí Thời gian thực](#theo-dõi-chi-phí-thời-gian-thực)
-  - [Báo cáo Chi tiêu Hàng tháng](#báo-cáo-chi-tiêu-hàng-tháng)
-  - [Dự kiến Chi phí](#dự-kiến-chi-phí)
-- [Dashboard Usage](#dashboard-usage)
-  - [Thống kê Tổng quan](#thống-kê-tổng-quan)
-  - [Usage theo Model](#usage-theo-model)
-  - [Usage theo Thời gian](#usage-theo-thời-gian)
-  - [Usage theo Combo](#usage-theo-combo)
-- [Cảnh báo & Thông báo](#cảnh-báo-thông-báo)
-  - [Cảnh báo Quota](#cảnh-báo-quota)
-  - [Cảnh báo Ngân sách](#cảnh-báo-ngân-sách)
-  - [Phát hiện Bất thường Chi phí](#phát-hiện-bất-thường-chi-phí)
-- [Best Practices](#best-practices)
-  - [1. Theo dõi Quota Hàng ngày](#1-theo-dõi-quota-hàng-ngày)
-  - [2. Đặt Giới hạn Ngân sách](#2-đặt-giới-hạn-ngân-sách)
-  - [3. Tối ưu Combo Usage](#3-tối-ưu-combo-usage)
-  - [4. Theo dõi Thời gian Reset](#4-theo-dõi-thời-gian-reset)
-  - [5. Xem Báo cáo Hàng tháng](#5-xem-báo-cáo-hàng-tháng)
-- [Truy cập API](#truy-cập-api)
-  - [Lấy trạng thái Quota](#lấy-trạng-thái-quota)
-  - [Lấy Usage Stats](#lấy-usage-stats)
-- [Troubleshooting](#troubleshooting)
-- [Liên quan](#liên-quan)
-
 Theo dõi tiêu thụ token thời gian thực, giám sát giới hạn quota, ước tính chi phí và nhận cảnh báo trước khi hết. Không bao giờ lãng phí quota subscription hoặc vượt giới hạn ngân sách.
 
 ---

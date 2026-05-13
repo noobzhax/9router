@@ -1,46 +1,5 @@
 # Combos - Custom Fallback Chains
 
-## Table of Contents
-
-- [What Are Combos?](#what-are-combos)
-- [Why Use Combos?](#why-use-combos)
-  - [1. Maximize Subscription Value](#1-maximize-subscription-value)
-  - [2. Minimize Costs](#2-minimize-costs)
-  - [3. Ensure 24/7 Availability](#3-ensure-247-availability)
-  - [4. Optimize for Quality](#4-optimize-for-quality)
-- [How to Create Combos](#how-to-create-combos)
-  - [Step 1: Open Dashboard](#step-1-open-dashboard)
-  - [Step 2: Navigate to Combos](#step-2-navigate-to-combos)
-  - [Step 3: Configure Combo](#step-3-configure-combo)
-  - [Step 4: Save](#step-4-save)
-  - [Step 5: Use in CLI](#step-5-use-in-cli)
-- [Example Combos](#example-combos)
-  - [Example 1: Premium Coding (Subscription → Cheap → Free)](#example-1-premium-coding-subscription-cheap-free)
-  - [Example 2: Budget Combo (Cheap → Free)](#example-2-budget-combo-cheap-free)
-  - [Example 3: Free Combo (Zero Cost)](#example-3-free-combo-zero-cost)
-  - [Example 4: Quality First (Premium Models Only)](#example-4-quality-first-premium-models-only)
-  - [Example 5: Multi-Subscription (Maximize All)](#example-5-multi-subscription-maximize-all)
-  - [Example 6: Quota Reset Optimization](#example-6-quota-reset-optimization)
-- [Use Combos in CLI Tools](#use-combos-in-cli-tools)
-  - [Cursor IDE](#cursor-ide)
-  - [Claude Desktop](#claude-desktop)
-  - [Codex CLI](#codex-cli)
-  - [Cline / Continue / RooCode](#cline-continue-roocode)
-  - [API Request](#api-request)
-- [Best Practices](#best-practices)
-  - [1. Always Include Free Tier](#1-always-include-free-tier)
-  - [2. Order by Cost (Cheap to Expensive)](#2-order-by-cost-cheap-to-expensive)
-  - [3. Match Quality Requirements](#3-match-quality-requirements)
-  - [4. Consider Quota Reset Times](#4-consider-quota-reset-times)
-  - [5. Create Multiple Combos for Different Use Cases](#5-create-multiple-combos-for-different-use-cases)
-  - [6. Monitor Combo Performance](#6-monitor-combo-performance)
-- [Advanced Configuration](#advanced-configuration)
-  - [Set Budget Limits per Combo](#set-budget-limits-per-combo)
-  - [Enable/Disable Models in Combo](#enabledisable-models-in-combo)
-  - [Clone Existing Combo](#clone-existing-combo)
-- [Troubleshooting](#troubleshooting)
-- [Related](#related)
-
 Create custom model combinations with automatic fallback. Combos let you define your own routing strategy based on cost, quality, and availability.
 
 ---

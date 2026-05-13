@@ -1,22 +1,5 @@
 # 🏠 Triển khai Localhost
 
-## Table of Contents
-
-- [📦 Cài đặt](#-cài-đặt)
-- [🚀 Khởi động Server](#-khởi-động-server)
-- [🔧 Cấu hình](#-cấu-hình)
-  - [Custom Data Directory](#custom-data-directory)
-  - [Custom Port](#custom-port)
-- [🛑 Dừng Server](#-dừng-server)
-- [🔄 Khởi động lại Server](#-khởi-động-lại-server)
-- [📊 Cập nhật 9Router](#-cập-nhật-9router)
-- [🔍 Troubleshooting](#-troubleshooting)
-  - [Port đã được dùng](#port-đã-được-dùng)
-  - [Lỗi Permission](#lỗi-permission)
-  - [Vấn đề Data Directory](#vấn-đề-data-directory)
-- [📁 Cấu trúc Data Directory](#-cấu-trúc-data-directory)
-- [🔗 Bước tiếp theo](#-bước-tiếp-theo)
-
 Chạy 9Router trên máy cá nhân để phát triển và dùng cá nhân.
 
 ---

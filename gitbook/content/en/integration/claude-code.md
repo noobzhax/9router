@@ -1,22 +1,5 @@
 # Claude Code Integration
 
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Setup](#setup)
-  - [1. Configure Environment Variables](#1-configure-environment-variables)
-  - [2. Reload Shell Configuration](#2-reload-shell-configuration)
-  - [3. Verify Configuration](#3-verify-configuration)
-- [Model Aliases](#model-aliases)
-- [Usage Examples](#usage-examples)
-  - [Using Model Aliases](#using-model-aliases)
-  - [Using Full Model Names](#using-full-model-names)
-- [Settings File](#settings-file)
-- [Troubleshooting](#troubleshooting)
-  - [Connection Issues](#connection-issues)
-  - [Model Not Found](#model-not-found)
-- [Cloud Endpoint](#cloud-endpoint)
-
 Integrate 9Router with Claude Code CLI to route your Anthropic API requests through 9Router's intelligent routing system.
 
 ## Prerequisites

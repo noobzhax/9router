@@ -1,18 +1,5 @@
 # 故障排除
 
-## Table of Contents
-
-- ["Language model did not provide messages"](#language-model-did-not-provide-messages)
-- [速率限制](#速率限制)
-- [OAuth Token 过期](#oauth-token-过期)
-- [成本过高](#成本过高)
-- [连接被拒绝](#连接被拒绝)
-- [仪表盘无法打开](#仪表盘无法打开)
-- [模型未找到](#模型未找到)
-- [响应缓慢](#响应缓慢)
-- [API Key 无效](#api-key-无效)
-- [需要更多帮助?](#需要更多帮助)
-
 使用 9Router 时常见的问题与解决方案。
 
 ---

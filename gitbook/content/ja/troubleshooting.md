@@ -1,18 +1,5 @@
 # トラブルシューティング
 
-## Table of Contents
-
-- ["Language model did not provide messages"](#language-model-did-not-provide-messages)
-- [レート制限](#レート制限)
-- [OAuthトークン期限切れ](#oauthトークン期限切れ)
-- [高コスト](#高コスト)
-- [Connection Refused](#connection-refused)
-- [ダッシュボードが開かない](#ダッシュボードが開かない)
-- [モデルが見つからない](#モデルが見つからない)
-- [応答が遅い](#応答が遅い)
-- [APIキー無効](#apiキー無効)
-- [さらにヘルプが必要?](#さらにヘルプが必要)
-
 9Router利用時の一般的な問題と解決策。
 
 ---

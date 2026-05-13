@@ -1,41 +1,5 @@
 # Other Tools Integration
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Generic Setup Pattern](#generic-setup-pattern)
-- [Available Models](#available-models)
-  - [Claude Models (Anthropic)](#claude-models-anthropic)
-  - [DeepSeek Models](#deepseek-models)
-  - [GLM Models (Zhipu AI)](#glm-models-zhipu-ai)
-- [Integration Examples](#integration-examples)
-  - [Python with OpenAI SDK](#python-with-openai-sdk)
-  - [Node.js with OpenAI SDK](#nodejs-with-openai-sdk)
-  - [cURL Command](#curl-command)
-  - [HTTP Client (Postman, Insomnia)](#http-client-postman-insomnia)
-  - [LangChain Integration](#langchain-integration)
-  - [LlamaIndex Integration](#llamaindex-integration)
-- [Custom Script Examples](#custom-script-examples)
-  - [Batch Processing Script](#batch-processing-script)
-  - [Streaming Response Handler](#streaming-response-handler)
-  - [Multi-Model Comparison](#multi-model-comparison)
-- [Common Integration Patterns](#common-integration-patterns)
-  - [Environment Variables](#environment-variables)
-  - [Error Handling](#error-handling)
-  - [Retry Logic](#retry-logic)
-- [Troubleshooting](#troubleshooting)
-  - [Connection Issues](#connection-issues)
-  - [Authentication Errors](#authentication-errors)
-  - [Model Not Found](#model-not-found)
-  - [Timeout Issues](#timeout-issues)
-  - [Rate Limiting](#rate-limiting)
-- [Best Practices](#best-practices)
-  - [Security](#security)
-  - [Performance](#performance)
-  - [Error Handling](#error-handling-1)
-  - [Cost Optimization](#cost-optimization)
-- [Next Steps](#next-steps)
-
 9Router is compatible with any tool that supports the OpenAI API format. This guide covers generic integration patterns for various tools and custom applications.
 
 ## Overview

@@ -1,18 +1,5 @@
 # Troubleshooting
 
-## Table of Contents
-
-- ["Language model did not provide messages"](#language-model-did-not-provide-messages)
-- [Rate Limiting](#rate-limiting)
-- [OAuth Token hết hạn](#oauth-token-hết-hạn)
-- [Chi phí cao](#chi-phí-cao)
-- [Connection Refused](#connection-refused)
-- [Dashboard không mở](#dashboard-không-mở)
-- [Model Not Found](#model-not-found)
-- [Phản hồi chậm](#phản-hồi-chậm)
-- [API Key không hợp lệ](#api-key-không-hợp-lệ)
-- [Cần trợ giúp thêm?](#cần-trợ-giúp-thêm)
-
 Các vấn đề và giải pháp phổ biến khi dùng 9Router.
 
 ---

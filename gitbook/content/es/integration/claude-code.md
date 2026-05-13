@@ -1,22 +1,5 @@
 # Integración con Claude Code
 
-## Table of Contents
-
-- [Requisitos previos](#requisitos-previos)
-- [Configuración](#configuración)
-  - [1. Configurar variables de entorno](#1-configurar-variables-de-entorno)
-  - [2. Recargar la configuración del shell](#2-recargar-la-configuración-del-shell)
-  - [3. Verificar la configuración](#3-verificar-la-configuración)
-- [Aliases de modelos](#aliases-de-modelos)
-- [Ejemplos de uso](#ejemplos-de-uso)
-  - [Usando aliases de modelos](#usando-aliases-de-modelos)
-  - [Usando nombres completos de modelos](#usando-nombres-completos-de-modelos)
-- [Archivo de configuración](#archivo-de-configuración)
-- [Solución de problemas](#solución-de-problemas)
-  - [Problemas de conexión](#problemas-de-conexión)
-  - [Modelo no encontrado](#modelo-no-encontrado)
-- [Endpoint en la nube](#endpoint-en-la-nube)
-
 Integra 9Router con Claude Code CLI para enrutar tus solicitudes de la API de Anthropic a través del sistema de enrutamiento inteligente de 9Router.
 
 ## Requisitos previos

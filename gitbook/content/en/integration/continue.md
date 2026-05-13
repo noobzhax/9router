@@ -1,38 +1,5 @@
 # Continue VSCode Extension Integration
 
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Configuration Steps](#configuration-steps)
-  - [1. Open Continue Configuration](#1-open-continue-configuration)
-  - [2. Add 9Router Model Configuration](#2-add-9router-model-configuration)
-  - [3. Save and Reload](#3-save-and-reload)
-  - [4. Select Model](#4-select-model)
-- [Available Models](#available-models)
-  - [Claude Models (Anthropic)](#claude-models-anthropic)
-  - [DeepSeek Models](#deepseek-models)
-  - [GLM Models (Zhipu AI)](#glm-models-zhipu-ai)
-- [Usage Examples](#usage-examples)
-  - [Code Explanation](#code-explanation)
-  - [Code Generation](#code-generation)
-  - [Refactoring](#refactoring)
-  - [Bug Fixing](#bug-fixing)
-- [Advanced Configuration](#advanced-configuration)
-  - [Custom System Prompts](#custom-system-prompts)
-  - [Temperature and Parameters](#temperature-and-parameters)
-  - [Context Providers](#context-providers)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Troubleshooting](#troubleshooting)
-  - [Model Not Responding](#model-not-responding)
-  - [Wrong Model Selected](#wrong-model-selected)
-  - [Configuration Not Loading](#configuration-not-loading)
-  - [Slow Performance](#slow-performance)
-- [Best Practices](#best-practices)
-  - [Model Selection Strategy](#model-selection-strategy)
-  - [Context Management](#context-management)
-  - [Cost Optimization](#cost-optimization)
-- [Next Steps](#next-steps)
-
 Integrate 9Router with Continue extension to bring AI assistance directly into Visual Studio Code.
 
 ## Prerequisites

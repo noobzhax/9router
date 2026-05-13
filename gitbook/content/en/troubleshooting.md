@@ -1,18 +1,5 @@
 # Troubleshooting
 
-## Table of Contents
-
-- ["Language model did not provide messages"](#language-model-did-not-provide-messages)
-- [Rate Limiting](#rate-limiting)
-- [OAuth Token Expired](#oauth-token-expired)
-- [High Costs](#high-costs)
-- [Connection Refused](#connection-refused)
-- [Dashboard Not Opening](#dashboard-not-opening)
-- [Model Not Found](#model-not-found)
-- [Slow Response](#slow-response)
-- [API Key Invalid](#api-key-invalid)
-- [Need More Help?](#need-more-help)
-
 Common issues and solutions when using 9Router.
 
 ---

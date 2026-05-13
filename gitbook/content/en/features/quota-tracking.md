@@ -1,43 +1,5 @@
 # Quota Tracking & Usage Monitoring
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Dashboard Overview](#dashboard-overview)
-  - [Quota Summary](#quota-summary)
-- [Real-Time Token Consumption](#real-time-token-consumption)
-  - [Per-Request Tracking](#per-request-tracking)
-  - [Live Usage Monitor](#live-usage-monitor)
-  - [Token Breakdown by Model](#token-breakdown-by-model)
-- [Quota Limits & Reset Times](#quota-limits-reset-times)
-  - [Subscription Providers](#subscription-providers)
-  - [Cheap Providers](#cheap-providers)
-  - [Free Providers](#free-providers)
-- [Cost Estimation](#cost-estimation)
-  - [Real-Time Cost Tracking](#real-time-cost-tracking)
-  - [Monthly Spending Report](#monthly-spending-report)
-  - [Cost Projection](#cost-projection)
-- [Usage Dashboard](#usage-dashboard)
-  - [Overview Stats](#overview-stats)
-  - [Usage by Model](#usage-by-model)
-  - [Usage by Time](#usage-by-time)
-  - [Usage by Combo](#usage-by-combo)
-- [Alerts & Notifications](#alerts-notifications)
-  - [Quota Alerts](#quota-alerts)
-  - [Budget Alerts](#budget-alerts)
-  - [Cost Anomaly Detection](#cost-anomaly-detection)
-- [Best Practices](#best-practices)
-  - [1. Monitor Quota Daily](#1-monitor-quota-daily)
-  - [2. Set Budget Limits](#2-set-budget-limits)
-  - [3. Optimize Combo Usage](#3-optimize-combo-usage)
-  - [4. Track Reset Times](#4-track-reset-times)
-  - [5. Review Monthly Reports](#5-review-monthly-reports)
-- [API Access](#api-access)
-  - [Get Quota Status](#get-quota-status)
-  - [Get Usage Stats](#get-usage-stats)
-- [Troubleshooting](#troubleshooting)
-- [Related](#related)
-
 Track real-time token consumption, monitor quota limits, estimate costs, and get alerts before running out. Never waste subscription quota or exceed budget limits.
 
 ---

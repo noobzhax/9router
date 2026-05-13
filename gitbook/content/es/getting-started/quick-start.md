@@ -1,30 +1,5 @@
 # Empezar
 
-## Table of Contents
-
-- [Inicio rápido](#inicio-rápido)
-  - [1. Instalar](#1-instalar)
-  - [2. Iniciar](#2-iniciar)
-  - [3. Conectar proveedores](#3-conectar-proveedores)
-    - [Opción A: OAuth (Proveedores de suscripción)](#opción-a-oauth-proveedores-de-suscripción)
-    - [Opción B: API Key (Proveedores baratos)](#opción-b-api-key-proveedores-baratos)
-    - [Opción C: Proveedores gratis (Sin costo)](#opción-c-proveedores-gratis-sin-costo)
-- [4. Usar en herramientas CLI](#4-usar-en-herramientas-cli)
-  - [Cursor IDE](#cursor-ide)
-  - [Claude Desktop](#claude-desktop)
-  - [Cline / Continue / RooCode](#cline-continue-roocode)
-  - [Codex CLI](#codex-cli)
-- [5. Crear combos inteligentes (Opcional)](#5-crear-combos-inteligentes-opcional)
-- [Modelos disponibles](#modelos-disponibles)
-  - [Modelos de suscripción (Maximiza primero)](#modelos-de-suscripción-maximiza-primero)
-  - [Modelos baratos (Respaldo)](#modelos-baratos-respaldo)
-  - [Modelos GRATIS (Emergencia)](#modelos-gratis-emergencia)
-- [Estrategia de optimización de costos](#estrategia-de-optimización-de-costos)
-  - [Presupuesto mensual: $10-20/mes](#presupuesto-mensual-10-20mes)
-  - [Estrategia de reinicio de cuota](#estrategia-de-reinicio-de-cuota)
-- [Próximos pasos](#próximos-pasos)
-- [¿Necesitas ayuda?](#necesitas-ayuda)
-
 Pon en marcha 9Router en 5 minutos y comienza a enrutar solicitudes de IA de forma inteligente.
 
 ---

@@ -1,21 +1,5 @@
 # Docker
 
-## Table of Contents
-
-- [Runtimes](#runtimes)
-- [Build & Run — Bun Variant](#build-run-bun-variant)
-  - [Build image](#build-image)
-  - [Start container](#start-container)
-  - [Run in background](#run-in-background)
-  - [View logs](#view-logs)
-  - [Stop container](#stop-container)
-  - [Rebuild after code changes](#rebuild-after-code-changes)
-- [Docker Compose — Bun Variant](#docker-compose-bun-variant)
-- [Build & Run — Node.js Variant](#build-run-nodejs-variant)
-- [What the volume does](#what-the-volume-does)
-- [Optional environment variables](#optional-environment-variables)
-- [Healthcheck](#healthcheck)
-
 This project ships with Docker support for building and running 9Router in a container.
 
 ## Runtimes

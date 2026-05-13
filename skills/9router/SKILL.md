@@ -5,13 +5,6 @@ description: Entry point for 9Router — local/remote AI gateway with OpenAI-com
 
 # 9Router
 
-## Table of Contents
-
-- [Setup](#setup)
-- [Discover models](#discover-models)
-- [Capability skills](#capability-skills)
-- [Errors](#errors)
-
 Local/remote AI gateway exposing OpenAI-compatible REST. One key, many providers, auto-fallback.
 
 ## Setup

@@ -1,41 +1,5 @@
 # Integración con otras herramientas
 
-## Table of Contents
-
-- [Resumen](#resumen)
-- [Patrón de configuración genérico](#patrón-de-configuración-genérico)
-- [Modelos disponibles](#modelos-disponibles)
-  - [Modelos Claude (Anthropic)](#modelos-claude-anthropic)
-  - [Modelos DeepSeek](#modelos-deepseek)
-  - [Modelos GLM (Zhipu AI)](#modelos-glm-zhipu-ai)
-- [Ejemplos de integración](#ejemplos-de-integración)
-  - [Python con OpenAI SDK](#python-con-openai-sdk)
-  - [Node.js con OpenAI SDK](#nodejs-con-openai-sdk)
-  - [Comando cURL](#comando-curl)
-  - [Cliente HTTP (Postman, Insomnia)](#cliente-http-postman-insomnia)
-  - [Integración con LangChain](#integración-con-langchain)
-  - [Integración con LlamaIndex](#integración-con-llamaindex)
-- [Ejemplos de scripts personalizados](#ejemplos-de-scripts-personalizados)
-  - [Script de procesamiento por lotes](#script-de-procesamiento-por-lotes)
-  - [Manejador de respuestas streaming](#manejador-de-respuestas-streaming)
-  - [Comparación multi-modelo](#comparación-multi-modelo)
-- [Patrones comunes de integración](#patrones-comunes-de-integración)
-  - [Variables de entorno](#variables-de-entorno)
-  - [Manejo de errores](#manejo-de-errores)
-  - [Lógica de reintentos](#lógica-de-reintentos)
-- [Solución de problemas](#solución-de-problemas)
-  - [Problemas de conexión](#problemas-de-conexión)
-  - [Errores de autenticación](#errores-de-autenticación)
-  - [Modelo no encontrado](#modelo-no-encontrado)
-  - [Problemas de timeout](#problemas-de-timeout)
-  - [Rate limiting](#rate-limiting)
-- [Mejores prácticas](#mejores-prácticas)
-  - [Seguridad](#seguridad)
-  - [Rendimiento](#rendimiento)
-  - [Manejo de errores](#manejo-de-errores-1)
-  - [Optimización de costos](#optimización-de-costos)
-- [Próximos pasos](#próximos-pasos)
-
 9Router es compatible con cualquier herramienta que soporte el formato de API de OpenAI. Esta guía cubre patrones de integración genéricos para varias herramientas y aplicaciones personalizadas.
 
 ## Resumen

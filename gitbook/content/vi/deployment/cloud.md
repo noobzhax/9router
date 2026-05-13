@@ -1,42 +1,5 @@
 # ☁️ Triển khai Cloud
 
-## Table of Contents
-
-- [🖥️ Triển khai VPS](#-triển-khai-vps)
-  - [Yêu cầu](#yêu-cầu)
-  - [Bước 1: Clone Repository](#bước-1-clone-repository)
-  - [Bước 2: Cài đặt Dependencies](#bước-2-cài-đặt-dependencies)
-  - [Bước 3: Build Application](#bước-3-build-application)
-  - [Bước 4: Cấu hình biến môi trường](#bước-4-cấu-hình-biến-môi-trường)
-  - [Bước 5: Tạo Data Directory](#bước-5-tạo-data-directory)
-  - [Bước 6: Khởi động Application](#bước-6-khởi-động-application)
-  - [Bước 7: Setup PM2 cho Production](#bước-7-setup-pm2-cho-production)
-- [🐳 Triển khai Docker](#-triển-khai-docker)
-  - [Cách 1: Dùng Dockerfile](#cách-1-dùng-dockerfile)
-  - [Cách 2: Docker Compose](#cách-2-docker-compose)
-- [🌐 Reverse Proxy với Nginx](#-reverse-proxy-với-nginx)
-  - [Tại sao dùng Nginx?](#tại-sao-dùng-nginx)
-  - [Bước 1: Cài đặt Nginx](#bước-1-cài-đặt-nginx)
-  - [Bước 2: Cấu hình Nginx](#bước-2-cấu-hình-nginx)
-  - [Bước 3: Enable Site](#bước-3-enable-site)
-  - [Bước 4: Setup SSL với Let's Encrypt](#bước-4-setup-ssl-với-lets-encrypt)
-- [🔒 Cân nhắc về Bảo mật](#-cân-nhắc-về-bảo-mật)
-  - [1. Đổi credentials mặc định](#1-đổi-credentials-mặc-định)
-  - [2. Cấu hình Firewall](#2-cấu-hình-firewall)
-  - [3. Giới hạn truy cập Dashboard](#3-giới-hạn-truy-cập-dashboard)
-  - [4. Cập nhật định kỳ](#4-cập-nhật-định-kỳ)
-  - [5. Chiến lược Backup](#5-chiến-lược-backup)
-- [📊 Giám sát](#-giám-sát)
-  - [Kiểm tra trạng thái Application](#kiểm-tra-trạng-thái-application)
-  - [Nginx Logs](#nginx-logs)
-  - [Tài nguyên hệ thống](#tài-nguyên-hệ-thống)
-- [🚨 Troubleshooting](#-troubleshooting)
-  - [Application không khởi động](#application-không-khởi-động)
-  - [Nginx 502 Bad Gateway](#nginx-502-bad-gateway)
-  - [SSE Streaming không hoạt động](#sse-streaming-không-hoạt-động)
-  - [Lỗi Permission Denied](#lỗi-permission-denied)
-- [🔗 Bước tiếp theo](#-bước-tiếp-theo)
-
 Triển khai 9Router trên VPS hoặc Docker để truy cập từ xa và dùng trong production.
 
 ---

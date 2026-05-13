@@ -1,30 +1,5 @@
 # Bắt đầu
 
-## Table of Contents
-
-- [Bắt đầu nhanh](#bắt-đầu-nhanh)
-  - [1. Cài đặt](#1-cài-đặt)
-  - [2. Khởi chạy](#2-khởi-chạy)
-  - [3. Kết nối Provider](#3-kết-nối-provider)
-    - [Cách A: OAuth (Subscription Provider)](#cách-a-oauth-subscription-provider)
-    - [Cách B: API Key (Cheap Provider)](#cách-b-api-key-cheap-provider)
-    - [Cách C: Free Provider (Miễn phí)](#cách-c-free-provider-miễn-phí)
-- [4. Dùng trong CLI Tools](#4-dùng-trong-cli-tools)
-  - [Cursor IDE](#cursor-ide)
-  - [Claude Desktop](#claude-desktop)
-  - [Cline / Continue / RooCode](#cline-continue-roocode)
-  - [Codex CLI](#codex-cli)
-- [5. Tạo Smart Combos (Tùy chọn)](#5-tạo-smart-combos-tùy-chọn)
-- [Model có sẵn](#model-có-sẵn)
-  - [Subscription Models (Dùng đầu tiên)](#subscription-models-dùng-đầu-tiên)
-  - [Cheap Models (Backup)](#cheap-models-backup)
-  - [Model MIỄN PHÍ (Khẩn cấp)](#model-miễn-phí-khẩn-cấp)
-- [Chiến lược Tối ưu Chi phí](#chiến-lược-tối-ưu-chi-phí)
-  - [Ngân sách hàng tháng: $10-20/tháng](#ngân-sách-hàng-tháng-10-20tháng)
-  - [Chiến lược Reset Quota](#chiến-lược-reset-quota)
-- [Bước tiếp theo](#bước-tiếp-theo)
-- [Cần trợ giúp?](#cần-trợ-giúp)
-
 Khởi chạy 9Router trong 5 phút và bắt đầu định tuyến các request AI một cách thông minh.
 
 ---

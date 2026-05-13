@@ -1,42 +1,5 @@
 # ☁️ Cloud Deployment
 
-## Table of Contents
-
-- [🖥️ VPS Deployment](#-vps-deployment)
-  - [Prerequisites](#prerequisites)
-  - [Step 1: Clone Repository](#step-1-clone-repository)
-  - [Step 2: Install Dependencies](#step-2-install-dependencies)
-  - [Step 3: Build Application](#step-3-build-application)
-  - [Step 4: Configure Environment Variables](#step-4-configure-environment-variables)
-  - [Step 5: Create Data Directory](#step-5-create-data-directory)
-  - [Step 6: Start Application](#step-6-start-application)
-  - [Step 7: Setup PM2 for Production](#step-7-setup-pm2-for-production)
-- [🐳 Docker Deployment](#-docker-deployment)
-  - [Option 1: Using Dockerfile](#option-1-using-dockerfile)
-  - [Option 2: Docker Compose](#option-2-docker-compose)
-- [🌐 Reverse Proxy with Nginx](#-reverse-proxy-with-nginx)
-  - [Why Use Nginx?](#why-use-nginx)
-  - [Step 1: Install Nginx](#step-1-install-nginx)
-  - [Step 2: Configure Nginx](#step-2-configure-nginx)
-  - [Step 3: Enable Site](#step-3-enable-site)
-  - [Step 4: Setup SSL with Let's Encrypt](#step-4-setup-ssl-with-lets-encrypt)
-- [🔒 Security Considerations](#-security-considerations)
-  - [1. Change Default Credentials](#1-change-default-credentials)
-  - [2. Firewall Configuration](#2-firewall-configuration)
-  - [3. Restrict Dashboard Access](#3-restrict-dashboard-access)
-  - [4. Regular Updates](#4-regular-updates)
-  - [5. Backup Strategy](#5-backup-strategy)
-- [📊 Monitoring](#-monitoring)
-  - [Check Application Status](#check-application-status)
-  - [Nginx Logs](#nginx-logs)
-  - [System Resources](#system-resources)
-- [🚨 Troubleshooting](#-troubleshooting)
-  - [Application Won't Start](#application-wont-start)
-  - [Nginx 502 Bad Gateway](#nginx-502-bad-gateway)
-  - [SSE Streaming Not Working](#sse-streaming-not-working)
-  - [Permission Denied Errors](#permission-denied-errors)
-- [🔗 Next Steps](#-next-steps)
-
 Deploy 9Router on VPS or Docker for remote access and production use.
 
 ---

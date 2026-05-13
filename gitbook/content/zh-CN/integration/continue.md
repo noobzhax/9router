@@ -1,38 +1,5 @@
 # Continue VSCode 扩展集成
 
-## Table of Contents
-
-- [前置要求](#前置要求)
-- [配置步骤](#配置步骤)
-  - [1. 打开 Continue 配置](#1-打开-continue-配置)
-  - [2. 添加 9Router 模型配置](#2-添加-9router-模型配置)
-  - [3. 保存并重新加载](#3-保存并重新加载)
-  - [4. 选择模型](#4-选择模型)
-- [可用模型](#可用模型)
-  - [Claude 模型(Anthropic)](#claude-模型anthropic)
-  - [DeepSeek 模型](#deepseek-模型)
-  - [GLM 模型(Zhipu AI)](#glm-模型zhipu-ai)
-- [使用示例](#使用示例)
-  - [代码解释](#代码解释)
-  - [代码生成](#代码生成)
-  - [重构](#重构)
-  - [Bug 修复](#bug-修复)
-- [高级配置](#高级配置)
-  - [自定义系统 Prompt](#自定义系统-prompt)
-  - [Temperature 与参数](#temperature-与参数)
-  - [Context Provider](#context-provider)
-- [键盘快捷键](#键盘快捷键)
-- [故障排除](#故障排除)
-  - [模型无响应](#模型无响应)
-  - [选错模型](#选错模型)
-  - [配置未加载](#配置未加载)
-  - [性能缓慢](#性能缓慢)
-- [最佳实践](#最佳实践)
-  - [模型选择策略](#模型选择策略)
-  - [上下文管理](#上下文管理)
-  - [成本优化](#成本优化)
-- [下一步](#下一步)
-
 将 9Router 与 Continue 扩展集成,直接在 Visual Studio Code 中获得 AI 协助。
 
 ## 前置要求

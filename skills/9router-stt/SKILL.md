@@ -5,14 +5,6 @@ description: Speech-to-text via 9Router /v1/audio/transcriptions using OpenAI Wh
 
 # 9Router — Speech-to-Text
 
-## Table of Contents
-
-- [Discover](#discover)
-- [Endpoint](#endpoint)
-- [Examples](#examples)
-- [Response shape](#response-shape)
-- [Provider quirks](#provider-quirks)
-
 Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/decolua/9router/refs/heads/master/skills/9router/SKILL.md for setup.
 
 ## Discover

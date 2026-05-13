@@ -1,27 +1,5 @@
 # OpenAI Codex CLI Integration
 
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Setup](#setup)
-  - [1. Configure Environment Variables](#1-configure-environment-variables)
-  - [2. Reload Shell Configuration](#2-reload-shell-configuration)
-  - [3. Verify Configuration](#3-verify-configuration)
-- [Available Models](#available-models)
-- [Usage Examples](#usage-examples)
-  - [Basic Usage](#basic-usage)
-  - [Code Generation](#code-generation)
-  - [Code Explanation](#code-explanation)
-- [Configuration File](#configuration-file)
-- [Troubleshooting](#troubleshooting)
-  - [Authentication Errors](#authentication-errors)
-  - [Connection Issues](#connection-issues)
-  - [Model Not Available](#model-not-available)
-- [Cloud Endpoint](#cloud-endpoint)
-- [Advanced Configuration](#advanced-configuration)
-  - [Custom Timeout](#custom-timeout)
-  - [Debug Mode](#debug-mode)
-
 Integrate 9Router with OpenAI Codex CLI to route your OpenAI API requests through 9Router's intelligent routing system.
 
 ## Prerequisites

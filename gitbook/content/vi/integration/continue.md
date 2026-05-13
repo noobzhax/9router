@@ -1,38 +1,5 @@
 # Tích hợp Continue VSCode Extension
 
-## Table of Contents
-
-- [Yêu cầu](#yêu-cầu)
-- [Các bước Cấu hình](#các-bước-cấu-hình)
-  - [1. Mở Continue Configuration](#1-mở-continue-configuration)
-  - [2. Thêm Cấu hình Model 9Router](#2-thêm-cấu-hình-model-9router)
-  - [3. Lưu và Reload](#3-lưu-và-reload)
-  - [4. Chọn Model](#4-chọn-model)
-- [Model có sẵn](#model-có-sẵn)
-  - [Claude Models (Anthropic)](#claude-models-anthropic)
-  - [DeepSeek Models](#deepseek-models)
-  - [GLM Models (Zhipu AI)](#glm-models-zhipu-ai)
-- [Ví dụ Sử dụng](#ví-dụ-sử-dụng)
-  - [Giải thích Code](#giải-thích-code)
-  - [Tạo Code](#tạo-code)
-  - [Refactoring](#refactoring)
-  - [Sửa Bug](#sửa-bug)
-- [Cấu hình Nâng cao](#cấu-hình-nâng-cao)
-  - [Custom System Prompts](#custom-system-prompts)
-  - [Temperature và Parameters](#temperature-và-parameters)
-  - [Context Providers](#context-providers)
-- [Phím tắt](#phím-tắt)
-- [Troubleshooting](#troubleshooting)
-  - [Model không phản hồi](#model-không-phản-hồi)
-  - [Chọn sai Model](#chọn-sai-model)
-  - [Cấu hình không Load](#cấu-hình-không-load)
-  - [Hiệu năng Chậm](#hiệu-năng-chậm)
-- [Best Practices](#best-practices)
-  - [Chiến lược Chọn Model](#chiến-lược-chọn-model)
-  - [Quản lý Context](#quản-lý-context)
-  - [Tối ưu Chi phí](#tối-ưu-chi-phí)
-- [Bước tiếp theo](#bước-tiếp-theo)
-
 Tích hợp 9Router với extension Continue để mang trợ lý AI trực tiếp vào Visual Studio Code.
 
 ## Yêu cầu

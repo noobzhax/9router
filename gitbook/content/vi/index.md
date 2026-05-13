@@ -1,24 +1,5 @@
 # Chào mừng đến với 9Router
 
-## Table of Contents
-
-- [9Router là gì?](#9router-là-gì)
-- [Tính năng chính](#tính-năng-chính)
-  - [🔄 Smart 3-Tier Fallback](#-smart-3-tier-fallback)
-  - [📊 Theo dõi Quota](#-theo-dõi-quota)
-  - [🎯 Hỗ trợ CLI Toàn diện](#-hỗ-trợ-cli-toàn-diện)
-  - [💰 Tối ưu Chi phí](#-tối-ưu-chi-phí)
-- [Tại sao chọn 9Router?](#tại-sao-chọn-9router)
-  - [Tối đa hóa Subscription](#tối-đa-hóa-subscription)
-  - [Backup Siêu Rẻ](#backup-siêu-rẻ)
-  - [Fallback Miễn phí Mãi mãi](#fallback-miễn-phí-mãi-mãi)
-- [Bắt đầu nhanh](#bắt-đầu-nhanh)
-- [Trường hợp sử dụng](#trường-hợp-sử-dụng)
-  - [Cho Developer cá nhân](#cho-developer-cá-nhân)
-  - [Cho Team](#cho-team)
-  - [Cho Mobile/Remote Coding](#cho-mobileremote-coding)
-- [Tiếp theo là gì?](#tiếp-theo-là-gì)
-
 **Dùng Claude, Codex, Gemini MIỄN PHÍ • Lựa chọn siêu rẻ từ $0.20/1M tokens**
 
 9Router là bộ định tuyến mô hình AI giúp tối đa hóa giá trị subscription và giảm chi phí thông qua định tuyến thông minh và fallback tự động.

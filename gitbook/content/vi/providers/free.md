@@ -1,48 +1,5 @@
 # Free Providers - Fallback Chi phí 0
 
-## Table of Contents
-
-- [Tổng quan](#tổng-quan)
-- [iFlow (8 Model MIỄN PHÍ)](#iflow-8-model-miễn-phí)
-  - [Pricing](#pricing)
-  - [Setup](#setup)
-  - [Model có sẵn](#model-có-sẵn)
-  - [Mẹo Pro](#mẹo-pro)
-- [Qwen (3 Model MIỄN PHÍ)](#qwen-3-model-miễn-phí)
-  - [Pricing](#pricing-1)
-  - [Setup](#setup-1)
-  - [Model có sẵn](#model-có-sẵn-1)
-  - [Mẹo Pro](#mẹo-pro-1)
-- [Kiro (Claude MIỄN PHÍ)](#kiro-claude-miễn-phí)
-  - [Pricing](#pricing-2)
-  - [Setup](#setup-2)
-  - [Model có sẵn](#model-có-sẵn-2)
-  - [Mẹo Pro](#mẹo-pro-2)
-- [So sánh Tính năng](#so-sánh-tính-năng)
-- [Ví dụ Sử dụng](#ví-dụ-sử-dụng)
-  - [Setup Cursor IDE](#setup-cursor-ide)
-  - [Tạo Combo (Khuyên dùng)](#tạo-combo-khuyên-dùng)
-- [Chiến lược Fallback Đầy đủ](#chiến-lược-fallback-đầy-đủ)
-  - [Combo 3 Tầng Hoàn chỉnh](#combo-3-tầng-hoàn-chỉnh)
-- [Best Practices](#best-practices)
-  - [1. Dùng làm Backup Khẩn cấp](#1-dùng-làm-backup-khẩn-cấp)
-  - [2. Chọn Model phù hợp](#2-chọn-model-phù-hợp)
-  - [3. Tạo Combo Chỉ Free](#3-tạo-combo-chỉ-free)
-  - [4. Test Trước Production](#4-test-trước-production)
-- [Ví dụ Thực tế](#ví-dụ-thực-tế)
-  - [Ví dụ 1: Sinh viên/Người học (Ngân sách 0)](#ví-dụ-1-sinh-viênngười-học-ngân-sách-0)
-  - [Ví dụ 2: Freelancer (Tiết kiệm Ngân sách)](#ví-dụ-2-freelancer-tiết-kiệm-ngân-sách)
-  - [Ví dụ 3: Heavy User (Tối đa hết tất cả)](#ví-dụ-3-heavy-user-tối-đa-hết-tất-cả)
-- [So sánh Chi phí](#so-sánh-chi-phí)
-  - [Kịch bản: 100M tokens/tháng](#kịch-bản-100m-tokenstháng)
-- [Troubleshooting](#troubleshooting)
-  - ["OAuth failed"](#oauth-failed)
-  - ["Model not available"](#model-not-available)
-  - ["Slow responses"](#slow-responses)
-- [Giới hạn](#giới-hạn)
-  - [Cân nhắc Free Tier](#cân-nhắc-free-tier)
-- [Bước tiếp theo](#bước-tiếp-theo)
-
 Backup khẩn cấp khi mọi thứ khác bị giới hạn quota. Code 24/7 với chi phí 0!
 
 ---

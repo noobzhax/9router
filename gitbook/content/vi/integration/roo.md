@@ -1,27 +1,5 @@
 # Tích hợp Roo AI Assistant
 
-## Table of Contents
-
-- [Yêu cầu](#yêu-cầu)
-- [Các bước Cấu hình](#các-bước-cấu-hình)
-  - [1. Mở Roo Settings](#1-mở-roo-settings)
-  - [2. Cấu hình API Provider](#2-cấu-hình-api-provider)
-  - [3. Chọn Model](#3-chọn-model)
-  - [4. Test Connection](#4-test-connection)
-- [Ví dụ Sử dụng](#ví-dụ-sử-dụng)
-  - [Chat Cơ bản](#chat-cơ-bản)
-  - [Tạo Code](#tạo-code)
-  - [Reasoning Phức tạp](#reasoning-phức-tạp)
-- [Mẹo Chọn Model](#mẹo-chọn-model)
-- [Troubleshooting](#troubleshooting)
-  - [Connection Failed](#connection-failed)
-  - [Model không khả dụng](#model-không-khả-dụng)
-  - [Phản hồi Chậm](#phản-hồi-chậm)
-- [Cấu hình Nâng cao](#cấu-hình-nâng-cao)
-  - [Custom Model Aliases](#custom-model-aliases)
-  - [Nhiều Profile](#nhiều-profile)
-- [Bước tiếp theo](#bước-tiếp-theo)
-
 Tích hợp 9Router với Roo AI Assistant để truy cập nhiều model AI qua một giao diện thống nhất.
 
 ## Yêu cầu

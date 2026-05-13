@@ -1,37 +1,5 @@
 # Cline Integration
 
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Setup](#setup)
-  - [1. Open Cline Settings](#1-open-cline-settings)
-  - [2. Select API Provider](#2-select-api-provider)
-  - [3. Configure Base URL](#3-configure-base-url)
-  - [4. Add API Key](#4-add-api-key)
-  - [5. Select Model](#5-select-model)
-  - [6. Save Configuration](#6-save-configuration)
-- [Configuration Example](#configuration-example)
-- [Available Models](#available-models)
-- [Usage](#usage)
-  - [Chat with AI](#chat-with-ai)
-  - [Code Generation](#code-generation)
-  - [Code Explanation](#code-explanation)
-  - [File Operations](#file-operations)
-- [Troubleshooting](#troubleshooting)
-  - ["Connection Failed" Error](#connection-failed-error)
-  - ["Invalid API Key" Error](#invalid-api-key-error)
-  - ["Model Not Found" Error](#model-not-found-error)
-  - [Cline Not Responding](#cline-not-responding)
-- [Advanced Configuration](#advanced-configuration)
-  - [Using Cloud Endpoint](#using-cloud-endpoint)
-  - [Multiple Models](#multiple-models)
-  - [Custom Timeout](#custom-timeout)
-- [Best Practices](#best-practices)
-- [Integration with 9Router Features](#integration-with-9router-features)
-  - [Model Routing](#model-routing)
-  - [Fallback Support](#fallback-support)
-  - [Usage Tracking](#usage-tracking)
-
 Integrate 9Router with Cline VSCode extension to route your AI requests through 9Router's intelligent routing system.
 
 ## Prerequisites
