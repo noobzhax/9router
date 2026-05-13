@@ -95,7 +95,7 @@ async function extractTokensViaBunSqlite(dbPath) {
  */
 function extractTokensViaBetterSqlite(dbPath) {
   if (process.versions.bun) return null;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  // eslint-disable-next-line no-undef
   const Database = require("better-sqlite3");
   const db = new Database(dbPath, { readonly: true, fileMustExist: true });
   try {
