@@ -19,7 +19,7 @@ const nextConfig = {
     ]
   },
   outputFileTracingExcludes: {
-    "/*": ["gitbook/**/*"]
+    "*": ["./gitbook/**/*"]
   },
   images: {
     unoptimized: true
