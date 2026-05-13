@@ -1,0 +1,15 @@
+# Default owner for everything in the repo
+* @noobzhax
+
+# CI/CD workflows
+/.github/workflows/ @noobzhax
+
+# Docker configuration
+/Dockerfile* @noobzhax
+/docker-compose*.yml @noobzhax
+/DOCKER.md @noobzhax
+
+# Documentation
+/docs/ @noobzhax
+/gitbook/ @noobzhax
+/*.md @noobzhax

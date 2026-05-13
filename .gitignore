@@ -1,6 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,64 +8,66 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# Build outputs
 /.next/
 /out/
-product
-# production
 /build
-.idea/
+/product
+*.tsbuildinfo
+next-env.d.ts
 
-# misc
-.DS_Store
+# Test/coverage output
+/coverage
+/test/*
+/open-sse/test/*
+
+# Runtime data
+/data/
+/logs/*
+/.bin/*
+/bin/*
+/source/*
+/cursor/*
+/.cursor/*
+/PR/*
+/scripts/agSniffer/*
+
+# Environment and secrets
+.env*
+!.env.example
 *.pem
 
-# debug
+# Logs/debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
-!.env.example
+# Local tooling
+.idea/
+.vscode/
+.DS_Store
+.vercel/
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-.bin/*
-data/
-logs/*
-source/*
-.cursor/*
-docs/*
-!docs/ARCHITECTURE.md
-test/*
-bin/*
-open-sse/test/*
-RM.vn.md
-RM.md
-cursor/*
-PUBLIC.md
-Thanks.md
-PUBLIC.en.md
-PR/*
+# Package manager policy
+# Keep Bun lockfile tracked; npm lockfile is intentionally ignored for this repo.
 package-lock.json
 
-
-#Ignore vscode AI rules
-.github/instructions/codacy.instructions.md
+# Generated/legacy docs
+/docs/*
+!/docs/ARCHITECTURE.md
+/gitbooks/*
+/gitbook/README.md
 README1.md
+RM.vn.md
+RM.md
+PUBLIC.md
+PUBLIC.en.md
+Thanks.md
+
+# Local deploy/process manager files
 deploy*.sh
 ecosystem.config.*
 
-scripts/agSniffer/*
-gitbooks/*
-gitbook/README.md
+# Codacy editor instructions (local-only)
+.github/instructions/codacy.instructions.md
