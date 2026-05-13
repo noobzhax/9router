@@ -7,6 +7,22 @@ import { openaiToCommandCode } from "open-sse/translator/request/openai-to-comma
 import { PROVIDER_ENDPOINTS } from "@/shared/constants/config";
 import { normalizeProviderId } from "@/lib/providerNormalization";
 
+function validateUrl(url) {
+  try {
+    const parsed = new URL(url);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      throw new Error("Invalid protocol");
+    }
+    const hostname = parsed.hostname;
+    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/.test(hostname)) {
+      throw new Error("Private addresses not allowed");
+    }
+    return parsed;
+  } catch (e) {
+    throw new Error(`Invalid URL: ${e.message}`);
+  }
+}
+
 // Probe a webSearch/webFetch provider using its searchConfig/fetchConfig.
 // Returns true if API key is accepted (status !== 401 && !== 403).
 async function probeWebProvider(provider, apiKey) {
@@ -23,6 +39,9 @@ async function probeWebProvider(provider, apiKey) {
   let url = cfg.baseUrl;
   const headers = { "Content-Type": "application/json" };
   let body;
+
+  // Validate URL before use
+  validateUrl(url);
 
   // Apply auth based on authHeader
   switch (cfg.authHeader) {
@@ -72,6 +91,7 @@ async function probeMediaProvider(provider, apiKey) {
   }
 
   const method = cfg.method || "POST";
+  validateUrl(cfg.baseUrl);
   const res = await fetch(cfg.baseUrl, {
     method,
     headers,
@@ -104,6 +124,7 @@ export async function POST(request) {
           return NextResponse.json({ error: "OpenAI Compatible node not found" }, { status: 404 });
         }
         const modelsUrl = `${node.baseUrl?.replace(/\/$/, "")}/models`;
+        validateUrl(modelsUrl);
         const res = await fetch(modelsUrl, {
           headers: { "Authorization": `Bearer ${apiKey}` },
         });
@@ -121,6 +142,7 @@ export async function POST(request) {
           return NextResponse.json({ error: "Custom Embedding node not found" }, { status: 404 });
         }
         const baseUrl = node.baseUrl?.replace(/\/$/, "");
+        validateUrl(`${baseUrl}/models`);
         const modelsRes = await fetch(`${baseUrl}/models`, {
           headers: { "Authorization": `Bearer ${apiKey}` },
         });
@@ -158,6 +180,7 @@ export async function POST(request) {
 
         const modelsUrl = `${normalizedBase}/models`;
 
+        validateUrl(modelsUrl);
         const res = await fetch(modelsUrl, {
           headers: {
             "x-api-key": apiKey,
@@ -204,6 +227,7 @@ export async function POST(request) {
         const organization = providerSpecificData?.organization;
 
         const url = `${endpoint}/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
+        validateUrl(url);
         const headers = {
           "api-key": apiKey,
           "Content-Type": "application/json",

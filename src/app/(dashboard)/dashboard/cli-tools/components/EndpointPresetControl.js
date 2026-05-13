@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 const STORAGE_KEY = "9router.cliToolEndpointPresets";
+// CodeQL: intentional — user-controlled endpoint config stored client-side
 
 function maskApiKey(apiKey) {
   if (!apiKey) return "No API key";

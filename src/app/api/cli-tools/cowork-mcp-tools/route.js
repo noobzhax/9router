@@ -4,6 +4,22 @@ import { NextResponse } from "next/server";
 
 const TIMEOUT_MS = 8000;
 
+function validateUrl(url) {
+  try {
+    const parsed = new URL(url);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      throw new Error("Invalid protocol");
+    }
+    const hostname = parsed.hostname;
+    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/.test(hostname)) {
+      throw new Error("Private addresses not allowed");
+    }
+    return parsed;
+  } catch (e) {
+    throw new Error(`Invalid URL: ${e.message}`);
+  }
+}
+
 // Probe MCP server: initialize + tools/list. No auth header — works for authless servers.
 // OAuth servers return 401, signal client to skip tool listing.
 async function probeMcp(url) {
@@ -87,6 +103,7 @@ export async function POST(request) {
     if (!url || typeof url !== "string") {
       return NextResponse.json({ error: "url required" }, { status: 400 });
     }
+    validateUrl(url);
     const result = await probeMcp(url);
     return NextResponse.json(result);
   } catch (e) {

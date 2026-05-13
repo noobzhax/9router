@@ -10,15 +10,33 @@ const fetchWithTimeout = (url, options, timeout = 10000) => {
   ]);
 };
 
-// Validate URL format
+// Validate URL format and reject internal/private targets
+const validateUrl = (url) => {
+  try {
+    const parsed = new URL(url);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      throw new Error("Invalid protocol");
+    }
+    const hostname = parsed.hostname;
+    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/.test(hostname)) {
+      throw new Error("Private addresses not allowed");
+    }
+    return parsed;
+  } catch (e) {
+    throw new Error(`Invalid URL: ${e.message}`);
+  }
+};
+
 const isValidUrl = (url) => {
   try {
-    new URL(url);
+    validateUrl(url);
     return true;
   } catch {
     return false;
   }
 };
+
+const normalizeBaseUrl = (url) => validateUrl(url).href.replace(/\/$/, "");
 
 // Parse error details for user-friendly messages
 const getErrorMessage = (error) => {

@@ -14,7 +14,7 @@ const STORAGE_KEYS = {
 
 function createId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
-  return `chat_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  return `chat_${Date.now()}_${crypto.randomUUID().slice(0, 8)}`;
 }
 
 function safeParse(value, fallback) {

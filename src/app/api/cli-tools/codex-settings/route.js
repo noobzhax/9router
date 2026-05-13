@@ -18,27 +18,39 @@ const getCodexAuthPath = () => path.join(getCodexDir(), "auth.json");
 const parsedToWritable = (obj) => obj ?? {};
 
 // Set a nested key from a flat dotted path, creating intermediate objects as needed
+// Protects against prototype pollution by rejecting dangerous key patterns
 const setNestedSection = (obj, dottedKey, value) => {
   const keys = dottedKey.split(".");
   let cur = obj;
   for (let i = 0; i < keys.length - 1; i++) {
-    if (cur[keys[i]] == null || typeof cur[keys[i]] !== "object") {
-      cur[keys[i]] = {};
+    const key = keys[i];
+    // Reject prototype pollution attempts
+    if (key === "__proto__" || key === "constructor" || key === "prototype") return;
+    if (cur[key] == null || typeof cur[key] !== "object") {
+      cur[key] = {};
     }
-    cur = cur[keys[i]];
+    cur = cur[key];
   }
-  cur[keys[keys.length - 1]] = value;
+  const lastKey = keys[keys.length - 1];
+  if (lastKey === "__proto__" || lastKey === "constructor" || lastKey === "prototype") return;
+  cur[lastKey] = value;
 };
 
 // Delete a nested key from a flat dotted path
+// Protects against prototype pollution by rejecting dangerous key patterns
 const deleteNestedSection = (obj, dottedKey) => {
   const keys = dottedKey.split(".");
   let cur = obj;
   for (let i = 0; i < keys.length - 1; i++) {
-    cur = cur?.[keys[i]];
+    const key = keys[i];
+    // Reject prototype pollution attempts
+    if (key === "__proto__" || key === "constructor" || key === "prototype") return;
+    cur = cur?.[key];
     if (cur == null) return;
   }
-  delete cur[keys[keys.length - 1]];
+  const lastKey = keys[keys.length - 1];
+  if (lastKey === "__proto__" || lastKey === "constructor" || lastKey === "prototype") return;
+  delete cur[lastKey];
 };
 
 // Check if codex CLI is installed (via which/where or config file exists)

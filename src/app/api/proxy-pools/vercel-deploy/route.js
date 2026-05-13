@@ -8,6 +8,18 @@ const VERCEL_API = "https://api.vercel.com";
 const RELAY_FUNCTION_CODE = `
 export const config = { runtime: "edge" };
 
+function validateUrl(url) {
+  const parsed = new URL(url);
+  if (!["http:", "https:"].includes(parsed.protocol)) {
+    throw new Error("Invalid protocol");
+  }
+  const hostname = parsed.hostname;
+  if (/^(localhost|127\\.|10\\.|172\\.(1[6-9]|2[0-9]|3[01])\\.|192\\.168\\.)/.test(hostname)) {
+    throw new Error("Private addresses not allowed");
+  }
+  return parsed;
+}
+
 export default async function handler(req) {
   const target = req.headers.get("x-relay-target");
   const relayPath = req.headers.get("x-relay-path") || "/";
@@ -19,6 +31,15 @@ export default async function handler(req) {
   }
 
   const targetUrl = target.replace(/\\/$/, "") + relayPath;
+
+  try {
+    validateUrl(targetUrl);
+  } catch (e) {
+    return new Response(JSON.stringify({ error: e.message }), {
+      status: 400,
+      headers: { "content-type": "application/json" },
+    });
+  }
 
   const headers = new Headers(req.headers);
   headers.delete("x-relay-target");
