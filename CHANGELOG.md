@@ -1,9 +1,48 @@
-# v0.4.33 (2026-05-12)
+# Changelog
+
+## [0.5.0](https://github.com/noobzhax/9router/compare/v0.4.33...v0.5.0) (2026-05-13)
+
+
+### Features
+
+* **docker:** add Bun-optimized container setup ([ec14a9e](https://github.com/noobzhax/9router/commit/ec14a9e49df4f48dc365df6644cacbfb496fee05))
+* **release:** add automated release workflow with Docker publish ([#5](https://github.com/noobzhax/9router/issues/5)) ([4f57d54](https://github.com/noobzhax/9router/commit/4f57d54e7dbaa384e51d779e5a646fd34099fb4e))
+
+
+### Bug Fixes
+
+* **build:** Fix standalone asset tracing ([d1d5094](https://github.com/noobzhax/9router/commit/d1d5094d7665d83909110631af46b4b84fb8159b))
+* **open-sse:** extract JSON.stringify to variable to fix CodeQL parse error ([#6](https://github.com/noobzhax/9router/issues/6)) ([ea59d37](https://github.com/noobzhax/9router/commit/ea59d3751222896f3101a619c04b82b09833010e))
+* **security:** bump next@16.2.6 + override postcss in gitbook ([#7](https://github.com/noobzhax/9router/issues/7)) ([1ad5726](https://github.com/noobzhax/9router/commit/1ad57262029bc490beae669a6769c7444dd75898))
+
+
+### Performance Improvements
+
+* **bun:** optimize cursor-auto-import, fix SQL injection, and enhance bun:sqlite adapter ([507609b](https://github.com/noobzhax/9router/commit/507609badb09a69ce2484c0f15a9c642ac3b3ab6))
+* **bun:** reduce memory, surface silent errors, harden SQL safety ([8de3690](https://github.com/noobzhax/9router/commit/8de3690835e7a4c000258e43fbc0d05b907a52ed))
+* **layout:** scope material-symbols CSS to dashboard routes only ([41445ac](https://github.com/noobzhax/9router/commit/41445acc7a1d272b2927de97668ad9f632866708))
+* **usage:** lazy-load UsageChart and ProviderTopology ([d44d196](https://github.com/noobzhax/9router/commit/d44d196bcf127be49e753f0b6fd14b511600d07e))
+
+
+### Documentation
+
+* add table of contents to all markdown docs ([9f9fece](https://github.com/noobzhax/9router/commit/9f9fece6293b66f9c1699a8bb158d059e58178ea))
+* **docker:** update DOCKER.md with Bun variant and compose instructions ([479e210](https://github.com/noobzhax/9router/commit/479e2102b59558627a44808a1602a7722b32e936))
+* remove generated TOC blocks from docs ([0d1cc00](https://github.com/noobzhax/9router/commit/0d1cc00b99eee224beb166c7b19fd9092f8b5a58))
+* remove TOC from README files ([80c60fc](https://github.com/noobzhax/9router/commit/80c60fc0f194ffaf038d7a1328458c880e89ba7e))
+
+
+### Code Refactoring
+
+* **providers:** direct-import shared components in detail pages ([ac13dc8](https://github.com/noobzhax/9router/commit/ac13dc8927fafbe8737b5451906cd275c1a88c00))
+* **providers:** direct-import shared components in providers list page ([8e743c7](https://github.com/noobzhax/9router/commit/8e743c78e01bd1983d9d45a6a612d05d92885250))
+
+## v0.4.33 (2026-05-12)
 ## Improvements
 - Windows: replace systray (Go binary, AV flagged) with native PowerShell NotifyIcon
 - Auto-cleanup legacy `tray_windows.exe` on install/startup
 
-# v0.4.31 (2026-05-12)
+## v0.4.31 (2026-05-12)
 
 ## Features
 - OIDC dashboard login: Authentik/Keycloak/Google/Okta SSO with password-only, OIDC-only, or both modes (#1020)
@@ -20,7 +59,7 @@
 - Profile page: OIDC settings card collapsed by default to reduce clutter
 - Header: user pill only shown when logged in via OIDC
 
-# v0.4.30 (2026-05-11)
+## v0.4.30 (2026-05-11)
 
 ## Features
 - MCP stdio→SSE bridge: expose local stdio MCP plugins over SSE (api/mcp/[plugin]/sse, /message)
@@ -39,7 +78,7 @@
 - Refactor Claude CLI spoof headers into shared constant
 - Tool deduper utility in open-sse handlers
 
-# v0.4.29 (2026-05-10)
+## v0.4.29 (2026-05-10)
 
 ## Features
 - Add Cline & Kilo Code tool cards
@@ -55,7 +94,7 @@
 ## Fixes
 - Fal.ai key test: use stable models endpoint
 
-# v0.4.28 (2026-05-10)
+## v0.4.28 (2026-05-10)
 
 ## Features
 - Add bun:sqlite adapter with automatic runtime detection (Bun/Node)
@@ -64,7 +103,7 @@
 ## Fixes
 - Fix add API key for custom providers
 
-# v0.4.27 (2026-05-09)
+## v0.4.27 (2026-05-09)
 
 ## Features
 - Add 3-tier DB driver fallback: better-sqlite3 → node:sqlite (Node ≥22.5) → sql.js
@@ -72,7 +111,7 @@
 ## Fixes
 - Fix authentication logic for several providers
 
-# v0.4.25 (2026-05-09)
+## v0.4.25 (2026-05-09)
 
 ## Features
 - Add MCP Marketplace Modal to Cowork Tool Card for easier plugin management
@@ -95,12 +134,12 @@
 - Add Chinese translation of README (#957)
 - Fix localized README links (#956)
 
-# v0.4.20 (2026-05-07)
+## v0.4.20 (2026-05-07)
 
 ## Features
 - Add CommandCode provider support
 
-# v0.4.19 (2026-05-07)
+## v0.4.19 (2026-05-07)
 
 ## Features
 - Add OllamaLocalExecutor cho local Ollama provider
@@ -118,7 +157,7 @@
 - geminiHelper: `ensureObjectType` cho schemas có properties nhưng thiếu type
 - initializeApp: guard tunnel/tailscale auto-resume once-per-process
 
-# v0.4.18 (2026-05-05)
+## v0.4.18 (2026-05-05)
 
 ## Features
 - Speech-to-Text: full pipeline with sttCore + /v1/audio/transcriptions; configs for OpenAI, Gemini, Groq, Deepgram, AssemblyAI, HuggingFace, NVIDIA Parakeet; new 9router-stt skill
@@ -137,7 +176,7 @@
 ## Fixes
 - Fix skills metadata/text in 9router, chat, embeddings, image, tts, web-fetch, web-search SKILL.md and skills page
 
-# v0.4.16 (2026-05-04)
+## v0.4.16 (2026-05-04)
 
 ## Features
 - Skills system: manage and execute custom AI skills
@@ -145,7 +184,7 @@
 ## Fixes
 - Fix input fields in tool cards
 
-# v0.4.14 (2026-05-03)
+## v0.4.14 (2026-05-03)
 
 ## Improvements
 - Token refresh: in-flight request caching to prevent race conditions & reduce duplicate API calls
@@ -154,7 +193,7 @@
 - Better UX feedback in MitmServerCard for port conflicts & admin privileges
 - Refactor ComboList for streamlined media provider combos display
 
-# v0.4.13 (2026-05-03)
+## v0.4.13 (2026-05-03)
 
 ## Features
 - Add Azure OpenAI as dedicated provider (endpoint/deployment/API version/organization config)
@@ -178,7 +217,7 @@
 - Gate MITM sudo prompts on server platform
 - Fix Azure validation and persistence (providerSpecificData, Organization required)
 
-# v0.4.12 (2026-05-01)
+## v0.4.12 (2026-05-01)
 
 ## Features
 - Add Xiaomi MiMo provider support
@@ -193,7 +232,7 @@
 - Fix custom provider prefix conflicts with built-in alias
 - Strip output_config for MiniMax requests
 
-# v0.4.11 (2026-04-30)
+## v0.4.11 (2026-04-30)
 
 ## Features
 - Add Caveman feature: terse-style system prompts to reduce output token usage with configurable compression levels
@@ -203,7 +242,7 @@
 - Consolidate AntigravityExecutor function declarations for Gemini compatibility
 - Clean up translator initialization logs across API routes
 
-# v0.4.10 (2026-04-29)
+## v0.4.10 (2026-04-29)
 
 ## Features
 - Add new embedding models and Voyage AI provider support
@@ -221,7 +260,7 @@
 - Fix Antigravity MITM connection and handler issues
 - Fix cloudflared tunnel integration with MITM
 
-# v0.4.8 (2026-04-28)
+## v0.4.8 (2026-04-28)
 
 ## Features
 - Add Web Search & Web Fetch providers with Combo support — chain multiple search/fetch providers as a single virtual provider
@@ -236,7 +275,7 @@
 - Fix Antigravity INVALID_ARGUMENT errors and Copilot agent mode parity
 - Fix quota reset timestamp parsing (#768)
 
-# v0.4.6 (2026-04-25)
+## v0.4.6 (2026-04-25)
 
 ## Features
 - Add BytePlus Provider
@@ -247,19 +286,19 @@
 - Cap maximum cooldown for rate limit handling in account unavailability and single-model chat flows
 - Dynamic custom model fetching for model selection
 
-# v0.4.5 (2026-04-24)
+## v0.4.5 (2026-04-24)
 
 ## Improvements
 - Cap maximum cooldown for rate limit handling in account unavailability and single-model chat flows
 - Dynamic custom model fetching for model selection
 
-# v0.4.3 (2026-04-24)
+## v0.4.3 (2026-04-24)
 
 ## Improvements
 - Improve in-app download/update UX on dashboard
 - Improve Codex provider rate limit handling with precise cooldown (`resetsAtMs`) and email backfill for OAuth accounts
 
-# v0.4.2 (2026-04-24)
+## v0.4.2 (2026-04-24)
 
 ## Features
 - Add Azure OpenAI provider support
@@ -269,7 +308,7 @@
 ## Fixes
 - Enhance retry logic and configuration for HTTP status codes
 
-# v0.4.1 (2026-04-23)
+## v0.4.1 (2026-04-23)
 
 ## Features
 - Add Hermes CLI tool with settings management and integration
@@ -280,12 +319,12 @@
 - Enhance Sidebar layout for CLI tools
 - Update executors and runtime config
 
-# v0.3.98 (2026-04-22)
+## v0.3.98 (2026-04-22)
 
 ## Features
 - Add RTK — filter context (ls/grep/find/.....) before sending to LLM to save tokens
 
-# v0.3.97 (2026-04-22)
+## v0.3.97 (2026-04-22)
 
 ## Features
 - Add OpenCode Go provider and support for custom models
@@ -295,7 +334,7 @@
 ## Fixes
 - Fix copy to clipboard issue
 
-# v0.3.96 (2026-04-17)
+## v0.3.96 (2026-04-17)
 
 ## Features
 - Add marked package for Markdown rendering
@@ -325,7 +364,7 @@
 - Add GLM-5 and MiniMax-M2.5 models to Kiro provider (#580)
 - Fix usage tracking bug
 
-# v0.3.91 (2026-04-15)
+## v0.3.91 (2026-04-15)
 
 ## Features
 - Add Kiro AWS Identity Center device flow for provider OAuth
@@ -340,7 +379,7 @@
 ## Fixes
 - Fix usage tracking bug
 
-# v0.3.90 (2026-04-14)
+## v0.3.90 (2026-04-14)
 
 ## Features
 - Add proactive token refresh lead times for providers and Codex proxy management
@@ -354,7 +393,7 @@
 - Fix noAuth support for providers and adjusted MITM restart settings
 - Bug fixes
 
-# v0.3.89 (2026-04-13)
+## v0.3.89 (2026-04-13)
 
 ## Improvements
 - Improved dashboard access control by blocking tunnel/Tailscale access when disabled
