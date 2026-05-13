@@ -1017,8 +1017,8 @@ function GenericExampleCard({ providerId, kind }) {
   const headersPreview = `-H "Content-Type: application/json" \\\n  -H "Authorization: Bearer ${apiKey || "YOUR_KEY"}"${pinnedConnectionId ? ` \\\n  -H "x-connection-id: ${pinnedConnectionId}"` : ""}${useStreaming ? ` \\\n  -H "Accept: text/event-stream"` : ""}`;
   const curlSnippet = `curl -X ${kindConfig.endpoint.method} ${endpoint}${apiPathWithQuery} \\
   ${headersPreview} \\
-  -d '${JSON.stringify(requestBody)}'${wantBinary ? " \\
-  --output image.png" : ""}`;
+  -d "${JSON.stringify(requestBody)}"${wantBinary ? ` \\
+  --output image.png` : ""}`;
   const handleRun = async () => {
     if (!input.trim() || !modelFull) return;
     setRunning(true);
