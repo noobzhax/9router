@@ -547,33 +547,32 @@ export class CursorExecutor extends BaseExecutor {
           // Stream the delta arguments
           if (tc.function.arguments) {
             emittedToolCallIds.add(tc.id);
-            chunks.push(
-              `data: ${JSON.stringify({
-                id: responseId,
-                object: "chat.completion.chunk",
-                created,
-                model,
-                choices: [
-                  {
-                    index: 0,
-                    delta: {
-                      tool_calls: [
-                        {
-                          index: existing.index,
-                          id: tc.id,
-                          type: "function",
-                          function: {
-                            name: tc.function.name,
-                            arguments: tc.function.arguments
-                          }
+            const chunk = JSON.stringify({
+              id: responseId,
+              object: "chat.completion.chunk",
+              created,
+              model,
+              choices: [
+                {
+                  index: 0,
+                  delta: {
+                    tool_calls: [
+                      {
+                        index: existing.index,
+                        id: tc.id,
+                        type: "function",
+                        function: {
+                          name: tc.function.name,
+                          arguments: tc.function.arguments
                         }
-                      ]
-                    },
-                    finish_reason: null
-                  }
-                ]
-              })}\n\n`
-            );
+                      }
+                    ]
+                  },
+                  finish_reason: null
+                }
+              ]
+            });
+            chunks.push(`data: ${chunk}\n\n`);
           }
         } else {
           // New tool call - assign index and add to map
