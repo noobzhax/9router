@@ -820,7 +820,7 @@ function TtsExampleCard({ providerId }) {
                 <span className="text-xs font-semibold text-text-muted uppercase tracking-wider">
                   Response {latency && <span className="font-normal normal-case">&#9889; {latency}ms</span>}
                 </span>
-                <a href={audioUrl} download="speech.mp3" className="inline-flex items-center gap-1 text-xs text-text-muted hover:text-primary transition-colors">
+                <a href={(() => { try { const u = new URL(audioUrl); return u.protocol === 'http:' || u.protocol === 'https:' ? audioUrl : '#'; } catch { return '#'; } })()} download="speech.mp3" className="inline-flex items-center gap-1 text-xs text-text-muted hover:text-primary transition-colors">
                   <span className="material-symbols-outlined text-[14px]">download</span>
                   Download
                 </a>
@@ -1016,9 +1016,9 @@ function GenericExampleCard({ providerId, kind }) {
   const apiPathWithQuery = `${apiPath}${wantBinary ? "?response_format=binary" : ""}`;
   const headersPreview = `-H "Content-Type: application/json" \\\n  -H "Authorization: Bearer ${apiKey || "YOUR_KEY"}"${pinnedConnectionId ? ` \\\n  -H "x-connection-id: ${pinnedConnectionId}"` : ""}${useStreaming ? ` \\\n  -H "Accept: text/event-stream"` : ""}`;
   const curlSnippet = `curl -X ${kindConfig.endpoint.method} ${endpoint}${apiPathWithQuery} \\
-  ${headersPreview.replace(/\\\n  /g, "\\\n  ")} \\
-  -d '${JSON.stringify(requestBody)}'${wantBinary ? " \\\n  --output image.png" : ""}`;
-
+  ${headersPreview} \\
+  -d "${JSON.stringify(requestBody)}"${wantBinary ? ` \\
+  --output image.png` : ""}`;
   const handleRun = async () => {
     if (!input.trim() || !modelFull) return;
     setRunning(true);
@@ -1407,7 +1407,7 @@ function GenericExampleCard({ providerId, kind }) {
             <div className="mt-2">
               <div className="flex items-center justify-end mb-1.5">
                 <a
-                  href={binaryImageUrl || (result?.data?.data?.[0]?.b64_json ? `data:image/png;base64,${result.data.data[0].b64_json}` : result?.data?.data?.[0]?.url || "")}
+                  href={(() => { const src = binaryImageUrl || (result?.data?.data?.[0]?.b64_json ? `data:image/png;base64,${result.data.data[0].b64_json}` : result?.data?.data?.[0]?.url || ""); try { if (src.startsWith('data:') || src.startsWith('blob:') || src.startsWith('http:') || src.startsWith('https:')) return src; return '#'; } catch { return '#'; } })()}
                   download="image.png"
                   className="inline-flex items-center gap-1 text-xs text-text-muted hover:text-primary transition-colors"
                 >

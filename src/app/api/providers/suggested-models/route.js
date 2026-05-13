@@ -20,6 +20,22 @@ const FILTERS = {
       .map((m) => ({ id: m.id, name: m.id })),
 };
 
+function validateUrl(url) {
+  try {
+    const parsed = new URL(url);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      throw new Error("Invalid protocol");
+    }
+    const hostname = parsed.hostname;
+    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/.test(hostname)) {
+      throw new Error("Private addresses not allowed");
+    }
+    return parsed;
+  } catch (e) {
+    throw new Error(`Invalid URL: ${e.message}`);
+  }
+}
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const url = searchParams.get("url");
@@ -35,6 +51,7 @@ export async function GET(request) {
   }
 
   try {
+    validateUrl(url);
     const res = await fetch(url);
     if (!res.ok) {
       return NextResponse.json({ data: [] });

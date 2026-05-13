@@ -134,7 +134,12 @@ export class DefaultExecutor extends BaseExecutor {
     // Strip first-party Claude Code identity headers for non-Anthropic anthropic-compatible upstreams
     if (this.provider?.startsWith?.("anthropic-compatible-")) {
       const baseUrl = credentials?.providerSpecificData?.baseUrl || "";
-      const isOfficialAnthropic = baseUrl === "" || baseUrl.includes("api.anthropic.com");
+      let isOfficialAnthropic = false;
+      try {
+        isOfficialAnthropic = baseUrl === "" || new URL(baseUrl).hostname === "api.anthropic.com";
+      } catch {
+        isOfficialAnthropic = false;
+      }
       if (!isOfficialAnthropic) {
         delete headers["anthropic-dangerous-direct-browser-access"];
         delete headers["Anthropic-Dangerous-Direct-Browser-Access"];

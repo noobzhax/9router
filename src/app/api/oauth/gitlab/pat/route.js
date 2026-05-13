@@ -3,6 +3,22 @@ import { createProviderConnection } from "@/models";
 
 const GITLAB_DEFAULT_BASE = "https://gitlab.com";
 
+function validateUrl(url) {
+  try {
+    const parsed = new URL(url);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      throw new Error("Invalid protocol");
+    }
+    const hostname = parsed.hostname;
+    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/.test(hostname)) {
+      throw new Error("Private addresses not allowed");
+    }
+    return parsed;
+  } catch (e) {
+    throw new Error(`Invalid URL: ${e.message}`);
+  }
+}
+
 /**
  * POST /api/oauth/gitlab/pat
  * Authenticate GitLab Duo with a Personal Access Token (PAT)
@@ -21,7 +37,7 @@ export async function POST(request) {
       return NextResponse.json({ error: "Personal Access Token is required" }, { status: 400 });
     }
 
-    const base = (baseUrl?.trim() || GITLAB_DEFAULT_BASE).replace(/\/$/, "");
+    const base = validateUrl(baseUrl?.trim() || GITLAB_DEFAULT_BASE).href.replace(/\/$/, "");
 
     // Verify token by fetching current user
     const userRes = await fetch(`${base}/api/v4/user`, {

@@ -135,7 +135,7 @@ export default function GitLabAuthModal({ isOpen, providerInfo, onSuccess, onClo
           <>
             <p className="text-xs text-text-muted">
               Create an OAuth app at{" "}
-              <a href={`${baseUrl.trim() || GITLAB_COM}/-/profile/applications`} target="_blank" rel="noreferrer" className="text-primary underline">
+              <a href={(() => { try { const u = new URL(baseUrl.trim() || GITLAB_COM); return u.protocol === 'http:' || u.protocol === 'https:' ? `${u.origin}/-/profile/applications` : GITLAB_COM; } catch { return `${GITLAB_COM}/-/profile/applications`; } })()} target="_blank" rel="noreferrer noopener" className="text-primary underline">
                 GitLab Applications
               </a>{" "}
               with redirect URI{" "}
@@ -161,7 +161,7 @@ export default function GitLabAuthModal({ isOpen, providerInfo, onSuccess, onClo
           <>
             <p className="text-xs text-text-muted">
               Create a PAT at{" "}
-              <a href={`${baseUrl.trim() || GITLAB_COM}/-/user_settings/personal_access_tokens`} target="_blank" rel="noreferrer" className="text-primary underline">
+              <a href={(() => { try { const u = new URL(baseUrl.trim() || GITLAB_COM); return u.protocol === 'http:' || u.protocol === 'https:' ? `${u.origin}/-/user_settings/personal_access_tokens` : GITLAB_COM; } catch { return `${GITLAB_COM}/-/user_settings/personal_access_tokens`; } })()} target="_blank" rel="noreferrer noopener" className="text-primary underline">
                 GitLab Access Tokens
               </a>{" "}
               with scopes: <code className="bg-sidebar px-1 rounded text-xs">api</code>,{" "}

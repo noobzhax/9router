@@ -17,7 +17,15 @@ function formatData(data) {
   if (!data) return "";
   if (typeof data === "string") return data;
   try {
-    return JSON.stringify(data);
+    return JSON.stringify(data, (key, value) => {
+      const lk = key.toLowerCase();
+      if (lk.includes("token") || lk.includes("key") || lk.includes("password") || lk.includes("secret") || lk.includes("authorization") || lk.includes("cookie")) {
+        if (typeof value === "string" && value.length > 0) {
+          return value.slice(0, 4) + "...";
+        }
+      }
+      return value;
+    });
   } catch {
     return String(data);
   }
