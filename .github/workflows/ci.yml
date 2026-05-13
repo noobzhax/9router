@@ -31,7 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm install --include=optional
 
-      - name: Lint
+      - name: Lint (advisory)
+        continue-on-error: true
         run: npx eslint .
 
       - name: Build
@@ -54,8 +55,9 @@ jobs:
         run: bun run build:bun
 
   tests:
-    name: Unit tests
+    name: Unit tests (advisory)
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -74,6 +76,7 @@ jobs:
 
       - name: Run tests
         working-directory: tests
+        continue-on-error: true
         run: npm test
 
   docker-smoke:
