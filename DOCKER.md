@@ -1,17 +1,102 @@
 # Docker
 
-This project ships with a `Dockerfile` for building and running 9Router in a container.
+This project ships with Docker support for building and running 9Router in a container.
 
-## Build image
+## Runtimes
+
+Two `Dockerfile` variants are available:
+
+| Variant | File | Base | Builder | Runtime | Use case |
+|---|---|---|---|---|---|
+| **Node.js** | `Dockerfile` | `node:22-alpine` | Node | Node | Stable, well-tested |
+| **Bun** | `Dockerfile.bun` | `node:22-alpine` + `oven/bun:1.3-alpine` | Node | Bun | Faster startup, lower memory |
+
+The **Bun variant** uses a hybrid approach: native deps (better-sqlite3, node-forge, node-machine-id) are compiled with the Node toolchain, then the final image runs on Bun using its built-in `bun:sqlite` driver for improved performance. Next.js serves via `bun --bun server.js`.
+
+---
+
+## Build & Run — Bun Variant
+
+### Build image
 
 ```bash
-docker build -t 9router .
+docker build -f Dockerfile.bun -t 9router:bun .
 ```
 
-## Start container
+### Start container
 
 ```bash
 docker run --rm \
+  -p 20128:20128 \
+  -v "$HOME/.9router:/app/data" \
+  -e DATA_DIR=/app/data \
+  --name 9router-bun \
+  9router:bun
+```
+
+### Run in background
+
+```bash
+docker run -d \
+  -p 20128:20128 \
+  -v "$HOME/.9router:/app/data" \
+  -e DATA_DIR=/app/data \
+  --name 9router-bun \
+  9router:bun
+```
+
+### View logs
+
+```bash
+docker logs -f 9router-bun
+```
+
+### Stop container
+
+```bash
+docker stop 9router-bun
+```
+
+### Rebuild after code changes
+
+```bash
+docker build -f Dockerfile.bun -t 9router:bun .
+docker stop 9router-bun && docker rm 9router-bun
+docker run -d -p 20128:20128 -v "$HOME/.9router:/app/data" -e DATA_DIR=/app/data --name 9router-bun 9router:bun
+```
+
+---
+
+## Docker Compose — Bun Variant
+
+```bash
+docker compose -f docker-compose.bun.yml up -d
+docker compose -f docker-compose.bun.yml logs -f
+docker compose -f docker-compose.bun.yml down
+```
+
+Named volumes (`9router_data`, `9router_home`) persist data automatically.
+
+---
+
+## Build & Run — Node.js Variant
+
+The Node.js variant uses the default `Dockerfile`:
+
+```bash
+# Build
+docker build -t 9router .
+
+# Run
+docker run --rm \
+  -p 20128:20128 \
+  -v "$HOME/.9router:/app/data" \
+  -e DATA_DIR=/app/data \
+  --name 9router \
+  9router
+
+# Run in background
+docker run -d \
   -p 20128:20128 \
   -v "$HOME/.9router:/app/data" \
   -e DATA_DIR=/app/data \
@@ -19,7 +104,7 @@ docker run --rm \
   9router
 ```
 
-The app listens on port `20128` in the container.
+---
 
 ## What the volume does
 
@@ -43,34 +128,13 @@ and it is persisted on the host at:
 $HOME/.9router/db.json
 ```
 
-## Stop container
-
-```bash
-docker stop 9router
-```
-
-## Run in background
-
-```bash
-docker run -d \
-  -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" \
-  -e DATA_DIR=/app/data \
-  --name 9router \
-  9router
-```
-
-## View logs
-
-```bash
-docker logs -f 9router
-```
+---
 
 ## Optional environment variables
 
 You can override runtime env vars with `-e`.
 
-Example:
+Example (Bun):
 
 ```bash
 docker run --rm \
@@ -80,14 +144,17 @@ docker run --rm \
   -e PORT=20128 \
   -e HOSTNAME=0.0.0.0 \
   -e DEBUG=true \
-  --name 9router \
-  9router
+  --name 9router-bun \
+  9router:bun
 ```
 
-## Rebuild after code changes
+---
 
-```bash
-docker build -t 9router .
-```
+## Healthcheck
 
-Then restart the container.
+The Bun Dockerfile and `docker-compose.bun.yml` include a healthcheck:
+
+- **Bun variant** — `wget` to `http://127.0.0.1:${PORT}/api/health`
+- **Node variant** — no built-in healthcheck (add via compose if needed)
+
+The health endpoint returns `{ "ok": true }`, and the Bun healthcheck verifies that shape.
