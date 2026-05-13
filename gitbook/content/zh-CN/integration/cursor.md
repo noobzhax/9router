@@ -1,5 +1,30 @@
 # Cursor 集成
 
+## Table of Contents
+
+- [前置要求](#前置要求)
+- [⚠️ 重要说明](#-重要说明)
+- [设置](#设置)
+  - [1. 打开 Cursor 设置](#1-打开-cursor-设置)
+  - [2. 启用 OpenAI API](#2-启用-openai-api)
+  - [3. 配置 Base URL](#3-配置-base-url)
+  - [4. 添加 API Key](#4-添加-api-key)
+  - [5. 添加自定义模型](#5-添加自定义模型)
+  - [6. 选择模型](#6-选择模型)
+- [配置示例](#配置示例)
+- [可用模型](#可用模型)
+- [使用](#使用)
+  - [聊天界面](#聊天界面)
+  - [内联代码生成](#内联代码生成)
+  - [代码解释](#代码解释)
+- [故障排除](#故障排除)
+  - ["Invalid API Key" 错误](#invalid-api-key-错误)
+  - ["Model Not Found" 错误](#model-not-found-错误)
+  - [连接问题](#连接问题)
+  - [Localhost 无法使用](#localhost-无法使用)
+- [云端 Endpoint 设置](#云端-endpoint-设置)
+- [最佳实践](#最佳实践)
+
 将 9Router 与 Cursor IDE 集成,通过 9Router 的智能路由系统转发你的 AI 请求。
 
 ## 前置要求

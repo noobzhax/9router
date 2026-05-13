@@ -1,5 +1,48 @@
 # Proveedores gratis - Fallback de cero costo
 
+## Table of Contents
+
+- [Resumen](#resumen)
+- [iFlow (8 modelos GRATIS)](#iflow-8-modelos-gratis)
+  - [Precios](#precios)
+  - [Configuración](#configuración)
+  - [Modelos disponibles](#modelos-disponibles)
+  - [Pro Tips](#pro-tips)
+- [Qwen (3 modelos GRATIS)](#qwen-3-modelos-gratis)
+  - [Precios](#precios-1)
+  - [Configuración](#configuración-1)
+  - [Modelos disponibles](#modelos-disponibles-1)
+  - [Pro Tips](#pro-tips-1)
+- [Kiro (Claude GRATIS)](#kiro-claude-gratis)
+  - [Precios](#precios-2)
+  - [Configuración](#configuración-2)
+  - [Modelos disponibles](#modelos-disponibles-2)
+  - [Pro Tips](#pro-tips-2)
+- [Comparación de características](#comparación-de-características)
+- [Ejemplo de uso](#ejemplo-de-uso)
+  - [Configuración en Cursor IDE](#configuración-en-cursor-ide)
+  - [Crear combo (Recomendado)](#crear-combo-recomendado)
+- [Estrategia de fallback completa](#estrategia-de-fallback-completa)
+  - [Combo completo de 3 niveles](#combo-completo-de-3-niveles)
+- [Mejores prácticas](#mejores-prácticas)
+  - [1. Úsalos como respaldo de emergencia](#1-úsalos-como-respaldo-de-emergencia)
+  - [2. Elige el modelo correcto](#2-elige-el-modelo-correcto)
+  - [3. Crea un combo solo-gratis](#3-crea-un-combo-solo-gratis)
+  - [4. Prueba antes de producción](#4-prueba-antes-de-producción)
+- [Ejemplos reales](#ejemplos-reales)
+  - [Ejemplo 1: Estudiante/Aprendiz (Cero presupuesto)](#ejemplo-1-estudianteaprendiz-cero-presupuesto)
+  - [Ejemplo 2: Freelancer (Consciente del presupuesto)](#ejemplo-2-freelancer-consciente-del-presupuesto)
+  - [Ejemplo 3: Usuario intensivo (Maximiza todo)](#ejemplo-3-usuario-intensivo-maximiza-todo)
+- [Comparación de costos](#comparación-de-costos)
+  - [Escenario: 100M tokens/mes](#escenario-100m-tokensmes)
+- [Solución de problemas](#solución-de-problemas)
+  - ["OAuth failed"](#oauth-failed)
+  - ["Modelo no disponible"](#modelo-no-disponible)
+  - ["Respuestas lentas"](#respuestas-lentas)
+- [Limitaciones](#limitaciones)
+  - [Consideraciones del nivel gratis](#consideraciones-del-nivel-gratis)
+- [Próximos pasos](#próximos-pasos)
+
 Respaldo de emergencia cuando todo lo demás está limitado por cuota. ¡Codifica 24/7 con cero costo!
 
 ---

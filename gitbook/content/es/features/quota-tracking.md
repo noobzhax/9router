@@ -1,5 +1,43 @@
 # Seguimiento de cuota y monitoreo de uso
 
+## Table of Contents
+
+- [Resumen](#resumen)
+- [Resumen del dashboard](#resumen-del-dashboard)
+  - [Resumen de cuota](#resumen-de-cuota)
+- [Consumo de tokens en tiempo real](#consumo-de-tokens-en-tiempo-real)
+  - [Seguimiento por solicitud](#seguimiento-por-solicitud)
+  - [Monitor de uso en vivo](#monitor-de-uso-en-vivo)
+  - [Desglose de tokens por modelo](#desglose-de-tokens-por-modelo)
+- [Límites de cuota y tiempos de reinicio](#límites-de-cuota-y-tiempos-de-reinicio)
+  - [Proveedores de suscripción](#proveedores-de-suscripción)
+  - [Proveedores baratos](#proveedores-baratos)
+  - [Proveedores gratis](#proveedores-gratis)
+- [Estimación de costos](#estimación-de-costos)
+  - [Seguimiento de costos en tiempo real](#seguimiento-de-costos-en-tiempo-real)
+  - [Reporte de gasto mensual](#reporte-de-gasto-mensual)
+  - [Proyección de costos](#proyección-de-costos)
+- [Dashboard de uso](#dashboard-de-uso)
+  - [Estadísticas generales](#estadísticas-generales)
+  - [Uso por modelo](#uso-por-modelo)
+  - [Uso por tiempo](#uso-por-tiempo)
+  - [Uso por combo](#uso-por-combo)
+- [Alertas y notificaciones](#alertas-y-notificaciones)
+  - [Alertas de cuota](#alertas-de-cuota)
+  - [Alertas de presupuesto](#alertas-de-presupuesto)
+  - [Detección de anomalías de costo](#detección-de-anomalías-de-costo)
+- [Mejores prácticas](#mejores-prácticas)
+  - [1. Monitorea la cuota diariamente](#1-monitorea-la-cuota-diariamente)
+  - [2. Establece límites de presupuesto](#2-establece-límites-de-presupuesto)
+  - [3. Optimiza el uso de combos](#3-optimiza-el-uso-de-combos)
+  - [4. Rastrea los tiempos de reinicio](#4-rastrea-los-tiempos-de-reinicio)
+  - [5. Revisa los reportes mensuales](#5-revisa-los-reportes-mensuales)
+- [Acceso por API](#acceso-por-api)
+  - [Obtener estado de cuota](#obtener-estado-de-cuota)
+  - [Obtener estadísticas de uso](#obtener-estadísticas-de-uso)
+- [Solución de problemas](#solución-de-problemas)
+- [Relacionado](#relacionado)
+
 Rastrea el consumo de tokens en tiempo real, monitorea los límites de cuota, estima costos y recibe alertas antes de quedarte sin recursos. Nunca desperdicies cuota de suscripción ni excedas los límites de presupuesto.
 
 ---

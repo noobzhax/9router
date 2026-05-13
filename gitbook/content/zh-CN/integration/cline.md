@@ -1,5 +1,37 @@
 # Cline 集成
 
+## Table of Contents
+
+- [前置要求](#前置要求)
+- [设置](#设置)
+  - [1. 打开 Cline 设置](#1-打开-cline-设置)
+  - [2. 选择 API Provider](#2-选择-api-provider)
+  - [3. 配置 Base URL](#3-配置-base-url)
+  - [4. 添加 API Key](#4-添加-api-key)
+  - [5. 选择模型](#5-选择模型)
+  - [6. 保存配置](#6-保存配置)
+- [配置示例](#配置示例)
+- [可用模型](#可用模型)
+- [使用](#使用)
+  - [与 AI 对话](#与-ai-对话)
+  - [生成代码](#生成代码)
+  - [代码解释](#代码解释)
+  - [文件操作](#文件操作)
+- [故障排除](#故障排除)
+  - ["Connection Failed" 错误](#connection-failed-错误)
+  - ["Invalid API Key" 错误](#invalid-api-key-错误)
+  - ["Model Not Found" 错误](#model-not-found-错误)
+  - [Cline 无响应](#cline-无响应)
+- [高级配置](#高级配置)
+  - [使用云端 Endpoint](#使用云端-endpoint)
+  - [多个模型](#多个模型)
+  - [自定义超时](#自定义超时)
+- [最佳实践](#最佳实践)
+- [与 9Router 功能的集成](#与-9router-功能的集成)
+  - [模型路由](#模型路由)
+  - [回退支持](#回退支持)
+  - [使用跟踪](#使用跟踪)
+
 将 9Router 与 Cline VSCode 扩展集成,通过 9Router 的智能路由系统转发你的 AI 请求。
 
 ## 前置要求

@@ -1,5 +1,35 @@
 # Smart Routing & Auto Fallback
 
+## Table of Contents
+
+- [Cách hoạt động](#cách-hoạt-động)
+  - [Hệ thống Fallback 3 tầng](#hệ-thống-fallback-3-tầng)
+- [Chuyển đổi Tự động](#chuyển-đổi-tự-động)
+  - [Kịch bản 1: Hết Quota Subscription](#kịch-bản-1-hết-quota-subscription)
+  - [Kịch bản 2: Rate Limiting](#kịch-bản-2-rate-limiting)
+  - [Kịch bản 3: Provider không khả dụng](#kịch-bản-3-provider-không-khả-dụng)
+- [Logic chọn Model](#logic-chọn-model)
+  - [Ví dụ Thứ tự Ưu tiên](#ví-dụ-thứ-tự-ưu-tiên)
+- [Tùy chọn Cấu hình](#tùy-chọn-cấu-hình)
+  - [Cài đặt Dashboard](#cài-đặt-dashboard)
+- [Ví dụ](#ví-dụ)
+  - [Ví dụ 1: Auto Fallback Cơ bản](#ví-dụ-1-auto-fallback-cơ-bản)
+  - [Ví dụ 2: Định tuyến theo Ngân sách](#ví-dụ-2-định-tuyến-theo-ngân-sách)
+  - [Ví dụ 3: Chế độ Chỉ Subscription](#ví-dụ-3-chế-độ-chỉ-subscription)
+  - [Ví dụ 4: Chế độ Chỉ Free](#ví-dụ-4-chế-độ-chỉ-free)
+- [Best Practices](#best-practices)
+  - [1. Tối đa Giá trị Subscription](#1-tối-đa-giá-trị-subscription)
+  - [2. Tối ưu Chi phí](#2-tối-ưu-chi-phí)
+  - [3. Tối ưu Chất lượng](#3-tối-ưu-chất-lượng)
+  - [4. Khả dụng 24/7](#4-khả-dụng-247)
+- [Chiến lược Reset Quota](#chiến-lược-reset-quota)
+- [Giám sát & Cảnh báo](#giám-sát-cảnh-báo)
+  - [Dashboard Quota Tracker](#dashboard-quota-tracker)
+  - [Thông báo Thời gian thực](#thông-báo-thời-gian-thực)
+  - [Usage Analytics](#usage-analytics)
+- [Troubleshooting](#troubleshooting)
+- [Liên quan](#liên-quan)
+
 9Router tự động định tuyến request qua provider tốt nhất hiện có bằng hệ thống fallback 3 tầng. Không bao giờ ngừng code vì giới hạn quota hay rate limiting.
 
 ---

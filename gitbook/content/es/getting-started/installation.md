@@ -1,5 +1,45 @@
 # Instalación
 
+## Table of Contents
+
+- [Requisitos](#requisitos)
+  - [Requisitos del sistema](#requisitos-del-sistema)
+  - [Verifica tu versión](#verifica-tu-versión)
+- [Métodos de instalación](#métodos-de-instalación)
+  - [Método 1: Instalación global (Recomendado)](#método-1-instalación-global-recomendado)
+  - [Método 2: Instalación local](#método-2-instalación-local)
+  - [Método 3: Desde el código fuente (Desarrollo)](#método-3-desde-el-código-fuente-desarrollo)
+- [Primera ejecución](#primera-ejecución)
+  - [Iniciar el servidor](#iniciar-el-servidor)
+  - [Login del dashboard](#login-del-dashboard)
+  - [Obtén tu API key](#obtén-tu-api-key)
+- [Verificar la instalación](#verificar-la-instalación)
+  - [Verifica el estado del servidor](#verifica-el-estado-del-servidor)
+  - [Lista los modelos disponibles](#lista-los-modelos-disponibles)
+  - [Prueba el chat completion](#prueba-el-chat-completion)
+- [Configuración](#configuración)
+  - [Variables de entorno](#variables-de-entorno)
+  - [Directorio de datos](#directorio-de-datos)
+  - [Configuración de puerto](#configuración-de-puerto)
+- [Solución de problemas](#solución-de-problemas)
+  - [Puerto ya en uso](#puerto-ya-en-uso)
+  - [Permiso denegado](#permiso-denegado)
+  - [Versión de Node.js muy antigua](#versión-de-nodejs-muy-antigua)
+  - [El dashboard no se abre](#el-dashboard-no-se-abre)
+  - [No se puede conectar a proveedores](#no-se-puede-conectar-a-proveedores)
+  - [Uso alto de memoria](#uso-alto-de-memoria)
+- [Opciones de despliegue](#opciones-de-despliegue)
+  - [Desarrollo local](#desarrollo-local)
+  - [Servidor VPS/Cloud](#servidor-vpscloud)
+  - [Docker](#docker)
+  - [Proxy reverso (Nginx)](#proxy-reverso-nginx)
+- [Desinstalación](#desinstalación)
+  - [Eliminar instalación global](#eliminar-instalación-global)
+  - [Eliminar el directorio de datos](#eliminar-el-directorio-de-datos)
+  - [Eliminar la configuración](#eliminar-la-configuración)
+- [Próximos pasos](#próximos-pasos)
+- [¿Necesitas ayuda?](#necesitas-ayuda)
+
 Guía detallada de instalación de 9Router con consejos de solución de problemas.
 
 ---

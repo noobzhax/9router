@@ -1,5 +1,22 @@
 # 🏠 Despliegue en localhost
 
+## Table of Contents
+
+- [📦 Instalación](#-instalación)
+- [🚀 Iniciar el servidor](#-iniciar-el-servidor)
+- [🔧 Configuración](#-configuración)
+  - [Directorio de datos personalizado](#directorio-de-datos-personalizado)
+  - [Puerto personalizado](#puerto-personalizado)
+- [🛑 Detener el servidor](#-detener-el-servidor)
+- [🔄 Reiniciar el servidor](#-reiniciar-el-servidor)
+- [📊 Actualizar 9Router](#-actualizar-9router)
+- [🔍 Solución de problemas](#-solución-de-problemas)
+  - [Puerto ya en uso](#puerto-ya-en-uso)
+  - [Errores de permisos](#errores-de-permisos)
+  - [Problemas con el directorio de datos](#problemas-con-el-directorio-de-datos)
+- [📁 Estructura del directorio de datos](#-estructura-del-directorio-de-datos)
+- [🔗 Próximos pasos](#-próximos-pasos)
+
 Ejecuta 9Router en tu máquina local para desarrollo y uso personal.
 
 ---

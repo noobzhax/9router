@@ -1,5 +1,37 @@
 # Integración con Cline
 
+## Table of Contents
+
+- [Requisitos previos](#requisitos-previos)
+- [Configuración](#configuración)
+  - [1. Abrir la configuración de Cline](#1-abrir-la-configuración-de-cline)
+  - [2. Seleccionar el proveedor de API](#2-seleccionar-el-proveedor-de-api)
+  - [3. Configurar Base URL](#3-configurar-base-url)
+  - [4. Agregar API Key](#4-agregar-api-key)
+  - [5. Seleccionar modelo](#5-seleccionar-modelo)
+  - [6. Guardar la configuración](#6-guardar-la-configuración)
+- [Ejemplo de configuración](#ejemplo-de-configuración)
+- [Modelos disponibles](#modelos-disponibles)
+- [Uso](#uso)
+  - [Chat con IA](#chat-con-ia)
+  - [Generación de código](#generación-de-código)
+  - [Explicación de código](#explicación-de-código)
+  - [Operaciones con archivos](#operaciones-con-archivos)
+- [Solución de problemas](#solución-de-problemas)
+  - [Error "Connection Failed"](#error-connection-failed)
+  - [Error "Invalid API Key"](#error-invalid-api-key)
+  - [Error "Model Not Found"](#error-model-not-found)
+  - [Cline no responde](#cline-no-responde)
+- [Configuración avanzada](#configuración-avanzada)
+  - [Usar endpoint en la nube](#usar-endpoint-en-la-nube)
+  - [Múltiples modelos](#múltiples-modelos)
+  - [Timeout personalizado](#timeout-personalizado)
+- [Mejores prácticas](#mejores-prácticas)
+- [Integración con características de 9Router](#integración-con-características-de-9router)
+  - [Enrutamiento de modelos](#enrutamiento-de-modelos)
+  - [Soporte de fallback](#soporte-de-fallback)
+  - [Seguimiento de uso](#seguimiento-de-uso)
+
 Integra 9Router con la extensión Cline de VSCode para enrutar tus solicitudes de IA a través del sistema de enrutamiento inteligente de 9Router.
 
 ## Requisitos previos

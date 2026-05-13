@@ -5,6 +5,14 @@ description: Text-to-speech via 9Router /v1/audio/speech using OpenAI / ElevenLa
 
 # 9Router — Text-to-Speech
 
+## Table of Contents
+
+- [Discover](#discover)
+- [Endpoint](#endpoint)
+- [Examples](#examples)
+- [Response shape](#response-shape)
+- [Provider quirks (model format)](#provider-quirks-model-format)
+
 Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/decolua/9router/refs/heads/master/skills/9router/SKILL.md for setup.
 
 ## Discover

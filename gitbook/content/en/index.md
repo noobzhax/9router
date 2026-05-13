@@ -1,5 +1,24 @@
 # Welcome to 9Router
 
+## Table of Contents
+
+- [What is 9Router?](#what-is-9router)
+- [Key Features](#key-features)
+  - [🔄 Smart 3-Tier Fallback](#-smart-3-tier-fallback)
+  - [📊 Quota Tracking](#-quota-tracking)
+  - [🎯 Universal CLI Support](#-universal-cli-support)
+  - [💰 Cost Optimization](#-cost-optimization)
+- [Why Choose 9Router?](#why-choose-9router)
+  - [Maximize Subscriptions](#maximize-subscriptions)
+  - [Ultra-Cheap Backup](#ultra-cheap-backup)
+  - [Free Forever Fallback](#free-forever-fallback)
+- [Quick Start](#quick-start)
+- [Use Cases](#use-cases)
+  - [For Individual Developers](#for-individual-developers)
+  - [For Teams](#for-teams)
+  - [For Mobile/Remote Coding](#for-mobileremote-coding)
+- [What's Next?](#whats-next)
+
 **Use Claude, Codex, Gemini for FREE • Ultra-cheap alternatives from $0.20/1M tokens**
 
 9Router is an AI model router that maximizes your subscription value and minimizes costs through intelligent routing and automatic fallback.

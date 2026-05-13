@@ -1,5 +1,42 @@
 # ☁️ Despliegue en la nube
 
+## Table of Contents
+
+- [🖥️ Despliegue en VPS](#-despliegue-en-vps)
+  - [Requisitos previos](#requisitos-previos)
+  - [Paso 1: Clonar el repositorio](#paso-1-clonar-el-repositorio)
+  - [Paso 2: Instalar dependencias](#paso-2-instalar-dependencias)
+  - [Paso 3: Compilar la aplicación](#paso-3-compilar-la-aplicación)
+  - [Paso 4: Configurar variables de entorno](#paso-4-configurar-variables-de-entorno)
+  - [Paso 5: Crear el directorio de datos](#paso-5-crear-el-directorio-de-datos)
+  - [Paso 6: Iniciar la aplicación](#paso-6-iniciar-la-aplicación)
+  - [Paso 7: Configurar PM2 para producción](#paso-7-configurar-pm2-para-producción)
+- [🐳 Despliegue con Docker](#-despliegue-con-docker)
+  - [Opción 1: Usando Dockerfile](#opción-1-usando-dockerfile)
+  - [Opción 2: Docker Compose](#opción-2-docker-compose)
+- [🌐 Proxy reverso con Nginx](#-proxy-reverso-con-nginx)
+  - [¿Por qué usar Nginx?](#por-qué-usar-nginx)
+  - [Paso 1: Instalar Nginx](#paso-1-instalar-nginx)
+  - [Paso 2: Configurar Nginx](#paso-2-configurar-nginx)
+  - [Paso 3: Habilitar el sitio](#paso-3-habilitar-el-sitio)
+  - [Paso 4: Configurar SSL con Let's Encrypt](#paso-4-configurar-ssl-con-lets-encrypt)
+- [🔒 Consideraciones de seguridad](#-consideraciones-de-seguridad)
+  - [1. Cambiar credenciales por defecto](#1-cambiar-credenciales-por-defecto)
+  - [2. Configuración del firewall](#2-configuración-del-firewall)
+  - [3. Restringir el acceso al dashboard](#3-restringir-el-acceso-al-dashboard)
+  - [4. Actualizaciones regulares](#4-actualizaciones-regulares)
+  - [5. Estrategia de respaldo](#5-estrategia-de-respaldo)
+- [📊 Monitoreo](#-monitoreo)
+  - [Verificar el estado de la aplicación](#verificar-el-estado-de-la-aplicación)
+  - [Logs de Nginx](#logs-de-nginx)
+  - [Recursos del sistema](#recursos-del-sistema)
+- [🚨 Solución de problemas](#-solución-de-problemas)
+  - [La aplicación no inicia](#la-aplicación-no-inicia)
+  - [Nginx 502 Bad Gateway](#nginx-502-bad-gateway)
+  - [El streaming SSE no funciona](#el-streaming-sse-no-funciona)
+  - [Errores de permiso denegado](#errores-de-permiso-denegado)
+- [🔗 Próximos pasos](#-próximos-pasos)
+
 Despliega 9Router en VPS o Docker para acceso remoto y uso en producción.
 
 ---

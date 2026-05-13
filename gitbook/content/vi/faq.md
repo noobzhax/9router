@@ -1,5 +1,34 @@
 # Câu hỏi thường gặp
 
+## Table of Contents
+
+- [9Router là gì?](#9router-là-gì)
+- [Pricing hoạt động thế nào?](#pricing-hoạt-động-thế-nào)
+  - [Tier 1: Subscription (Dùng đầu tiên)](#tier-1-subscription-dùng-đầu-tiên)
+  - [Tier 2: Cheap (Backup)](#tier-2-cheap-backup)
+  - [Tier 3: Free (Khẩn cấp)](#tier-3-free-khẩn-cấp)
+- [9Router có miễn phí không?](#9router-có-miễn-phí-không)
+- [Provider nào được hỗ trợ?](#provider-nào-được-hỗ-trợ)
+  - [Subscription Providers](#subscription-providers)
+  - [Cheap Providers](#cheap-providers)
+  - [Free Providers](#free-providers)
+- [Tôi có thể dùng nhiều provider không?](#tôi-có-thể-dùng-nhiều-provider-không)
+- [Quota tracking hoạt động thế nào?](#quota-tracking-hoạt-động-thế-nào)
+- [9Router có hoạt động với Cursor không?](#9router-có-hoạt-động-với-cursor-không)
+- [Tôi có thể self-host 9Router không?](#tôi-có-thể-self-host-9router-không)
+  - [Localhost (Mặc định)](#localhost-mặc-định)
+  - [VPS/Cloud](#vpscloud)
+  - [Docker](#docker)
+  - [Cloudflare Workers](#cloudflare-workers)
+- [Dữ liệu của tôi có an toàn không?](#dữ-liệu-của-tôi-có-an-toàn-không)
+- [Làm thế nào để cập nhật 9Router?](#làm-thế-nào-để-cập-nhật-9router)
+  - [Global NPM Install](#global-npm-install)
+  - [Local Install](#local-install)
+  - [Docker](#docker-1)
+- [Tôi có thể đóng góp như thế nào?](#tôi-có-thể-đóng-góp-như-thế-nào)
+  - [Các cách đóng góp:](#các-cách-đóng-góp)
+- [Cần trợ giúp thêm?](#cần-trợ-giúp-thêm)
+
 Những câu hỏi phổ biến về 9Router.
 
 ---

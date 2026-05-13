@@ -1,5 +1,45 @@
 # Installation
 
+## Table of Contents
+
+- [Requirements](#requirements)
+  - [System Requirements](#system-requirements)
+  - [Check Your Version](#check-your-version)
+- [Installation Methods](#installation-methods)
+  - [Method 1: Global Installation (Recommended)](#method-1-global-installation-recommended)
+  - [Method 2: Local Installation](#method-2-local-installation)
+  - [Method 3: From Source (Development)](#method-3-from-source-development)
+- [First Run](#first-run)
+  - [Start the Server](#start-the-server)
+  - [Dashboard Login](#dashboard-login)
+  - [Get Your API Key](#get-your-api-key)
+- [Verify Installation](#verify-installation)
+  - [Check Server Status](#check-server-status)
+  - [List Available Models](#list-available-models)
+  - [Test Chat Completion](#test-chat-completion)
+- [Configuration](#configuration)
+  - [Environment Variables](#environment-variables)
+  - [Data Directory](#data-directory)
+  - [Port Configuration](#port-configuration)
+- [Troubleshooting](#troubleshooting)
+  - [Port Already in Use](#port-already-in-use)
+  - [Permission Denied](#permission-denied)
+  - [Node.js Version Too Old](#nodejs-version-too-old)
+  - [Dashboard Not Opening](#dashboard-not-opening)
+  - [Cannot Connect to Providers](#cannot-connect-to-providers)
+  - [High Memory Usage](#high-memory-usage)
+- [Deployment Options](#deployment-options)
+  - [Local Development](#local-development)
+  - [VPS/Cloud Server](#vpscloud-server)
+  - [Docker](#docker)
+  - [Reverse Proxy (Nginx)](#reverse-proxy-nginx)
+- [Uninstallation](#uninstallation)
+  - [Remove Global Installation](#remove-global-installation)
+  - [Remove Data Directory](#remove-data-directory)
+  - [Remove Configuration](#remove-configuration)
+- [Next Steps](#next-steps)
+- [Need Help?](#need-help)
+
 Detailed installation guide for 9Router with troubleshooting tips.
 
 ---

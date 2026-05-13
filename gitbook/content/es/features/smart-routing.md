@@ -1,5 +1,35 @@
 # Enrutamiento inteligente y fallback automático
 
+## Table of Contents
+
+- [Cómo funciona](#cómo-funciona)
+  - [Sistema de fallback de 3 niveles](#sistema-de-fallback-de-3-niveles)
+- [Cambio automático](#cambio-automático)
+  - [Escenario 1: Cuota de suscripción agotada](#escenario-1-cuota-de-suscripción-agotada)
+  - [Escenario 2: Rate limiting](#escenario-2-rate-limiting)
+  - [Escenario 3: Proveedor no disponible](#escenario-3-proveedor-no-disponible)
+- [Lógica de selección de modelo](#lógica-de-selección-de-modelo)
+  - [Ejemplo de orden de prioridad](#ejemplo-de-orden-de-prioridad)
+- [Opciones de configuración](#opciones-de-configuración)
+  - [Configuración del dashboard](#configuración-del-dashboard)
+- [Ejemplos](#ejemplos)
+  - [Ejemplo 1: Fallback automático básico](#ejemplo-1-fallback-automático-básico)
+  - [Ejemplo 2: Enrutamiento consciente del presupuesto](#ejemplo-2-enrutamiento-consciente-del-presupuesto)
+  - [Ejemplo 3: Modo solo suscripción](#ejemplo-3-modo-solo-suscripción)
+  - [Ejemplo 4: Modo solo gratis](#ejemplo-4-modo-solo-gratis)
+- [Mejores prácticas](#mejores-prácticas)
+  - [1. Maximiza el valor de la suscripción](#1-maximiza-el-valor-de-la-suscripción)
+  - [2. Optimiza por costo](#2-optimiza-por-costo)
+  - [3. Optimiza por calidad](#3-optimiza-por-calidad)
+  - [4. Disponibilidad 24/7](#4-disponibilidad-247)
+- [Estrategia de reinicio de cuota](#estrategia-de-reinicio-de-cuota)
+- [Monitoreo y alertas](#monitoreo-y-alertas)
+  - [Rastreador de cuota del dashboard](#rastreador-de-cuota-del-dashboard)
+  - [Notificaciones en tiempo real](#notificaciones-en-tiempo-real)
+  - [Analítica de uso](#analítica-de-uso)
+- [Solución de problemas](#solución-de-problemas)
+- [Relacionado](#relacionado)
+
 9Router enruta automáticamente tus solicitudes a través del mejor proveedor disponible usando un sistema de fallback de 3 niveles. Nunca dejes de codificar debido a límites de cuota o rate-limiting.
 
 ---

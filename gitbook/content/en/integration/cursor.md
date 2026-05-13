@@ -1,5 +1,30 @@
 # Cursor Integration
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [⚠️ Important Notes](#-important-notes)
+- [Setup](#setup)
+  - [1. Open Cursor Settings](#1-open-cursor-settings)
+  - [2. Enable OpenAI API](#2-enable-openai-api)
+  - [3. Configure Base URL](#3-configure-base-url)
+  - [4. Add API Key](#4-add-api-key)
+  - [5. Add Custom Model](#5-add-custom-model)
+  - [6. Select Model](#6-select-model)
+- [Configuration Example](#configuration-example)
+- [Available Models](#available-models)
+- [Usage](#usage)
+  - [Chat Interface](#chat-interface)
+  - [Inline Code Generation](#inline-code-generation)
+  - [Code Explanation](#code-explanation)
+- [Troubleshooting](#troubleshooting)
+  - ["Invalid API Key" Error](#invalid-api-key-error)
+  - ["Model Not Found" Error](#model-not-found-error)
+  - [Connection Issues](#connection-issues)
+  - [Localhost Not Working](#localhost-not-working)
+- [Cloud Endpoint Setup](#cloud-endpoint-setup)
+- [Best Practices](#best-practices)
+
 Integrate 9Router with Cursor IDE to route your AI requests through 9Router's intelligent routing system.
 
 ## Prerequisites

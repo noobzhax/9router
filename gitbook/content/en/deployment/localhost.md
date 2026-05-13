@@ -1,5 +1,22 @@
 # 🏠 Localhost Deployment
 
+## Table of Contents
+
+- [📦 Installation](#-installation)
+- [🚀 Starting the Server](#-starting-the-server)
+- [🔧 Configuration](#-configuration)
+  - [Custom Data Directory](#custom-data-directory)
+  - [Custom Port](#custom-port)
+- [🛑 Stopping the Server](#-stopping-the-server)
+- [🔄 Restarting the Server](#-restarting-the-server)
+- [📊 Updating 9Router](#-updating-9router)
+- [🔍 Troubleshooting](#-troubleshooting)
+  - [Port Already in Use](#port-already-in-use)
+  - [Permission Errors](#permission-errors)
+  - [Data Directory Issues](#data-directory-issues)
+- [📁 Data Directory Structure](#-data-directory-structure)
+- [🔗 Next Steps](#-next-steps)
+
 Run 9Router on your local machine for development and personal use.
 
 ---

@@ -5,6 +5,14 @@ description: Chat / code generation via 9Router using OpenAI /v1/chat/completion
 
 # 9Router — Chat
 
+## Table of Contents
+
+- [Endpoints](#endpoints)
+- [Discover](#discover)
+- [OpenAI format](#openai-format)
+- [Anthropic format](#anthropic-format)
+- [Response shape](#response-shape)
+
 Requires `NINEROUTER_URL` (and `NINEROUTER_KEY` if auth enabled). See https://raw.githubusercontent.com/decolua/9router/refs/heads/master/skills/9router/SKILL.md for setup.
 
 ## Endpoints

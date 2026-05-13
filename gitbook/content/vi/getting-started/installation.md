@@ -1,5 +1,45 @@
 # Cài đặt
 
+## Table of Contents
+
+- [Yêu cầu](#yêu-cầu)
+  - [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
+  - [Kiểm tra Phiên bản](#kiểm-tra-phiên-bản)
+- [Phương thức Cài đặt](#phương-thức-cài-đặt)
+  - [Cách 1: Cài Global (Khuyên dùng)](#cách-1-cài-global-khuyên-dùng)
+  - [Cách 2: Cài Local](#cách-2-cài-local)
+  - [Cách 3: Từ Source (Development)](#cách-3-từ-source-development)
+- [Lần chạy Đầu tiên](#lần-chạy-đầu-tiên)
+  - [Khởi động Server](#khởi-động-server)
+  - [Đăng nhập Dashboard](#đăng-nhập-dashboard)
+  - [Lấy API Key](#lấy-api-key)
+- [Xác minh Cài đặt](#xác-minh-cài-đặt)
+  - [Kiểm tra trạng thái Server](#kiểm-tra-trạng-thái-server)
+  - [Liệt kê Model khả dụng](#liệt-kê-model-khả-dụng)
+  - [Test Chat Completion](#test-chat-completion)
+- [Cấu hình](#cấu-hình)
+  - [Biến môi trường](#biến-môi-trường)
+  - [Data Directory](#data-directory)
+  - [Cấu hình Port](#cấu-hình-port)
+- [Troubleshooting](#troubleshooting)
+  - [Port đã được dùng](#port-đã-được-dùng)
+  - [Permission Denied](#permission-denied)
+  - [Node.js Phiên bản quá cũ](#nodejs-phiên-bản-quá-cũ)
+  - [Dashboard không mở](#dashboard-không-mở)
+  - [Không kết nối được Provider](#không-kết-nối-được-provider)
+  - [Sử dụng RAM cao](#sử-dụng-ram-cao)
+- [Tùy chọn Deployment](#tùy-chọn-deployment)
+  - [Phát triển cục bộ](#phát-triển-cục-bộ)
+  - [VPS/Cloud Server](#vpscloud-server)
+  - [Docker](#docker)
+  - [Reverse Proxy (Nginx)](#reverse-proxy-nginx)
+- [Gỡ cài đặt](#gỡ-cài-đặt)
+  - [Gỡ Global Installation](#gỡ-global-installation)
+  - [Xóa Data Directory](#xóa-data-directory)
+  - [Xóa Cấu hình](#xóa-cấu-hình)
+- [Bước tiếp theo](#bước-tiếp-theo)
+- [Cần trợ giúp?](#cần-trợ-giúp)
+
 Hướng dẫn cài đặt chi tiết cho 9Router với mẹo troubleshooting.
 
 ---

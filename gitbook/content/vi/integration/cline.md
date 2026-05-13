@@ -1,5 +1,37 @@
 # Tích hợp Cline
 
+## Table of Contents
+
+- [Yêu cầu](#yêu-cầu)
+- [Setup](#setup)
+  - [1. Mở Cline Settings](#1-mở-cline-settings)
+  - [2. Chọn API Provider](#2-chọn-api-provider)
+  - [3. Cấu hình Base URL](#3-cấu-hình-base-url)
+  - [4. Thêm API Key](#4-thêm-api-key)
+  - [5. Chọn Model](#5-chọn-model)
+  - [6. Lưu Cấu hình](#6-lưu-cấu-hình)
+- [Ví dụ Cấu hình](#ví-dụ-cấu-hình)
+- [Model có sẵn](#model-có-sẵn)
+- [Sử dụng](#sử-dụng)
+  - [Chat với AI](#chat-với-ai)
+  - [Tạo Code](#tạo-code)
+  - [Giải thích Code](#giải-thích-code)
+  - [Thao tác File](#thao-tác-file)
+- [Troubleshooting](#troubleshooting)
+  - [Lỗi "Connection Failed"](#lỗi-connection-failed)
+  - [Lỗi "Invalid API Key"](#lỗi-invalid-api-key)
+  - [Lỗi "Model Not Found"](#lỗi-model-not-found)
+  - [Cline không phản hồi](#cline-không-phản-hồi)
+- [Cấu hình Nâng cao](#cấu-hình-nâng-cao)
+  - [Dùng Cloud Endpoint](#dùng-cloud-endpoint)
+  - [Nhiều Model](#nhiều-model)
+  - [Custom Timeout](#custom-timeout)
+- [Best Practices](#best-practices)
+- [Tích hợp với Tính năng 9Router](#tích-hợp-với-tính-năng-9router)
+  - [Định tuyến Model](#định-tuyến-model)
+  - [Hỗ trợ Fallback](#hỗ-trợ-fallback)
+  - [Theo dõi Usage](#theo-dõi-usage)
+
 Tích hợp 9Router với extension Cline VSCode để định tuyến request AI qua hệ thống routing thông minh của 9Router.
 
 ## Yêu cầu

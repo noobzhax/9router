@@ -1,5 +1,46 @@
 # Combos - Chuỗi Fallback Tùy chỉnh
 
+## Table of Contents
+
+- [Combos là gì?](#combos-là-gì)
+- [Tại sao dùng Combos?](#tại-sao-dùng-combos)
+  - [1. Tối đa hóa Giá trị Subscription](#1-tối-đa-hóa-giá-trị-subscription)
+  - [2. Giảm Chi phí](#2-giảm-chi-phí)
+  - [3. Đảm bảo Khả dụng 24/7](#3-đảm-bảo-khả-dụng-247)
+  - [4. Tối ưu Chất lượng](#4-tối-ưu-chất-lượng)
+- [Cách tạo Combos](#cách-tạo-combos)
+  - [Bước 1: Mở Dashboard](#bước-1-mở-dashboard)
+  - [Bước 2: Đi đến Combos](#bước-2-đi-đến-combos)
+  - [Bước 3: Cấu hình Combo](#bước-3-cấu-hình-combo)
+  - [Bước 4: Lưu](#bước-4-lưu)
+  - [Bước 5: Dùng trong CLI](#bước-5-dùng-trong-cli)
+- [Ví dụ Combos](#ví-dụ-combos)
+  - [Ví dụ 1: Premium Coding (Subscription → Cheap → Free)](#ví-dụ-1-premium-coding-subscription-cheap-free)
+  - [Ví dụ 2: Budget Combo (Cheap → Free)](#ví-dụ-2-budget-combo-cheap-free)
+  - [Ví dụ 3: Free Combo (Chi phí 0)](#ví-dụ-3-free-combo-chi-phí-0)
+  - [Ví dụ 4: Quality First (Chỉ Premium Models)](#ví-dụ-4-quality-first-chỉ-premium-models)
+  - [Ví dụ 5: Multi-Subscription (Tối đa hết tất cả)](#ví-dụ-5-multi-subscription-tối-đa-hết-tất-cả)
+  - [Ví dụ 6: Tối ưu Reset Quota](#ví-dụ-6-tối-ưu-reset-quota)
+- [Dùng Combos trong CLI Tools](#dùng-combos-trong-cli-tools)
+  - [Cursor IDE](#cursor-ide)
+  - [Claude Desktop](#claude-desktop)
+  - [Codex CLI](#codex-cli)
+  - [Cline / Continue / RooCode](#cline-continue-roocode)
+  - [API Request](#api-request)
+- [Best Practices](#best-practices)
+  - [1. Luôn bao gồm Free Tier](#1-luôn-bao-gồm-free-tier)
+  - [2. Sắp xếp theo Chi phí (Rẻ đến Đắt)](#2-sắp-xếp-theo-chi-phí-rẻ-đến-đắt)
+  - [3. Phù hợp với Yêu cầu Chất lượng](#3-phù-hợp-với-yêu-cầu-chất-lượng)
+  - [4. Cân nhắc Thời gian Reset Quota](#4-cân-nhắc-thời-gian-reset-quota)
+  - [5. Tạo nhiều Combo cho các Use Case khác nhau](#5-tạo-nhiều-combo-cho-các-use-case-khác-nhau)
+  - [6. Theo dõi hiệu năng Combo](#6-theo-dõi-hiệu-năng-combo)
+- [Cấu hình Nâng cao](#cấu-hình-nâng-cao)
+  - [Đặt Giới hạn Ngân sách cho mỗi Combo](#đặt-giới-hạn-ngân-sách-cho-mỗi-combo)
+  - [Bật/Tắt Model trong Combo](#bậttắt-model-trong-combo)
+  - [Clone Combo có sẵn](#clone-combo-có-sẵn)
+- [Troubleshooting](#troubleshooting)
+- [Liên quan](#liên-quan)
+
 Tạo các tổ hợp model tùy chỉnh với fallback tự động. Combo cho phép bạn định nghĩa chiến lược routing dựa trên chi phí, chất lượng và tính khả dụng.
 
 ---

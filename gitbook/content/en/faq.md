@@ -1,5 +1,34 @@
 # Frequently Asked Questions
 
+## Table of Contents
+
+- [What is 9Router?](#what-is-9router)
+- [How does pricing work?](#how-does-pricing-work)
+  - [Tier 1: Subscription (Maximize First)](#tier-1-subscription-maximize-first)
+  - [Tier 2: Cheap (Backup)](#tier-2-cheap-backup)
+  - [Tier 3: Free (Emergency)](#tier-3-free-emergency)
+- [Is 9Router free?](#is-9router-free)
+- [Which providers are supported?](#which-providers-are-supported)
+  - [Subscription Providers](#subscription-providers)
+  - [Cheap Providers](#cheap-providers)
+  - [Free Providers](#free-providers)
+- [Can I use multiple providers?](#can-i-use-multiple-providers)
+- [How does quota tracking work?](#how-does-quota-tracking-work)
+- [Does 9Router work with Cursor?](#does-9router-work-with-cursor)
+- [Can I self-host 9Router?](#can-i-self-host-9router)
+  - [Localhost (Default)](#localhost-default)
+  - [VPS/Cloud](#vpscloud)
+  - [Docker](#docker)
+  - [Cloudflare Workers](#cloudflare-workers)
+- [Is my data secure?](#is-my-data-secure)
+- [How do I update 9Router?](#how-do-i-update-9router)
+  - [Global NPM Install](#global-npm-install)
+  - [Local Install](#local-install)
+  - [Docker](#docker-1)
+- [How can I contribute?](#how-can-i-contribute)
+  - [Ways to contribute:](#ways-to-contribute)
+- [Need More Help?](#need-more-help)
+
 Common questions about 9Router.
 
 ---

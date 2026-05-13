@@ -1,5 +1,41 @@
 # Tích hợp các Công cụ khác
 
+## Table of Contents
+
+- [Tổng quan](#tổng-quan)
+- [Pattern Setup Tổng quát](#pattern-setup-tổng-quát)
+- [Model có sẵn](#model-có-sẵn)
+  - [Claude Models (Anthropic)](#claude-models-anthropic)
+  - [DeepSeek Models](#deepseek-models)
+  - [GLM Models (Zhipu AI)](#glm-models-zhipu-ai)
+- [Ví dụ Tích hợp](#ví-dụ-tích-hợp)
+  - [Python với OpenAI SDK](#python-với-openai-sdk)
+  - [Node.js với OpenAI SDK](#nodejs-với-openai-sdk)
+  - [Lệnh cURL](#lệnh-curl)
+  - [HTTP Client (Postman, Insomnia)](#http-client-postman-insomnia)
+  - [Tích hợp LangChain](#tích-hợp-langchain)
+  - [Tích hợp LlamaIndex](#tích-hợp-llamaindex)
+- [Ví dụ Script Tùy chỉnh](#ví-dụ-script-tùy-chỉnh)
+  - [Script Xử lý Batch](#script-xử-lý-batch)
+  - [Xử lý Streaming Response](#xử-lý-streaming-response)
+  - [So sánh Nhiều Model](#so-sánh-nhiều-model)
+- [Pattern Tích hợp Phổ biến](#pattern-tích-hợp-phổ-biến)
+  - [Biến môi trường](#biến-môi-trường)
+  - [Xử lý Lỗi](#xử-lý-lỗi)
+  - [Logic Retry](#logic-retry)
+- [Troubleshooting](#troubleshooting)
+  - [Vấn đề Connection](#vấn-đề-connection)
+  - [Lỗi Xác thực](#lỗi-xác-thực)
+  - [Model Not Found](#model-not-found)
+  - [Vấn đề Timeout](#vấn-đề-timeout)
+  - [Rate Limiting](#rate-limiting)
+- [Best Practices](#best-practices)
+  - [Bảo mật](#bảo-mật)
+  - [Hiệu năng](#hiệu-năng)
+  - [Xử lý Lỗi](#xử-lý-lỗi-1)
+  - [Tối ưu Chi phí](#tối-ưu-chi-phí)
+- [Bước tiếp theo](#bước-tiếp-theo)
+
 9Router tương thích với mọi công cụ hỗ trợ format API OpenAI. Hướng dẫn này bao gồm pattern tích hợp tổng quát cho nhiều công cụ và ứng dụng tùy chỉnh.
 
 ## Tổng quan

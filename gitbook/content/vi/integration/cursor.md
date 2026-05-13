@@ -1,5 +1,30 @@
 # Tích hợp Cursor
 
+## Table of Contents
+
+- [Yêu cầu](#yêu-cầu)
+- [⚠️ Lưu ý Quan trọng](#-lưu-ý-quan-trọng)
+- [Setup](#setup)
+  - [1. Mở Cursor Settings](#1-mở-cursor-settings)
+  - [2. Bật OpenAI API](#2-bật-openai-api)
+  - [3. Cấu hình Base URL](#3-cấu-hình-base-url)
+  - [4. Thêm API Key](#4-thêm-api-key)
+  - [5. Thêm Custom Model](#5-thêm-custom-model)
+  - [6. Chọn Model](#6-chọn-model)
+- [Ví dụ Cấu hình](#ví-dụ-cấu-hình)
+- [Model có sẵn](#model-có-sẵn)
+- [Sử dụng](#sử-dụng)
+  - [Giao diện Chat](#giao-diện-chat)
+  - [Tạo Code Inline](#tạo-code-inline)
+  - [Giải thích Code](#giải-thích-code)
+- [Troubleshooting](#troubleshooting)
+  - [Lỗi "Invalid API Key"](#lỗi-invalid-api-key)
+  - [Lỗi "Model Not Found"](#lỗi-model-not-found)
+  - [Lỗi Connection](#lỗi-connection)
+  - [Localhost không hoạt động](#localhost-không-hoạt-động)
+- [Setup Cloud Endpoint](#setup-cloud-endpoint)
+- [Best Practices](#best-practices)
+
 Tích hợp 9Router với Cursor IDE để định tuyến request AI qua hệ thống routing thông minh của 9Router.
 
 ## Yêu cầu

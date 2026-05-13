@@ -1,5 +1,35 @@
 # Smart Routing & Auto Fallback
 
+## Table of Contents
+
+- [How It Works](#how-it-works)
+  - [3-Tier Fallback System](#3-tier-fallback-system)
+- [Automatic Switching](#automatic-switching)
+  - [Scenario 1: Subscription Quota Exhausted](#scenario-1-subscription-quota-exhausted)
+  - [Scenario 2: Rate Limiting](#scenario-2-rate-limiting)
+  - [Scenario 3: Provider Unavailable](#scenario-3-provider-unavailable)
+- [Model Selection Logic](#model-selection-logic)
+  - [Priority Order Example](#priority-order-example)
+- [Configuration Options](#configuration-options)
+  - [Dashboard Settings](#dashboard-settings)
+- [Examples](#examples)
+  - [Example 1: Basic Auto Fallback](#example-1-basic-auto-fallback)
+  - [Example 2: Budget-Conscious Routing](#example-2-budget-conscious-routing)
+  - [Example 3: Subscription-Only Mode](#example-3-subscription-only-mode)
+  - [Example 4: Free-Only Mode](#example-4-free-only-mode)
+- [Best Practices](#best-practices)
+  - [1. Maximize Subscription Value](#1-maximize-subscription-value)
+  - [2. Optimize for Cost](#2-optimize-for-cost)
+  - [3. Optimize for Quality](#3-optimize-for-quality)
+  - [4. 24/7 Availability](#4-247-availability)
+- [Quota Reset Strategy](#quota-reset-strategy)
+- [Monitoring & Alerts](#monitoring-alerts)
+  - [Dashboard Quota Tracker](#dashboard-quota-tracker)
+  - [Real-Time Notifications](#real-time-notifications)
+  - [Usage Analytics](#usage-analytics)
+- [Troubleshooting](#troubleshooting)
+- [Related](#related)
+
 9Router automatically routes your requests through the best available provider using a 3-tier fallback system. Never stop coding due to quota limits or rate limiting.
 
 ---

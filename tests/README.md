@@ -1,5 +1,14 @@
 # 9Router Embeddings Tests
 
+## Table of Contents
+
+- [Setup](#setup)
+- [Running Tests](#running-tests)
+- [Test Files](#test-files)
+- [Coverage Summary (59 tests)](#coverage-summary-59-tests)
+  - [`embeddingsCore.test.js` (36 tests)](#embeddingscoretestjs-36-tests)
+  - [`embeddings.cloud.test.js` (23 tests)](#embeddingscloudtestjs-23-tests)
+
 Unit tests for the `/v1/embeddings` endpoint implementation.
 
 ## Setup

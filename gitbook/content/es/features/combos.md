@@ -1,5 +1,46 @@
 # Combos - Cadenas de fallback personalizadas
 
+## Table of Contents
+
+- [¿Qué son los combos?](#qué-son-los-combos)
+- [¿Por qué usar combos?](#por-qué-usar-combos)
+  - [1. Maximiza el valor de la suscripción](#1-maximiza-el-valor-de-la-suscripción)
+  - [2. Minimiza costos](#2-minimiza-costos)
+  - [3. Garantiza disponibilidad 24/7](#3-garantiza-disponibilidad-247)
+  - [4. Optimiza por calidad](#4-optimiza-por-calidad)
+- [Cómo crear combos](#cómo-crear-combos)
+  - [Paso 1: Abrir el dashboard](#paso-1-abrir-el-dashboard)
+  - [Paso 2: Navegar a Combos](#paso-2-navegar-a-combos)
+  - [Paso 3: Configurar el combo](#paso-3-configurar-el-combo)
+  - [Paso 4: Guardar](#paso-4-guardar)
+  - [Paso 5: Usar en CLI](#paso-5-usar-en-cli)
+- [Combos de ejemplo](#combos-de-ejemplo)
+  - [Ejemplo 1: Premium Coding (Suscripción → Barato → Gratis)](#ejemplo-1-premium-coding-suscripción-barato-gratis)
+  - [Ejemplo 2: Combo de presupuesto (Barato → Gratis)](#ejemplo-2-combo-de-presupuesto-barato-gratis)
+  - [Ejemplo 3: Combo gratis (Cero costo)](#ejemplo-3-combo-gratis-cero-costo)
+  - [Ejemplo 4: Calidad primero (Solo modelos premium)](#ejemplo-4-calidad-primero-solo-modelos-premium)
+  - [Ejemplo 5: Multi-suscripción (Maximiza todo)](#ejemplo-5-multi-suscripción-maximiza-todo)
+  - [Ejemplo 6: Optimización de reinicio de cuota](#ejemplo-6-optimización-de-reinicio-de-cuota)
+- [Usar combos en herramientas CLI](#usar-combos-en-herramientas-cli)
+  - [Cursor IDE](#cursor-ide)
+  - [Claude Desktop](#claude-desktop)
+  - [Codex CLI](#codex-cli)
+  - [Cline / Continue / RooCode](#cline-continue-roocode)
+  - [Solicitud por API](#solicitud-por-api)
+- [Mejores prácticas](#mejores-prácticas)
+  - [1. Siempre incluye el nivel gratis](#1-siempre-incluye-el-nivel-gratis)
+  - [2. Ordena por costo (Barato a costoso)](#2-ordena-por-costo-barato-a-costoso)
+  - [3. Coincide con los requisitos de calidad](#3-coincide-con-los-requisitos-de-calidad)
+  - [4. Considera los tiempos de reinicio de cuota](#4-considera-los-tiempos-de-reinicio-de-cuota)
+  - [5. Crea múltiples combos para diferentes casos de uso](#5-crea-múltiples-combos-para-diferentes-casos-de-uso)
+  - [6. Monitorea el desempeño del combo](#6-monitorea-el-desempeño-del-combo)
+- [Configuración avanzada](#configuración-avanzada)
+  - [Establecer límites de presupuesto por combo](#establecer-límites-de-presupuesto-por-combo)
+  - [Habilitar/Deshabilitar modelos en un combo](#habilitardeshabilitar-modelos-en-un-combo)
+  - [Clonar un combo existente](#clonar-un-combo-existente)
+- [Solución de problemas](#solución-de-problemas)
+- [Relacionado](#relacionado)
+
 Crea combinaciones de modelos personalizadas con fallback automático. Los combos te permiten definir tu propia estrategia de enrutamiento basada en costo, calidad y disponibilidad.
 
 ---

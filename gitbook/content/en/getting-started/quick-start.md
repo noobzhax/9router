@@ -1,5 +1,30 @@
 # Getting Started
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+  - [1. Install](#1-install)
+  - [2. Start](#2-start)
+  - [3. Connect Providers](#3-connect-providers)
+    - [Option A: OAuth (Subscription Providers)](#option-a-oauth-subscription-providers)
+    - [Option B: API Key (Cheap Providers)](#option-b-api-key-cheap-providers)
+    - [Option C: Free Providers (No Cost)](#option-c-free-providers-no-cost)
+- [4. Use in CLI Tools](#4-use-in-cli-tools)
+  - [Cursor IDE](#cursor-ide)
+  - [Claude Desktop](#claude-desktop)
+  - [Cline / Continue / RooCode](#cline-continue-roocode)
+  - [Codex CLI](#codex-cli)
+- [5. Create Smart Combos (Optional)](#5-create-smart-combos-optional)
+- [Available Models](#available-models)
+  - [Subscription Models (Maximize First)](#subscription-models-maximize-first)
+  - [Cheap Models (Backup)](#cheap-models-backup)
+  - [FREE Models (Emergency)](#free-models-emergency)
+- [Cost Optimization Strategy](#cost-optimization-strategy)
+  - [Monthly Budget: $10-20/month](#monthly-budget-10-20month)
+  - [Quota Reset Strategy](#quota-reset-strategy)
+- [Next Steps](#next-steps)
+- [Need Help?](#need-help)
+
 Get 9Router running in 5 minutes and start routing AI requests intelligently.
 
 ---

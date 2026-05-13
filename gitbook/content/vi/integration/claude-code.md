@@ -1,5 +1,22 @@
 # Tích hợp Claude Code
 
+## Table of Contents
+
+- [Yêu cầu](#yêu-cầu)
+- [Setup](#setup)
+  - [1. Cấu hình biến môi trường](#1-cấu-hình-biến-môi-trường)
+  - [2. Reload Shell Configuration](#2-reload-shell-configuration)
+  - [3. Xác minh Cấu hình](#3-xác-minh-cấu-hình)
+- [Model Aliases](#model-aliases)
+- [Ví dụ Sử dụng](#ví-dụ-sử-dụng)
+  - [Dùng Model Aliases](#dùng-model-aliases)
+  - [Dùng Full Model Names](#dùng-full-model-names)
+- [File Settings](#file-settings)
+- [Troubleshooting](#troubleshooting)
+  - [Lỗi Connection](#lỗi-connection)
+  - [Model Not Found](#model-not-found)
+- [Cloud Endpoint](#cloud-endpoint)
+
 Tích hợp 9Router với Claude Code CLI để định tuyến request API Anthropic qua hệ thống routing thông minh của 9Router.
 
 ## Yêu cầu

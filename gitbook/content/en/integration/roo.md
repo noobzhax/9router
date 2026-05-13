@@ -1,5 +1,27 @@
 # Roo AI Assistant Integration
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Configuration Steps](#configuration-steps)
+  - [1. Open Roo Settings](#1-open-roo-settings)
+  - [2. Configure API Provider](#2-configure-api-provider)
+  - [3. Select Model](#3-select-model)
+  - [4. Test Connection](#4-test-connection)
+- [Usage Examples](#usage-examples)
+  - [Basic Chat](#basic-chat)
+  - [Code Generation](#code-generation)
+  - [Complex Reasoning](#complex-reasoning)
+- [Model Selection Tips](#model-selection-tips)
+- [Troubleshooting](#troubleshooting)
+  - [Connection Failed](#connection-failed)
+  - [Model Not Available](#model-not-available)
+  - [Slow Responses](#slow-responses)
+- [Advanced Configuration](#advanced-configuration)
+  - [Custom Model Aliases](#custom-model-aliases)
+  - [Multiple Profiles](#multiple-profiles)
+- [Next Steps](#next-steps)
+
 Integrate 9Router with Roo AI Assistant to access multiple AI models through a unified interface.
 
 ## Prerequisites

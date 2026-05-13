@@ -1,5 +1,43 @@
 # 9Router Architecture
 
+## Table of Contents
+
+- [Executive Summary](#executive-summary)
+- [Scope and Boundaries](#scope-and-boundaries)
+  - [In Scope](#in-scope)
+  - [Out of Scope](#out-of-scope)
+- [High-Level System Context](#high-level-system-context)
+- [Core Runtime Components](#core-runtime-components)
+- [1) API and Routing Layer (Next.js App Routes)](#1-api-and-routing-layer-nextjs-app-routes)
+- [2) SSE + Translation Core](#2-sse-translation-core)
+- [3) Persistence Layer](#3-persistence-layer)
+- [4) Auth + Security Surfaces](#4-auth-security-surfaces)
+- [5) Cloud Sync](#5-cloud-sync)
+- [Request Lifecycle (`/v1/chat/completions`)](#request-lifecycle-v1chatcompletions)
+- [Combo + Account Fallback Flow](#combo-account-fallback-flow)
+- [OAuth Onboarding and Token Refresh Lifecycle](#oauth-onboarding-and-token-refresh-lifecycle)
+- [Cloud Sync Lifecycle (Enable / Sync / Disable)](#cloud-sync-lifecycle-enable-sync-disable)
+- [Data Model and Storage Map](#data-model-and-storage-map)
+- [Deployment Topology](#deployment-topology)
+- [Module Mapping (Decision-Critical)](#module-mapping-decision-critical)
+  - [Route and API Modules](#route-and-api-modules)
+  - [Routing and Execution Core](#routing-and-execution-core)
+  - [Translation Registry and Format Converters](#translation-registry-and-format-converters)
+  - [Persistence](#persistence)
+- [Provider Executor Coverage](#provider-executor-coverage)
+- [Format Translation Coverage](#format-translation-coverage)
+- [Failure Modes and Resilience](#failure-modes-and-resilience)
+- [1) Account/Provider Availability](#1-accountprovider-availability)
+- [2) Token Expiry](#2-token-expiry)
+- [3) Stream Safety](#3-stream-safety)
+- [4) Cloud Sync Degradation](#4-cloud-sync-degradation)
+- [5) Data Integrity](#5-data-integrity)
+- [Observability and Operational Signals](#observability-and-operational-signals)
+- [Security-Sensitive Boundaries](#security-sensitive-boundaries)
+- [Environment and Runtime Matrix](#environment-and-runtime-matrix)
+- [Known Architectural Notes](#known-architectural-notes)
+- [Operational Verification Checklist](#operational-verification-checklist)
+
 _Last updated: 2026-02-06_
 
 ## Executive Summary

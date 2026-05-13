@@ -1,5 +1,48 @@
 # Free Providers - Zero Cost Fallback
 
+## Table of Contents
+
+- [Overview](#overview)
+- [iFlow (8 FREE Models)](#iflow-8-free-models)
+  - [Pricing](#pricing)
+  - [Setup](#setup)
+  - [Available Models](#available-models)
+  - [Pro Tips](#pro-tips)
+- [Qwen (3 FREE Models)](#qwen-3-free-models)
+  - [Pricing](#pricing-1)
+  - [Setup](#setup-1)
+  - [Available Models](#available-models-1)
+  - [Pro Tips](#pro-tips-1)
+- [Kiro (Claude FREE)](#kiro-claude-free)
+  - [Pricing](#pricing-2)
+  - [Setup](#setup-2)
+  - [Available Models](#available-models-2)
+  - [Pro Tips](#pro-tips-2)
+- [Feature Comparison](#feature-comparison)
+- [Usage Example](#usage-example)
+  - [Cursor IDE Setup](#cursor-ide-setup)
+  - [Create Combo (Recommended)](#create-combo-recommended)
+- [Full Fallback Strategy](#full-fallback-strategy)
+  - [Complete 3-Tier Combo](#complete-3-tier-combo)
+- [Best Practices](#best-practices)
+  - [1. Use as Emergency Backup](#1-use-as-emergency-backup)
+  - [2. Choose Right Model](#2-choose-right-model)
+  - [3. Create Free-Only Combo](#3-create-free-only-combo)
+  - [4. Test Before Production](#4-test-before-production)
+- [Real-World Examples](#real-world-examples)
+  - [Example 1: Student/Learner (Zero Budget)](#example-1-studentlearner-zero-budget)
+  - [Example 2: Freelancer (Budget-Conscious)](#example-2-freelancer-budget-conscious)
+  - [Example 3: Heavy User (Maximize Everything)](#example-3-heavy-user-maximize-everything)
+- [Cost Comparison](#cost-comparison)
+  - [Scenario: 100M tokens/month](#scenario-100m-tokensmonth)
+- [Troubleshooting](#troubleshooting)
+  - ["OAuth failed"](#oauth-failed)
+  - ["Model not available"](#model-not-available)
+  - ["Slow responses"](#slow-responses)
+- [Limitations](#limitations)
+  - [Free Tier Considerations](#free-tier-considerations)
+- [Next Steps](#next-steps)
+
 Emergency backup when everything else is quota-limited. Code 24/7 with zero cost!
 
 ---

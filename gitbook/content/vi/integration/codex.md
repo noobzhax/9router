@@ -1,5 +1,27 @@
 # Tích hợp OpenAI Codex CLI
 
+## Table of Contents
+
+- [Yêu cầu](#yêu-cầu)
+- [Setup](#setup)
+  - [1. Cấu hình biến môi trường](#1-cấu-hình-biến-môi-trường)
+  - [2. Reload Shell Configuration](#2-reload-shell-configuration)
+  - [3. Xác minh Cấu hình](#3-xác-minh-cấu-hình)
+- [Model có sẵn](#model-có-sẵn)
+- [Ví dụ Sử dụng](#ví-dụ-sử-dụng)
+  - [Sử dụng Cơ bản](#sử-dụng-cơ-bản)
+  - [Tạo Code](#tạo-code)
+  - [Giải thích Code](#giải-thích-code)
+- [File Cấu hình](#file-cấu-hình)
+- [Troubleshooting](#troubleshooting)
+  - [Lỗi Xác thực](#lỗi-xác-thực)
+  - [Lỗi Connection](#lỗi-connection)
+  - [Model không khả dụng](#model-không-khả-dụng)
+- [Cloud Endpoint](#cloud-endpoint)
+- [Cấu hình Nâng cao](#cấu-hình-nâng-cao)
+  - [Custom Timeout](#custom-timeout)
+  - [Debug Mode](#debug-mode)
+
 Tích hợp 9Router với OpenAI Codex CLI để định tuyến request API OpenAI qua hệ thống routing thông minh của 9Router.
 
 ## Yêu cầu

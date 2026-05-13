@@ -1,5 +1,27 @@
 # Integración con OpenAI Codex CLI
 
+## Table of Contents
+
+- [Requisitos previos](#requisitos-previos)
+- [Configuración](#configuración)
+  - [1. Configurar variables de entorno](#1-configurar-variables-de-entorno)
+  - [2. Recargar la configuración del shell](#2-recargar-la-configuración-del-shell)
+  - [3. Verificar la configuración](#3-verificar-la-configuración)
+- [Modelos disponibles](#modelos-disponibles)
+- [Ejemplos de uso](#ejemplos-de-uso)
+  - [Uso básico](#uso-básico)
+  - [Generación de código](#generación-de-código)
+  - [Explicación de código](#explicación-de-código)
+- [Archivo de configuración](#archivo-de-configuración)
+- [Solución de problemas](#solución-de-problemas)
+  - [Errores de autenticación](#errores-de-autenticación)
+  - [Problemas de conexión](#problemas-de-conexión)
+  - [Modelo no disponible](#modelo-no-disponible)
+- [Endpoint en la nube](#endpoint-en-la-nube)
+- [Configuración avanzada](#configuración-avanzada)
+  - [Timeout personalizado](#timeout-personalizado)
+  - [Modo debug](#modo-debug)
+
 Integra 9Router con OpenAI Codex CLI para enrutar tus solicitudes de la API de OpenAI a través del sistema de enrutamiento inteligente de 9Router.
 
 ## Requisitos previos
