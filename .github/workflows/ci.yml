@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    name: App build and lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package.json
+
+      - name: Install dependencies
+        run: npm install --include=optional
+
+      - name: Lint
+        run: npx eslint .
+
+      - name: Build
+        run: npm run build
+
+  bun-build:
+    name: Bun build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build with Bun runtime
+        run: bun run build:bun
+
+  tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tests/package.json
+
+      - name: Install app dependencies
+        run: npm install --include=optional
+
+      - name: Install test dependencies
+        working-directory: tests
+        run: npm install
+
+      - name: Run tests
+        working-directory: tests
+        run: npm test
+
+  docker-smoke:
+    name: Docker smoke test (${{ matrix.variant }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: node
+            dockerfile: Dockerfile
+            image: 9router:ci-node
+          - variant: bun
+            dockerfile: Dockerfile.bun
+            image: 9router:ci-bun
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          load: true
+          tags: ${{ matrix.image }}
+          cache-from: type=gha,scope=docker-${{ matrix.variant }}
+          cache-to: type=gha,scope=docker-${{ matrix.variant }},mode=max
+
+      - name: Run container
+        run: |
+          docker run -d \
+            --name 9router-${{ matrix.variant }} \
+            -p 20128:20128 \
+            -e DATA_DIR=/app/data \
+            ${{ matrix.image }}
+
+      - name: Wait for health endpoint
+        run: |
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:20128/api/health | grep -q '"ok":true'; then
+              exit 0
+            fi
+            docker logs 9router-${{ matrix.variant }} --tail=50 || true
+            sleep 2
+          done
+          docker logs 9router-${{ matrix.variant }} || true
+          exit 1
+
+      - name: Cleanup
+        if: always()
+        run: docker rm -f 9router-${{ matrix.variant }} || true
