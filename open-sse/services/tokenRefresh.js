@@ -355,6 +355,15 @@ export async function refreshKiroToken(refreshToken, providerSpecificData, log, 
       status: response.status,
       error: errorText,
     });
+
+    // Rate limit → caller can retry later
+    if (response.status === 429) {
+      return { error: "rate_limited", unrecoverable: false, retryAfterMs: 30000 };
+    }
+    // Auth error, bad credentials, invalid grant → unrecoverable, stop retrying
+    if (response.status === 401 || response.status === 400) {
+      return { error: "invalid_grant", unrecoverable: true };
+    }
     return null;
   }
 
@@ -789,7 +798,22 @@ export async function refreshWithRetry(refreshFn, maxRetries = 3, log = null) {
 
     try {
       const result = await refreshFn();
-      if (result) return result;
+      if (!result) continue;
+
+      // 401/400/invalid_grant style failures are not recoverable by retrying.
+      if (isUnrecoverableRefreshError(result) || result.unrecoverable === true) {
+        log?.warn?.("TOKEN_REFRESH", `Unrecoverable refresh error (${result.error || "unknown"}); not retrying`);
+        return null;
+      }
+
+      // 429/rate-limit should not hammer refresh endpoint. Stop this refresh cycle.
+      if (result.error === "rate_limited") {
+        log?.warn?.("TOKEN_REFRESH", `Refresh rate limited; not retrying for ${result.retryAfterMs || 0}ms`);
+        return null;
+      }
+
+      if (result.accessToken || result.copilotToken) return result;
+      return result;
     } catch (error) {
       log?.warn?.("TOKEN_REFRESH", `Attempt ${attempt + 1}/${maxRetries} failed: ${error.message}`);
     }

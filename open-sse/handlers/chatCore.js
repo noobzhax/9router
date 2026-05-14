@@ -205,6 +205,12 @@ export async function handleChatCore({ body, modelInfo, credentials, log, onCred
     return createErrorResult(HTTP_STATUS.BAD_GATEWAY, errMsg);
   }
 
+  // Handle 429 - rate limit (don't try token refresh, just log and fail fast)
+  if (providerResponse.status === HTTP_STATUS.RATE_LIMITED) {
+    log?.warn?.("RATE_LIMIT", `${provider.toUpperCase()} | 429 rate limit hit, not attempting token refresh`);
+    // Don't retry — let combo/fallback handle it by trying next model
+  }
+
   // Handle 401/403 - try token refresh (skip for noAuth providers)
   if (!executor.noAuth && (providerResponse.status === HTTP_STATUS.UNAUTHORIZED || providerResponse.status === HTTP_STATUS.FORBIDDEN)) {
     try {
