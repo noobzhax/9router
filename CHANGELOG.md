@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.7.0](https://github.com/noobzhax/9router/compare/v0.6.0...v0.7.0) (2026-05-27)
+
+
+### Features
+
+* Add Cloudflare Workers proxy deployer and pool integration ([#1360](https://github.com/noobzhax/9router/issues/1360)) ([c17d04c](https://github.com/noobzhax/9router/commit/c17d04c62442be5cd00d2e27bd561e332f7b9b2f))
+* add DeepSeek V4 Pro effort aliases ([#950](https://github.com/noobzhax/9router/issues/950)) ([9ac8f33](https://github.com/noobzhax/9router/commit/9ac8f33e2ea9479a79692a88d65e55a642a80a4d))
+* add drag-and-drop reordering for combo models ([#1056](https://github.com/noobzhax/9router/issues/1056)) ([#1108](https://github.com/noobzhax/9router/issues/1108)) ([cc6a3be](https://github.com/noobzhax/9router/commit/cc6a3be822676b9dc207aa0f346ae48cb93251de))
+* **gemini-cli:** wrap CloudCode payload and surface 429 retryDelay ([78cadf3](https://github.com/noobzhax/9router/commit/78cadf3db8ebb1e28c5401a6696a66d0fc0bc323))
+* **open-sse:** add blackbox provider with bb alias ([#1143](https://github.com/noobzhax/9router/issues/1143)) ([a3eb814](https://github.com/noobzhax/9router/commit/a3eb8146cfd03e526d9fc5fd0e4e8c7f1ca48525))
+* **proxy-pools:** add support for deno deploy relays and fix layout overflow issues in proxy pools dashboard ([#1437](https://github.com/noobzhax/9router/issues/1437)) ([87edbf0](https://github.com/noobzhax/9router/commit/87edbf046448391ce9e4b6ceb7af62651210c1a4))
+* **rtk:** add Kiro format support for tool result compression ([#1194](https://github.com/noobzhax/9router/issues/1194)) ([18545d7](https://github.com/noobzhax/9router/commit/18545d7c903ff173cb88526bd697062fcf097089))
+* **ui:** enhance model select modal UX and modal traffic lights ([#1111](https://github.com/noobzhax/9router/issues/1111)) ([fd1be60](https://github.com/noobzhax/9router/commit/fd1be60df8730e3a16459a144d600b32eea35fc8))
+* **upstream:** sync upstream/master v0.4.63 ([0af46f5](https://github.com/noobzhax/9router/commit/0af46f55d0d36cad4a43a9768f427f31b04eba72))
+* **usage:** add Today period option to Usage & Analytics ([#1063](https://github.com/noobzhax/9router/issues/1063)) ([d98cf63](https://github.com/noobzhax/9router/commit/d98cf6396900e2f70f36d44590b255b5621bb28d))
+* **usage:** đặt mặc định period là Today khi mở dashboard/usage ([#1141](https://github.com/noobzhax/9router/issues/1141)) ([518c238](https://github.com/noobzhax/9router/commit/518c238a812925d7d9b2eab7531a6709d338bece))
+
+
+### Bug Fixes
+
+* **autostart:** work on nvm + npm 9/10, actually register with launchctl (fixes [#1082](https://github.com/noobzhax/9router/issues/1082)) ([#1104](https://github.com/noobzhax/9router/issues/1104)) ([a6d8acf](https://github.com/noobzhax/9router/commit/a6d8acf768e50c5902c24074f4a5fbc33f4b5377))
+* decode Composer cursor thinking output ([#1310](https://github.com/noobzhax/9router/issues/1310)) ([38db9f6](https://github.com/noobzhax/9router/commit/38db9f61de91cb83bb2e5f352a991df0dc2168e3))
+* **embeddings:** forward Gemini output dimensions ([#1366](https://github.com/noobzhax/9router/issues/1366)) ([7f8ba13](https://github.com/noobzhax/9router/commit/7f8ba13bdab2e965fe6caf4b89050e2d906e31ea))
+* enhance stall detection in stream handling for improved disconne… ([#1243](https://github.com/noobzhax/9router/issues/1243)) ([04cdcc6](https://github.com/noobzhax/9router/commit/04cdcc6017c928a1df0eb745e2e4d0e9c4c591a9))
+* **eslint:** resolve setState-in-effect errors in dashboard components ([#1362](https://github.com/noobzhax/9router/issues/1362)) ([fec563b](https://github.com/noobzhax/9router/commit/fec563b7e08407f5bb96f715359020e8d660f6f3))
+* **gitbook:** add missing useEffect import and mounted guard for SSR portal ([1736342](https://github.com/noobzhax/9router/commit/173634233d1eb768915b5b2fd6bff50845220ac0))
+* implement json_schema fallback for OpenAI-compatible providers ([#1343](https://github.com/noobzhax/9router/issues/1343)) ([975fcdd](https://github.com/noobzhax/9router/commit/975fcddb0430321ea60571f4299619b48d46516c))
+* keep usage details pagination inside mobile viewport ([#1218](https://github.com/noobzhax/9router/issues/1218)) ([314a515](https://github.com/noobzhax/9router/commit/314a515f8746fbe6c327bfdef2c26ea6a5999775))
+* **lang:** emit selected locale on close ([#1234](https://github.com/noobzhax/9router/issues/1234)) ([6c65dfc](https://github.com/noobzhax/9router/commit/6c65dfc8b7d15d0b877fb45ef6e1b7d6f8f717de))
+* **lint:** escape quotes in JSX hint text for Cloudflare API token ([c668ea2](https://github.com/noobzhax/9router/commit/c668ea2d95c2d5e41d25dfc744528f40b7493f05))
+* normalize openclaw agent.model object form before .startsWith ([#1216](https://github.com/noobzhax/9router/issues/1216)) ([4889da0](https://github.com/noobzhax/9router/commit/4889da0a2b82e6a64fb43fc47649c2d89435ae33))
+* **oauth:** align antigravity OAuth metadata with official client headers ([85703f2](https://github.com/noobzhax/9router/commit/85703f20f635dfc9bd915e8db394c69e817e89b6))
+* sanitize Read tool args to prevent retry loops from non-Anthropic models ([#1144](https://github.com/noobzhax/9router/issues/1144)) ([0736992](https://github.com/noobzhax/9router/commit/07369927c5884c7ca06315b7bddbf4ca4a251281))
+* strip empty Read pages argument in OpenAI-to-Claude translator ([#1354](https://github.com/noobzhax/9router/issues/1354)) ([9c754cf](https://github.com/noobzhax/9router/commit/9c754cf9c0dcd64befaf953d648819e999475315)), closes [#1278](https://github.com/noobzhax/9router/issues/1278)
+* **tests:** resolve RTK Kiro and OpenAI-to-Claude test failures after upstream sync ([7b18473](https://github.com/noobzhax/9router/commit/7b184732444acac4fb2ff0a23463de80508adfa4))
+* **ui:** resolve alias conflict for jina-reader in curl example ([#1241](https://github.com/noobzhax/9router/issues/1241)) ([dab87e3](https://github.com/noobzhax/9router/commit/dab87e342edbbbef045d2cc2ac0d549c9e019faa))
+* **ui:** show API key row actions on mobile ([#1112](https://github.com/noobzhax/9router/issues/1112)) ([c376bf1](https://github.com/noobzhax/9router/commit/c376bf10132aa6b1d42fd5b67efa0c155bac09bb))
+* update provider name retrieval for compatibility provider ([#1135](https://github.com/noobzhax/9router/issues/1135)) ([29c26fd](https://github.com/noobzhax/9router/commit/29c26fdc7da4be01fa283124f0b51e7cfbc18eef))
+
 ## [0.6.0](https://github.com/noobzhax/9router/compare/v0.5.0...v0.6.0) (2026-05-13)
 
 
