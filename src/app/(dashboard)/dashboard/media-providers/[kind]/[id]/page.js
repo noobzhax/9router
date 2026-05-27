@@ -10,7 +10,7 @@ import AddCustomEmbeddingModal from "@/shared/components/AddCustomEmbeddingModal
 import NoAuthProxyCard from "@/shared/components/NoAuthProxyCard";
 import ProviderInfoCard from "@/shared/components/ProviderInfoCard";
 import ProviderIcon from "@/shared/components/ProviderIcon";
-import { MEDIA_PROVIDER_KINDS, AI_PROVIDERS, getProviderAlias, isCustomEmbeddingProvider } from "@/shared/constants/providers";
+import { MEDIA_PROVIDER_KINDS, AI_PROVIDERS, getProviderAlias, isCustomEmbeddingProvider, resolveProviderId } from "@/shared/constants/providers";
 import { getModelsByProviderId } from "@/shared/constants/models";
 import { useCopyToClipboard } from "@/shared/hooks/useCopyToClipboard";
 import ConnectionsCard from "@/app/(dashboard)/dashboard/providers/components/ConnectionsCard";
@@ -922,6 +922,8 @@ function TtsExampleCard({ providerId }) {
 // Generic Example Card — config-driven for webSearch, webFetch, image, imageToText, stt, video, music
 function GenericExampleCard({ providerId, kind }) {
   const providerAlias = getProviderAlias(providerId);
+  const resolvedId = resolveProviderId(providerAlias);
+  const safeProviderAlias = resolvedId === providerId ? providerAlias : providerId;
   const kindConfig = MEDIA_PROVIDER_KINDS.find((k) => k.id === kind);
   const exConfig = KIND_EXAMPLE_CONFIG[kind];
   const safeExConfig = exConfig || {};
@@ -984,10 +986,10 @@ function GenericExampleCard({ providerId, kind }) {
 
   const endpoint = useTunnel ? tunnelEndpoint : localEndpoint;
   const apiPath = kindConfig.endpoint.path;
-  // webSearch/webFetch: use providerAlias only. Other kinds: append model when present.
+  // webSearch/webFetch: use safeProviderAlias only. Other kinds: append model when present.
   const modelFull = !needsModel
-    ? providerAlias
-    : (selectedModel ? `${providerAlias}/${selectedModel}` : (allowManualModel ? "" : providerAlias));
+    ? safeProviderAlias
+    : (selectedModel ? `${safeProviderAlias}/${selectedModel}` : (allowManualModel ? "" : safeProviderAlias));
   const imageEditDefaults = getImageEditDefaults(providerId, selectedModel);
   const effectiveRefImage = refImage.trim() || imageEditDefaults.image || "";
   const effectiveMaskImage = maskImage.trim() || imageEditDefaults.mask_image || "";
