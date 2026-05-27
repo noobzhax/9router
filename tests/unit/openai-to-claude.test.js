@@ -149,14 +149,26 @@ describe("openaiToClaudeResponse", () => {
       }]
     };
 
-    const result = openaiToClaudeResponse(chunk, state);
+    // First chunk: registers tool call + buffers args
+    openaiToClaudeResponse(chunk, state);
+
+    // Second chunk: finish_reason triggers sanitized delta emission
+    const finishChunk = {
+      id: "chatcmpl-test",
+      model: "gpt-test",
+      choices: [{
+        delta: {},
+        finish_reason: "tool_calls"
+      }]
+    };
+    const result = openaiToClaudeResponse(finishChunk, state);
     const inputDelta = result.find(event => event.delta?.type === "input_json_delta");
 
     expect(inputDelta).toBeDefined();
-    expect(JSON.parse(inputDelta.delta.partial_json)).toEqual({
-      file_path: "/tmp/example.txt",
-      offset: 0,
-      limit: 120
-    });
+    const parsed = JSON.parse(inputDelta.delta.partial_json);
+    expect(parsed.pages).toBeUndefined();
+    expect(parsed.file_path).toBe("/tmp/example.txt");
+    expect(parsed.offset).toBe(0);
+    expect(parsed.limit).toBe(120);
   });
 });
