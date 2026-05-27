@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/noobzhax/9router/compare/v0.5.0...v0.6.0) (2026-05-13)
+
+
+### Features
+
+* **sync:** sync upstream v0.4.38 additions ([7ff166d](https://github.com/noobzhax/9router/commit/7ff166d6262feac95ee1a86b46e0e8e2b4c99b5a))
+
 ## [0.5.0](https://github.com/noobzhax/9router/compare/v0.4.33...v0.5.0) (2026-05-13)
 
 
