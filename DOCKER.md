@@ -1,160 +1,132 @@
 # Docker
 
-This project ships with Docker support for building and running 9Router in a container.
-
-## Runtimes
-
-Two `Dockerfile` variants are available:
-
-| Variant | File | Base | Builder | Runtime | Use case |
-|---|---|---|---|---|---|
-| **Node.js** | `Dockerfile` | `node:22-alpine` | Node | Node | Stable, well-tested |
-| **Bun** | `Dockerfile.bun` | `node:22-alpine` + `oven/bun:1.3-alpine` | Node | Bun | Faster startup, lower memory |
-
-The **Bun variant** uses a hybrid approach: native deps (better-sqlite3, node-forge, node-machine-id) are compiled with the Node toolchain, then the final image runs on Bun using its built-in `bun:sqlite` driver for improved performance. Next.js serves via `bun --bun server.js`.
+Run 9Router in a container. Published image: [`decolua/9router`](https://hub.docker.com/r/decolua/9router) — multi-platform `linux/amd64` + `linux/arm64`.
 
 ---
 
-## Build & Run — Bun Variant
+# 👤 For Users
 
-### Build image
-
-```bash
-docker build -f Dockerfile.bun -t 9router:bun .
-```
-
-### Start container
-
-```bash
-docker run --rm \
-  -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" \
-  -e DATA_DIR=/app/data \
-  --name 9router-bun \
-  9router:bun
-```
-
-### Run in background
+## Quick start
 
 ```bash
 docker run -d \
   -p 20128:20128 \
   -v "$HOME/.9router:/app/data" \
   -e DATA_DIR=/app/data \
-  --name 9router-bun \
-  9router:bun
-```
-
-### View logs
-
-```bash
-docker logs -f 9router-bun
-```
-
-### Stop container
-
-```bash
-docker stop 9router-bun
-```
-
-### Rebuild after code changes
-
-```bash
-docker build -f Dockerfile.bun -t 9router:bun .
-docker stop 9router-bun && docker rm 9router-bun
-docker run -d -p 20128:20128 -v "$HOME/.9router:/app/data" -e DATA_DIR=/app/data --name 9router-bun 9router:bun
-```
-
----
-
-## Docker Compose — Bun Variant
-
-```bash
-docker compose -f docker-compose.bun.yml up -d
-docker compose -f docker-compose.bun.yml logs -f
-docker compose -f docker-compose.bun.yml down
-```
-
-Named volumes (`9router_data`, `9router_home`) persist data automatically.
-
----
-
-## Build & Run — Node.js Variant
-
-The Node.js variant uses the default `Dockerfile`:
-
-```bash
-# Build
-docker build -t 9router .
-
-# Run
-docker run --rm \
-  -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" \
-  -e DATA_DIR=/app/data \
   --name 9router \
-  9router
-
-# Run in background
-docker run -d \
-  -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" \
-  -e DATA_DIR=/app/data \
-  --name 9router \
-  9router
+  decolua/9router:latest
 ```
 
----
+App listens on port `20128`. Open: http://localhost:20128
 
-## What the volume does
+## Manage container
+
+```bash
+docker logs -f 9router        # view logs
+docker stop 9router           # stop
+docker start 9router          # start again
+docker rm -f 9router          # remove
+```
+
+## Data persistence
 
 ```bash
 -v "$HOME/.9router:/app/data" \
 -e DATA_DIR=/app/data
 ```
 
-`9router` stores its database at `path.join(DATA_DIR, "db.json")`.
-Without `DATA_DIR`, the app falls back to the current user's home directory (for example `~/.9router/db.json` on macOS/Linux). In the container, set `DATA_DIR=/app/data` so the bind mount is actually used.
+Without `DATA_DIR`, the app falls back to `~/.9router/` (macOS/Linux) or `%APPDATA%\9router\` (Windows). In the container, `DATA_DIR=/app/data` makes the bind mount work.
 
-With the example above, the database file is:
-
-```text
-/app/data/db.json
-```
-
-and it is persisted on the host at:
+Data layout under `$DATA_DIR/`:
 
 ```text
-$HOME/.9router/db.json
+$DATA_DIR/
+├── db/
+│   ├── data.sqlite       # main SQLite database
+│   └── backups/          # auto backups
+└── ...                   # certs, logs, runtime configs
 ```
 
----
+Host path: `$HOME/.9router/db/data.sqlite`
+Container path: `/app/data/db/data.sqlite`
 
-## Optional environment variables
-
-You can override runtime env vars with `-e`.
-
-Example (Bun):
+## Optional env vars
 
 ```bash
-docker run --rm \
+docker run -d \
   -p 20128:20128 \
   -v "$HOME/.9router:/app/data" \
   -e DATA_DIR=/app/data \
   -e PORT=20128 \
   -e HOSTNAME=0.0.0.0 \
   -e DEBUG=true \
-  --name 9router-bun \
-  9router:bun
+  --name 9router \
+  decolua/9router:latest
+```
+
+## Optional Headroom sidecar
+
+The 9Router image does not bundle Python or Headroom. To use Headroom in Docker, run it as a separate service and point 9Router at that proxy:
+
+```yaml
+services:
+  9router:
+    image: decolua/9router:latest
+    ports:
+      - "20128:20128"
+    volumes:
+      - "$HOME/.9router:/app/data"
+    environment:
+      DATA_DIR: /app/data
+      HEADROOM_URL: http://headroom:8787
+    depends_on:
+      - headroom
+
+  headroom:
+    image: ghcr.io/chopratejas/headroom:latest
+    ports:
+      - "8787:8787"
+```
+
+In the dashboard, open `Endpoint` → `Token Saver` → `Headroom`, confirm the URL is `http://headroom:8787`, recheck status, then enable Headroom.
+
+If Headroom runs on the Docker host instead of as a sidecar, use `http://host.docker.internal:8787` on macOS/Windows. On Linux, add `--add-host=host.docker.internal:host-gateway` or the equivalent compose `extra_hosts` entry.
+
+## Update to latest
+
+```bash
+docker pull decolua/9router:latest
+docker rm -f 9router
+# re-run the quick start command
 ```
 
 ---
 
-## Healthcheck
+# 🛠 For Developers
 
-The Bun Dockerfile and `docker-compose.bun.yml` include a healthcheck:
+## Build image locally (test)
 
-- **Bun variant** — `wget` to `http://127.0.0.1:${PORT}/api/health`
-- **Node variant** — no built-in healthcheck (add via compose if needed)
+```bash
+cd app && docker build -t 9router .
 
-The health endpoint returns `{ "ok": true }`, and the Bun healthcheck verifies that shape.
+docker run --rm -p 20128:20128 \
+  -v "$HOME/.9router:/app/data" \
+  -e DATA_DIR=/app/data \
+  9router
+```
+
+## Publish (automatic via CI)
+
+Push a git tag `v*` → GitHub Actions builds multi-platform (amd64+arm64) and pushes to:
+- `ghcr.io/decolua/9router:v{version}` + `:latest`
+- `decolua/9router:v{version}` + `:latest`
+
+```bash
+# Use scripts/release.js (recommended)
+node scripts/release.js "Release title" "Notes"
+
+# Or manually
+git tag v0.4.x && git push origin v0.4.x
+```
+
+Workflow: `app/.github/workflows/docker-publish.yml`

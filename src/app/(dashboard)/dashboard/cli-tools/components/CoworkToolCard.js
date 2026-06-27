@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, Button, ManualConfigModal, ComboFormModal, McpMarketplaceModal } from "@/shared/components";
+import { Card, Button, ManualConfigModal, ComboFormModal, McpMarketplaceModal, ModelSelectModal } from "@/shared/components";
 import Image from "next/image";
 import BaseUrlSelect from "./BaseUrlSelect";
 import ApiKeySelect from "./ApiKeySelect";
@@ -43,10 +43,12 @@ export default function CoworkToolCard({
   const [plugins, setPlugins] = useState([]);
   const [localPlugins, setLocalPlugins] = useState([]);
   const [customPlugins, setCustomPlugins] = useState([]);
+  const [modelAliases, setModelAliases] = useState({});
   const [comboModalOpen, setComboModalOpen] = useState(false);
+  const [modelSelectOpen, setModelSelectOpen] = useState(false);
   const [marketplaceOpen, setMarketplaceOpen] = useState(false);
   const [addMcpOpen, setAddMcpOpen] = useState(false);
-  const [addMcpForm, setAddMcpForm] = useState({ type: "url", name: "", url: "", command: "", args: "" });
+  const [addMcpForm, setAddMcpForm] = useState({ name: "", url: "" });
 
   useEffect(() => {
     if (apiKeys?.length > 0 && !selectedApiKey) {
@@ -60,6 +62,16 @@ export default function CoworkToolCard({
 
   useEffect(() => {
     if (isExpanded && !status) checkStatus();
+  }, [isExpanded]);
+
+  useEffect(() => {
+    if (!isExpanded) return;
+    fetch("/api/models/alias")
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (data) setModelAliases(data.aliases || {});
+      })
+      .catch(() => {});
   }, [isExpanded]);
 
   useEffect(() => {
@@ -168,6 +180,17 @@ export default function CoworkToolCard({
     } catch (error) {
       setMessage({ type: "error", text: error.message });
     }
+  };
+
+  const handleAddModel = (model) => {
+    const value = model?.value || model?.name || model;
+    if (!value || selectedModels.includes(value)) return;
+    setSelectedModels((prev) => [...prev, value]);
+  };
+
+  const handleRemoveModel = (model) => {
+    const value = model?.value || model?.name || model;
+    setSelectedModels((prev) => prev.filter((item) => item !== value));
   };
 
   const handleReset = async () => {
@@ -313,7 +336,7 @@ export default function CoworkToolCard({
                         selectedModels.map((m) => (
                           <span key={m} className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs bg-black/5 dark:bg-white/5 text-text-muted border border-transparent hover:border-border">
                             {m}
-                            <button onClick={() => setSelectedModels((prev) => prev.filter((x) => x !== m))} className="ml-0.5 hover:text-red-500">
+                            <button onClick={() => handleRemoveModel(m)} className="ml-0.5 hover:text-red-500">
                               <span className="material-symbols-outlined text-[12px]">close</span>
                             </button>
                           </span>
@@ -351,7 +374,7 @@ export default function CoworkToolCard({
                       <div key={p.name} className="flex items-center gap-2 px-2 py-1 bg-surface rounded border border-border">
                         <span className="text-xs font-medium min-w-0 truncate flex-shrink-0">{p.name}</span>
                         <span className="text-[8px] px-1 py-0.5 rounded bg-blue-500/10 text-blue-500 shrink-0">custom</span>
-                        <span className="flex-1 text-[9px] text-text-muted truncate">{p.url || p.command}</span>
+                        <span className="flex-1 text-[9px] text-text-muted truncate">{p.url}</span>
                         <button onClick={() => setCustomPlugins(customPlugins.filter((x) => x.name !== p.name))} className="shrink-0 hover:text-red-500 ml-auto">
                           <span className="material-symbols-outlined text-[12px]">close</span>
                         </button>
@@ -365,7 +388,7 @@ export default function CoworkToolCard({
                       <button onClick={() => setMarketplaceOpen(true)} className="px-2 py-1 rounded border text-xs bg-primary/10 border-primary/40 text-primary hover:bg-primary/20 cursor-pointer whitespace-nowrap">
                         + Browse
                       </button>
-                      <button onClick={() => { setAddMcpForm({ type: "url", name: "", url: "", command: "", args: "" }); setAddMcpOpen(true); }} className="px-2 py-1 rounded border text-xs bg-surface border-border text-text-muted hover:border-primary hover:text-primary cursor-pointer whitespace-nowrap">
+                      <button onClick={() => { setAddMcpForm({ name: "", url: "" }); setAddMcpOpen(true); }} className="px-2 py-1 rounded border text-xs bg-surface border-border text-text-muted hover:border-primary hover:text-primary cursor-pointer whitespace-nowrap">
                         + Custom
                       </button>
                       <a href="https://mcp.so" target="_blank" rel="noopener noreferrer" className="text-[10px] text-text-muted hover:text-primary underline ml-auto">Find MCPs →</a>
@@ -501,6 +524,18 @@ export default function CoworkToolCard({
         title="Create Cowork Combo"
       />
 
+      <ModelSelectModal
+        isOpen={modelSelectOpen}
+        onClose={() => setModelSelectOpen(false)}
+        onSelect={handleAddModel}
+        onDeselect={handleRemoveModel}
+        activeProviders={activeProviders}
+        modelAliases={modelAliases}
+        title="Select Cowork Model"
+        addedModelValues={selectedModels}
+        closeOnSelect={false}
+      />
+
       <McpMarketplaceModal
         isOpen={marketplaceOpen}
         onClose={() => setMarketplaceOpen(false)}
@@ -519,17 +554,6 @@ export default function CoworkToolCard({
               </button>
             </div>
 
-            <div className="flex gap-2">
-              <button
-                onClick={() => setAddMcpForm((f) => ({ ...f, type: "url" }))}
-                className={`flex-1 py-1.5 rounded border text-xs font-medium transition-colors ${addMcpForm.type === "url" ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-text-muted hover:border-primary/40"}`}
-              >URL (SSE)</button>
-              <button
-                onClick={() => setAddMcpForm((f) => ({ ...f, type: "cmd" }))}
-                className={`flex-1 py-1.5 rounded border text-xs font-medium transition-colors ${addMcpForm.type === "cmd" ? "bg-primary/10 border-primary/40 text-primary" : "border-border text-text-muted hover:border-primary/40"}`}
-              >Command (stdio)</button>
-            </div>
-
             <div className="flex flex-col gap-2">
               <div className="flex flex-col gap-1">
                 <label className="text-[11px] text-text-muted font-medium">Name</label>
@@ -541,41 +565,16 @@ export default function CoworkToolCard({
                   className="px-2 py-1.5 rounded border border-border bg-surface text-xs outline-none focus:border-primary"
                 />
               </div>
-              {addMcpForm.type === "url" ? (
-                <div className="flex flex-col gap-1">
-                  <label className="text-[11px] text-text-muted font-medium">SSE URL</label>
-                  <input
-                    type="text"
-                    placeholder="https://your-mcp-server.com/sse"
-                    value={addMcpForm.url}
-                    onChange={(e) => setAddMcpForm((f) => ({ ...f, url: e.target.value }))}
-                    className="px-2 py-1.5 rounded border border-border bg-surface text-xs outline-none focus:border-primary"
-                  />
-                </div>
-              ) : (
-                <>
-                  <div className="flex flex-col gap-1">
-                    <label className="text-[11px] text-text-muted font-medium">Command</label>
-                    <input
-                      type="text"
-                      placeholder="npx"
-                      value={addMcpForm.command}
-                      onChange={(e) => setAddMcpForm((f) => ({ ...f, command: e.target.value }))}
-                      className="px-2 py-1.5 rounded border border-border bg-surface text-xs outline-none focus:border-primary"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <label className="text-[11px] text-text-muted font-medium">Args <span className="font-normal">(comma-separated)</span></label>
-                    <input
-                      type="text"
-                      placeholder="-y, @some/mcp-package"
-                      value={addMcpForm.args}
-                      onChange={(e) => setAddMcpForm((f) => ({ ...f, args: e.target.value }))}
-                      className="px-2 py-1.5 rounded border border-border bg-surface text-xs outline-none focus:border-primary"
-                    />
-                  </div>
-                </>
-              )}
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] text-text-muted font-medium">SSE URL</label>
+                <input
+                  type="text"
+                  placeholder="https://your-mcp-server.com/sse"
+                  value={addMcpForm.url}
+                  onChange={(e) => setAddMcpForm((f) => ({ ...f, url: e.target.value }))}
+                  className="px-2 py-1.5 rounded border border-border bg-surface text-xs outline-none focus:border-primary"
+                />
+              </div>
             </div>
 
             <div className="flex gap-2 justify-end">
@@ -583,15 +582,8 @@ export default function CoworkToolCard({
               <button
                 onClick={() => {
                   const name = addMcpForm.name.trim();
-                  if (!name) return;
-                  if (addMcpForm.type === "url") {
-                    if (!addMcpForm.url.trim()) return;
-                    setCustomPlugins((prev) => [...prev.filter((x) => x.name !== name), { name, url: addMcpForm.url.trim(), transport: "sse", custom: true }]);
-                  } else {
-                    if (!addMcpForm.command.trim()) return;
-                    const args = addMcpForm.args.split(",").map((a) => a.trim()).filter(Boolean);
-                    setCustomPlugins((prev) => [...prev.filter((x) => x.name !== name), { name, command: addMcpForm.command.trim(), args, custom: true }]);
-                  }
+                  if (!name || !addMcpForm.url.trim()) return;
+                  setCustomPlugins((prev) => [...prev.filter((x) => x.name !== name), { name, url: addMcpForm.url.trim(), transport: "sse", custom: true }]);
                   setAddMcpOpen(false);
                 }}
                 className="px-3 py-1.5 rounded bg-primary text-white text-xs font-medium hover:opacity-90 cursor-pointer"

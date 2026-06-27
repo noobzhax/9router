@@ -2,26 +2,9 @@ import { NextResponse } from "next/server";
 import { getProviderNodeById } from "@/models";
 import { isOpenAICompatibleProvider, isAnthropicCompatibleProvider, isCustomEmbeddingProvider, AI_PROVIDERS } from "@/shared/constants/providers";
 import { getDefaultModel } from "open-sse/config/providerModels.js";
-import { resolveOllamaLocalHost, PROVIDERS } from "open-sse/config/providers.js";
-import { openaiToCommandCode } from "open-sse/translator/request/openai-to-commandcode.js";
-import { PROVIDER_ENDPOINTS } from "@/shared/constants/config";
+import { resolveOllamaLocalHost, resolveXiaomiTokenplanBaseUrl, PROVIDERS } from "open-sse/config/providers.js";
+import { openaiToCommandCodeRequest } from "open-sse/translator/request/openai-to-commandcode.js";
 import { normalizeProviderId } from "@/lib/providerNormalization";
-
-function validateUrl(url) {
-  try {
-    const parsed = new URL(url);
-    if (!["http:", "https:"].includes(parsed.protocol)) {
-      throw new Error("Invalid protocol");
-    }
-    const hostname = parsed.hostname;
-    if (/^(localhost|127\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/.test(hostname)) {
-      throw new Error("Private addresses not allowed");
-    }
-    return parsed;
-  } catch (e) {
-    throw new Error(`Invalid URL: ${e.message}`);
-  }
-}
 
 // Probe a webSearch/webFetch provider using its searchConfig/fetchConfig.
 // Returns true if API key is accepted (status !== 401 && !== 403).
@@ -39,9 +22,6 @@ async function probeWebProvider(provider, apiKey) {
   let url = cfg.baseUrl;
   const headers = { "Content-Type": "application/json" };
   let body;
-
-  // Validate URL before use
-  validateUrl(url);
 
   // Apply auth based on authHeader
   switch (cfg.authHeader) {
@@ -91,11 +71,10 @@ async function probeMediaProvider(provider, apiKey) {
   }
 
   const method = cfg.method || "POST";
-  validateUrl(cfg.baseUrl);
   const res = await fetch(cfg.baseUrl, {
     method,
     headers,
-    body: method === "GET" ? undefined : JSON.stringify({ input: "ping", text: "ping", prompt: "ping", model: cfg.models?.[0]?.id || "test" }),
+    body: method === "GET" ? undefined : JSON.stringify({ input: "ping", text: "ping", prompt: "ping", model: getDefaultModel(provider) || "test" }),
     signal: AbortSignal.timeout(8000),
   });
   return res.status !== 401 && res.status !== 403;
@@ -124,7 +103,6 @@ export async function POST(request) {
           return NextResponse.json({ error: "OpenAI Compatible node not found" }, { status: 404 });
         }
         const modelsUrl = `${node.baseUrl?.replace(/\/$/, "")}/models`;
-        validateUrl(modelsUrl);
         const res = await fetch(modelsUrl, {
           headers: { "Authorization": `Bearer ${apiKey}` },
         });
@@ -142,7 +120,6 @@ export async function POST(request) {
           return NextResponse.json({ error: "Custom Embedding node not found" }, { status: 404 });
         }
         const baseUrl = node.baseUrl?.replace(/\/$/, "");
-        validateUrl(`${baseUrl}/models`);
         const modelsRes = await fetch(`${baseUrl}/models`, {
           headers: { "Authorization": `Bearer ${apiKey}` },
         });
@@ -178,18 +155,26 @@ export async function POST(request) {
           normalizedBase = normalizedBase.slice(0, -9); // remove /messages
         }
 
-        const modelsUrl = `${normalizedBase}/models`;
+        const messagesUrl = `${normalizedBase}/v1/messages`;
+        const model = node.defaultModel || "claude-3-haiku-20240307";
 
-        validateUrl(modelsUrl);
-        const res = await fetch(modelsUrl, {
+        const res = await fetch(messagesUrl, {
+          method: "POST",
           headers: {
             "x-api-key": apiKey,
             "anthropic-version": "2023-06-01",
-            "Authorization": `Bearer ${apiKey}`
+            "content-type": "application/json",
+            "Authorization": `Bearer ${apiKey}`,
           },
+          body: JSON.stringify({
+            model,
+            max_tokens: 1,
+            messages: [{ role: "user", content: "test" }],
+          }),
         });
 
-        isValid = res.ok;
+        // 400/529 still confirms key accepted; only 401/403 = bad key
+        isValid = res.status !== 401 && res.status !== 403;
         return NextResponse.json({
           valid: isValid,
           error: isValid ? null : "Invalid API key",
@@ -227,7 +212,6 @@ export async function POST(request) {
         const organization = providerSpecificData?.organization;
 
         const url = `${endpoint}/openai/deployments/${deployment}/chat/completions?api-version=${apiVersion}`;
-        validateUrl(url);
         const headers = {
           "api-key": apiKey,
           "Content-Type": "application/json",
@@ -350,7 +334,7 @@ export async function POST(request) {
         }
         case "volcengine-ark":
         case "byteplus": {
-          const res = await fetch(PROVIDER_ENDPOINTS[provider], {
+          const res = await fetch(PROVIDERS[provider]?.baseUrl, {
             method: "POST",
             headers: {
               "Authorization": `Bearer ${apiKey}`,
@@ -387,26 +371,12 @@ export async function POST(request) {
         case "xiaomi-tokenplan":
         case "nvidia": {
           const endpoints = {
-            deepseek: "https://api.deepseek.com/models",
-            groq: "https://api.groq.com/openai/v1/models",
-            xai: "https://api.x.ai/v1/models",
-            mistral: "https://api.mistral.ai/v1/models",
-            perplexity: "https://api.perplexity.ai/models",
-            together: "https://api.together.xyz/v1/models",
-            fireworks: "https://api.fireworks.ai/inference/v1/models",
-            cerebras: "https://api.cerebras.ai/v1/models",
-            cohere: "https://api.cohere.ai/v1/models",
-            nebius: "https://api.studio.nebius.ai/v1/models",
-            siliconflow: "https://api.siliconflow.cn/v1/models",
-            hyperbolic: "https://api.hyperbolic.xyz/v1/models",
-            ollama: "https://ollama.com/api/tags",
+            ...Object.fromEntries(
+              Object.entries(PROVIDERS).filter(([, t]) => t.validateUrl).map(([id, t]) => [id, t.validateUrl])
+            ),
+            // dynamic URLs (depend on providerSpecificData) — kept inline
             "ollama-local": `${resolveOllamaLocalHost({ providerSpecificData })}/api/tags`,
-            assemblyai: "https://api.assemblyai.com/v1/account",
-            nanobanana: "https://api.nanobananaapi.ai/v1/models",
-            chutes: "https://llm.chutes.ai/v1/models",
-            nvidia: "https://integrate.api.nvidia.com/v1/models",
-            "xiaomi-mimo": "https://api.xiaomimimo.com/v1/models",
-            "xiaomi-tokenplan": "https://token-plan-sgp.xiaomimimo.com/v1/models"
+            "xiaomi-tokenplan": `${resolveXiaomiTokenplanBaseUrl({ providerSpecificData })}/models`,
           };
           const headers = {};
           if (apiKey) headers["Authorization"] = `Bearer ${apiKey}`;
@@ -438,7 +408,7 @@ export async function POST(request) {
         case "commandcode": {
           const cfg = PROVIDERS.commandcode;
           const model = getDefaultModel("commandcode");
-          const payload = openaiToCommandCode(model, {
+          const payload = openaiToCommandCodeRequest(model, {
             messages: [{ role: "user", content: "ping" }],
             max_tokens: 1,
             stream: false,

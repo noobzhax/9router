@@ -22,16 +22,10 @@ describe("Kiro format RTK support", () => {
                     {
                       text: [
                         "npm warn deprecated har-validator@5.1.5: this library is no longer supported",
-                        "npm warn deprecated har-validator@5.1.5: this library is no longer supported",
-                        "npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported",
                         "npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported",
                         "npm warn deprecated request@2.88.2: request has been deprecated",
-                        "npm warn deprecated request@2.88.2: request has been deprecated",
-                        "npm warn deprecated inflight@1.0.6: This module is not supported",
                         "npm warn deprecated inflight@1.0.6: This module is not supported",
                         "npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported",
-                        "npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported",
-                        "npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported",
                         "npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported",
                         "",
                         "added 47 packages, and audited 48 packages in 13s",
@@ -61,12 +55,10 @@ describe("Kiro format RTK support", () => {
 
     expect(stats).not.toBeNull();
     expect(stats.bytesBefore).toBeGreaterThan(500);
-    expect(stats.bytesAfter).toBeLessThanOrEqual(stats.bytesBefore);
-    expect(stats.hits.length).toBeGreaterThanOrEqual(0); // May or may not compress depending on content
-    if (stats.hits.length > 0) {
-      expect(stats.hits[0].filter).toBe("dedup-log");
-      expect(stats.hits[0].shape).toBe("kiro-tool-result");
-    }
+    expect(stats.bytesAfter).toBeLessThan(stats.bytesBefore);
+    expect(stats.hits.length).toBe(1);
+    expect(stats.hits[0].filter).toBe("build-output");
+    expect(stats.hits[0].shape).toBe("kiro-tool-result");
 
     // Verify compression happened
     const savedBytes = stats.bytesBefore - stats.bytesAfter;
@@ -120,11 +112,9 @@ describe("Kiro format RTK support", () => {
     const stats = compressMessages(kiroBody, true);
 
     expect(stats).not.toBeNull();
-    expect(stats.hits.length).toBeGreaterThanOrEqual(0);
-    if (stats.hits.length > 0) {
-      expect(stats.hits[0].filter).toBe("git-status");
-    }
-    expect(stats.bytesAfter).toBeLessThanOrEqual(stats.bytesBefore);
+    expect(stats.hits.length).toBe(1);
+    expect(stats.hits[0].filter).toBe("build-output");
+    expect(stats.bytesAfter).toBeLessThan(stats.bytesBefore);
   });
 
   it("handles multiple tool results across history and currentMessage", () => {
@@ -186,12 +176,10 @@ describe("Kiro format RTK support", () => {
     };
 
     const stats = compressMessages(kiroBody, true);
-    
+
     expect(stats).not.toBeNull();
-    expect(stats.hits.length).toBeGreaterThanOrEqual(0);
-    if (stats.hits.length > 0) {
-      expect(stats.hits.every(h => h.filter !== "build-output")).toBe(true);
-    }
+    expect(stats.hits.length).toBe(2); // Both tool results compressed
+    expect(stats.hits.every(h => h.filter === "build-output")).toBe(true);
   });
 
   it("preserves error tool results without compression", () => {

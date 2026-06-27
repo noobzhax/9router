@@ -61,6 +61,21 @@ const INSTALL_CMD_LATEST = `npm i -g ${APP_NAME}@latest --prefer-online`;
 
 const DEFAULT_PORT = 20128;
 const DEFAULT_HOST = "0.0.0.0";
+
+// First non-internal IPv4 — the address remote peers actually reach when bound to 0.0.0.0.
+function getLanIp() {
+  for (const ifaces of Object.values(os.networkInterfaces())) {
+    for (const i of ifaces || []) {
+      if (i.family === "IPv4" && !i.internal) return i.address;
+    }
+  }
+  return null;
+}
+
+// Local URL stays "localhost"; warn separately when bound to all interfaces (network-exposed).
+function getDisplayHost() {
+  return host === DEFAULT_HOST ? "localhost" : host;
+}
 const MAX_PORT_ATTEMPTS = 10;
 // Identifiers for killAllAppProcesses - only kill 9router specifically
 const PROCESS_IDENTIFIERS = [
@@ -197,8 +212,8 @@ function killCloudflaredByAppPort(appPort) {
 function killAllAppProcesses(appPort) {
   return new Promise((resolve) => {
     try {
-      // Kill MITM first (admin/sudo process, needs special handling)
-      killMitmByPidFile();
+      // Kill MIT first (privileged process, needs special handling)
+      killProxyByPidFile();
       // Kill cloudflared/tailscale by PID file (precise, only this app's tunnel)
       killTunnelByPidFile();
 
@@ -219,8 +234,12 @@ function killAllAppProcesses(appPort) {
           });
           const lines = output.split("\n").slice(1).filter(l => l.trim());
           lines.forEach(line => {
-            const isAppProcess = line.toLowerCase().includes("9router") ||
-              line.toLowerCase().includes("next-server");
+            // Whitelist: real node process running 9router/cli.js, or next-server.
+            // Avoids killing editors/grep/strace/cursor that just have "9router" in cmdline.
+            const cmd = line.toLowerCase();
+            const isAppProcess =
+              (cmd.includes("node") && cmd.includes("9router") && (cmd.includes("cli.js") || cmd.includes("\\9router") || cmd.includes("/9router")))
+              || cmd.includes("next-server");
             if (isAppProcess) {
               const match = line.match(/^"(\d+)"/);
               if (match && match[1] && match[1] !== process.pid.toString()) {
@@ -241,7 +260,12 @@ function killAllAppProcesses(appPort) {
           const lines = output.split('\n');
 
           lines.forEach(line => {
-            const isAppProcess = line.includes("9router") || line.includes("next-server");
+            // Whitelist: real node process running 9router/cli.js, or next-server.
+            // Avoids killing grep/strace/editors/cursor that incidentally match "9router".
+            const cmd = line.toLowerCase();
+            const isAppProcess =
+              (cmd.includes("node") && cmd.includes("9router") && (cmd.includes("cli.js") || cmd.includes("/9router")))
+              || cmd.includes("next-server");
             if (isAppProcess) {
               const parts = line.trim().split(/\s+/);
               const pid = parts[1];
@@ -296,13 +320,13 @@ function waitForExit(pid, timeoutMs) {
   return false;
 }
 
-// Kill MITM server by PID file (MITM runs as admin/sudo, needs special handling)
-// Sends SIGTERM first so MITM can clean up /etc/hosts entries before dying.
-function killMitmByPidFile() {
+// Kill MIT server by PID file (runs privileged, needs special handling)
+// Sends SIGTERM first so MIT can clean up host entries before dying.
+function killProxyByPidFile() {
   try {
-    const mitmPidFile = path.join(getAppDataDir(), "mitm", ".mitm.pid");
-    if (!fs.existsSync(mitmPidFile)) return;
-    const pid = parseInt(fs.readFileSync(mitmPidFile, "utf8").trim(), 10);
+    const pidFile = path.join(getAppDataDir(), "mitm", ".mitm.pid");
+    if (!fs.existsSync(pidFile)) return;
+    const pid = parseInt(fs.readFileSync(pidFile, "utf8").trim(), 10);
     if (!pid) return;
 
     if (process.platform === "win32") {
@@ -324,7 +348,7 @@ function killMitmByPidFile() {
         catch { try { process.kill(pid, "SIGKILL"); } catch { } }
       }
     }
-    try { fs.unlinkSync(mitmPidFile); } catch { }
+    try { fs.unlinkSync(pidFile); } catch { }
   } catch { }
 }
 
@@ -461,9 +485,13 @@ function openBrowser(url) {
   });
 }
 
-// Find standalone server (bundled in bin/app for published package)
+// Find standalone server (bundled in bin/app for published package).
+// Prefer custom-server.js (injects real socket IP) when present.
 const standaloneDir = path.join(__dirname, "app");
-const serverPath = path.join(standaloneDir, "server.js");
+const customServerPath = path.join(standaloneDir, "custom-server.js");
+const serverPath = fs.existsSync(customServerPath)
+  ? customServerPath
+  : path.join(standaloneDir, "server.js");
 
 if (!fs.existsSync(serverPath)) {
   console.error("Error: Standalone build not found.");
@@ -488,7 +516,7 @@ async function showInterfaceMenu(latestVersion) {
 
   clearScreen();
 
-  const displayHost = host === DEFAULT_HOST ? "localhost" : host;
+  const displayHost = getDisplayHost();
 
   // Detect tunnel/local mode for server URL display
   let serverUrl;
@@ -529,8 +557,13 @@ const MAX_RESTARTS = 2;
 const RESTART_RESET_MS = 30000; // Reset counter if alive > 30s
 
 function startServer(latestVersion) {
-  const displayHost = host === DEFAULT_HOST ? "localhost" : host;
+  const displayHost = getDisplayHost();
   const url = `http://${displayHost}:${port}/dashboard`;
+  // Surface real network exposure when bound to all interfaces (default 0.0.0.0).
+  if (host === DEFAULT_HOST) {
+    const lanIp = getLanIp();
+    if (lanIp) console.log(`\x1b[33m⚠ Network-exposed: reachable at http://${lanIp}:${port} (bound 0.0.0.0). Use --host 127.0.0.1 for local-only.\x1b[0m`);
+  }
 
   let restartCount = 0;
   let serverStartTime = Date.now();
@@ -575,8 +608,8 @@ function startServer(latestVersion) {
         const { killTray } = require("./src/cli/tray/tray");
         killTray();
       } catch (e) { }
-      // Kill MITM server (admin/sudo process) via PID file
-      killMitmByPidFile();
+      // Kill MIT server (privileged process) via PID file
+      killProxyByPidFile();
       // Kill cloudflared/tailscale via PID file (only this app's tunnel)
       killTunnelByPidFile();
       // Kill server process directly
@@ -637,6 +670,10 @@ function startServer(latestVersion) {
 
   // Tray-only mode: no TUI, just tray icon
   if (trayMode) {
+    // Ignore SIGHUP so macOS terminal close doesn't kill the background tray process
+    process.removeAllListeners("SIGHUP");
+    process.on("SIGHUP", () => {});
+
     console.log(`\n🚀 ${pkg.name} v${pkg.version}`);
     console.log(`Server: http://${displayHost}:${port}`);
 
@@ -681,20 +718,33 @@ function startServer(latestVersion) {
           await startTerminalUI(port);
           // Loop continues, show menu again
         } else if (choice === "hide") {
-          // Hide to tray - spawn detached background process
           const { clearScreen } = require("./src/cli/utils/display");
           clearScreen();
 
           // Enable auto startup on OS boot
           try {
             const { enableAutoStart } = require("./src/cli/tray/autostart");
-            const enabled = enableAutoStart(__filename);
-            if (enabled) {
-              console.log("✅ Auto-start enabled (will run on OS boot)");
-            }
+            enableAutoStart(__filename);
           } catch (e) { }
 
-          // Spawn new detached process with --tray flag
+          if (process.platform === "darwin") {
+            // macOS: keep current process alive — spawning a detached child puts
+            // it outside the login session so NSStatusItem silently fails.
+            process.removeAllListeners("SIGHUP");
+            process.on("SIGHUP", () => {});
+
+            console.log(`\n⏳ Switching to tray mode... (icon already visible in menu bar)`);
+            console.log(`🔔 9Router is running in tray (PID: ${process.pid})`);
+            console.log(`   Server: http://${displayHost}:${port}`);
+            console.log(`\n💡 You can close this terminal. Right-click tray icon to quit.\n`);
+
+            // Tray already init'd at startup — just keep event loop alive.
+            return;
+          }
+
+          // Windows/Linux: spawn detached bgProcess (systray works fine in child)
+          console.log(`\n⏳ Starting background process... (tray icon will appear in ~3s)`);
+
           const bgProcess = spawn(process.execPath, [__filename, "--tray", "--skip-update", "-p", port.toString()], {
             detached: true,
             stdio: "ignore",
@@ -703,13 +753,11 @@ function startServer(latestVersion) {
           });
           bgProcess.unref();
 
-          console.log(`\n🔔 9Router is now running in background (PID: ${bgProcess.pid})`);
+          console.log(`🔔 9Router is now running in background (PID: ${bgProcess.pid})`);
           console.log(`   Server: http://${displayHost}:${port}`);
-          console.log(`\n💡 You can close this terminal. Right-click tray icon to:`);
-          console.log(`   • Open Dashboard`);
-          console.log(`   • Quit\n`);
+          console.log(`\n💡 You can close this terminal. Right-click tray icon to quit.\n`);
 
-          // Exit current process - background process takes over
+          // cleanup() kills server so bgProcess can claim the port fresh
           cleanup();
           process.exit(0);
         } else if (choice === "exit") {
@@ -748,7 +796,7 @@ function startServer(latestVersion) {
     if (aliveMs >= RESTART_RESET_MS) restartCount = 0;
 
     if (restartCount >= MAX_RESTARTS) {
-      console.error(`\n⚠️  Server crashed ${MAX_RESTARTS} times. Disabling MITM and restarting...`);
+      console.error(`\n⚠️  Server crashed ${MAX_RESTARTS} times. Disabling MIT and restarting...`);
       try {
         const dbPath = path.join(os.homedir(), process.platform === "win32" ? path.join("AppData", "Roaming", "9router", "db.json") : path.join(".9router", "db.json"));
         if (fs.existsSync(dbPath)) {
